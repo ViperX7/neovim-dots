@@ -111,6 +111,7 @@ local utils = require('utils')
     -- endif
 
 
+utils.map('i', 'jk', '<Esc>')           -- jk to escape
 -------------------------------------------------------------------------------
 
 
@@ -118,12 +119,52 @@ local utils = require('utils')
 
 
 
-utils.map('i', 'jk', '<Esc>')           -- jk to escape
 
 -- nvim-tree
   utils.map('n', '<C-n>', ':NvimTreeToggle<CR>')
   utils.map('n', '<leader>r', ':<NvimTreeRefreshCR>')
   utils.map('n', '<leader>n', ':NvimTreeFindFile<CR>')
+    local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+    vim.g.nvim_tree_bindings = {
+      -- default mappings
+      ["l"]           = tree_cb("edit"),
+      ["<CR>"]           = tree_cb("edit"),
+      ["<2-LeftMouse>"]  = tree_cb("edit"),
+      ["<2-RightMouse>"] = tree_cb("cd"),
+      ["<C-]>"]          = tree_cb("cd"),
+      ["v"]          = tree_cb("vsplit"),
+      ["<C-x>"]          = tree_cb("split"),
+      ["t"]          = tree_cb("tabnew"),
+      ["<"]              = tree_cb("prev_sibling"),
+      [">"]              = tree_cb("next_sibling"),
+      ["h"]           = tree_cb("close_node"),
+      ["<Tab>"]          = tree_cb("preview"),
+      ["I"]              = tree_cb("toggle_ignored"),
+      ["H"]              = tree_cb("toggle_dotfiles"),
+      ["R"]              = tree_cb("refresh"),
+      ["a"]              = tree_cb("create"),
+      ["d"]              = tree_cb("remove"),
+      ["r"]              = tree_cb("rename"),
+      ["<C-r>"]          = tree_cb("full_rename"),
+      ["x"]              = tree_cb("cut"),
+      ["c"]              = tree_cb("copy"),
+      ["p"]              = tree_cb("paste"),
+      ["[c"]             = tree_cb("prev_git_item"),
+      ["]c"]             = tree_cb("next_git_item"),
+      ["-"]              = tree_cb("dir_up"),
+      ["q"]              = tree_cb("close"),
+    }
+
+
+
 
 -- fugitive
   local utils = require('utils')utils.map('n', '<Leader>gs', '<cmd>Gstatus<CR>')  -- Git status
+
+-- Telescope 
+    utils.map('n','<leader>o','<cmd>Telescope find_files<cr>')
+    utils.map('n','<leader>fm','<cmd>Telescope man_pages<cr>')
+    utils.map('n','<leader>fg','<cmd>Telescope live_grep<cr>')
+    utils.map('n',';','<cmd>Telescope buffers<cr>')
+    utils.map('n','<leader>fh','<cmd>Telescope help_tags<cr>')
+
