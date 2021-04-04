@@ -11,6 +11,7 @@ return require('packer').startup(function()
 ---------------------------------------------------------------------
   -- Color scheme
     use { 'sainnhe/gruvbox-material'}
+    use { 'joshdick/onedark.vim'}
 
 ----------------------------------------------------------------------
 -- Editor Enhancements

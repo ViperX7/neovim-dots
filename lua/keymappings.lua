@@ -51,7 +51,7 @@ local utils = require('utils')
 
 -- Split
   utils.map('n','<Leader>h',':<C-u>split<CR>')
-  utils.map('n','<Leader>v',':<C-u>vsplit<CR')
+  utils.map('n','<Leader>v',':<C-u>vsplit<CR>')
 
 -- Easy window navigation
   utils.map('','<C-h>','<C-w>h',{})
