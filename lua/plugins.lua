@@ -68,7 +68,8 @@ return require('packer').startup(function()
 
 
 -- Snippets
-    use {'honza/vim-snippets'}
+    use {'hrsh7th/vim-vsnip'}
+    use('norcalli/snippets.nvim')
 
 -- ************************* Documentatoin *********************************
 -- vim wiki
@@ -83,11 +84,12 @@ return require('packer').startup(function()
 ---------------------------------------------------------------------
   -- LSP and completion
     use { 'neovim/nvim-lspconfig'  }
-    use { 'nvim-lua/completion-nvim'  }
+    -- use { 'nvim-lua/completion-nvim'  }
     -- Add symbols to completion menu
     use {'onsails/lspkind-nvim'}
-
-
+    use {'kabouzeid/nvim-lspinstall'}
+    use{'glepnir/lspsaga.nvim'}
+    use {'hrsh7th/nvim-compe'}
 -----------------------------------------------------------------------
 ----- Integration
 -----------------------------------------------------------------------
@@ -105,8 +107,9 @@ return require('packer').startup(function()
       -- fancy lua folds, you can check this out.
         use { 'tjdevries/manillua.nvim'}
 -- Flutter
-    use {'thosakwe/vim-flutter'}
-    use {'dart-lang/dart-vim-plugin'}
+    -- use {'thosakwe/vim-flutter'}
+    -- use {'dart-lang/dart-vim-plugin'}
+    use 'akinsho/flutter-tools.nvim'
 -- Markdown
     use {'suan/vim-instant-markdown'}
 

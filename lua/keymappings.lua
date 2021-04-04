@@ -159,10 +159,10 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
 
 
 ------------------------ FuGITive -------------------------------
-  local utils = require('utils')utils.map('n', '<Leader>gs', '<cmd>Gstatus<CR>')  -- Git status
+  utils.map('n', '<Leader>gs', '<cmd>Gstatus<CR>')  -- Git status
 
 ----------------------- Telescope --------------------------------
-    utils.map('n','<leader>o','<cmd>Telescope find_files<cr>')
+    utils.map('n','<leader>f','<cmd>Telescope find_files<cr>')
     utils.map('n','<leader>fm','<cmd>Telescope man_pages<cr>')
     utils.map('n','<leader>fg','<cmd>Telescope live_grep<cr>')
     utils.map('n',';','<cmd>Telescope buffers<cr>')
@@ -179,13 +179,13 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     utils.map('v','<silent> <M-j>',':MultipleCursorsFind <C-R>/<')
 
 -- vim-flutter
-    utils.map('n','<leader>fa',':FlutterRun<cr>')
-    utils.map('n','<leader>ft',':FlutterVSplit<cr>')
-    utils.map('n','<leader>ff',':DartFmt<cr>')
-    utils.map('n','<leader>fq',':FlutterQuit<cr>')
-    utils.map('n','<leader>fr',':FlutterHotReload<cr>')
-    utils.map('n','<leader>fR',':FlutterHotRestart<cr>')
-    utils.map('n','<leader>fD',':FlutterVisualDebug<cr>')
+    utils.map('n','<leader>Fa',':FlutterRun<cr>')
+    utils.map('n','<leader>Ft',':FlutterVSplit<cr>')
+    utils.map('n','<leader>FF',':DartFmt<cr>')
+    utils.map('n','<leader>FQ',':FlutterQuit<cr>')
+    utils.map('n','<leader>FR',':FlutterHotRestart<cr>')
+    utils.map('n','<leader>Fr',':FlutterHotReload<cr>')
+    utils.map('n','<leader>FD',':FlutterVisualDebug<cr>')
 
 
 ---------------------- EasyMotion -----------------------------
@@ -194,3 +194,9 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     -- TagBar
     utils.map('n','<F8>',':TagbarToggle<CR>',{})
 
+----------------------- nvim-compe --------------------------
+    utils.map('i','<silent><expr> <C-Space>','compe#complete()')
+    utils.map('i','<silent><expr> <CR>     ','compe#confirm("<CR>")')
+    utils.map('i','<silent><expr> <C-e>    ','compe#close("<C-e>")')
+    utils.map('i','<silent><expr> <C-f>    ','compe#scroll({ "delta": +4 })')
+    utils.map('i','<silent><expr> <C-d>    ','compe#scroll({ "delta": -4 })')
