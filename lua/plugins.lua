@@ -40,8 +40,43 @@ return require('packer').startup(function()
     use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
   -- treesetter
-  -- 
     use {'nvim-treesitter/nvim-treesitter'}
+  
+  -- Automatic line number toggle
+   use {'jeffkreeftmeijer/vim-numbertoggle'}
+
+  -- Mautiple cursors
+   use {'terryma/vim-multiple-cursors'}
+  
+  -- Auto pairying helpers
+     use {'jiangmiao/auto-pairs'}
+     use {'tpope/vim-surround' }
+
+  -- Welcome Dashoard
+   use {'mhinz/vim-startify'}
+
+  -- Commenting
+    use {'tomtom/tcomment_vim'}
+
+
+  -- Tagbar
+    use {'majutsushi/tagbar'}
+
+  -- Fast movement
+    use {'easymotion/vim-easymotion'}
+    use {'tpope/vim-repeat'}
+
+
+-- Snippets
+    use {'honza/vim-snippets'}
+
+-- ************************* Documentatoin *********************************
+-- vim wiki
+    use {'vimwiki/vimwiki'}                      -- A personal wiki for vim
+
+
+  use {'ryanoasis/vim-devicons'}                 -- Icons and highlighting for NERDTree
+
 
 ----------------------------------------------------------------------
 -- Language Servers
@@ -53,7 +88,11 @@ return require('packer').startup(function()
     use {'onsails/lspkind-nvim'}
 
 
-
+-----------------------------------------------------------------------
+----- Integration
+-----------------------------------------------------------------------
+  -- TMUX navigation
+    use {'christoomey/vim-tmux-navigator'}
 
 -----------------------------------------------------
 -- Language Specific
@@ -65,6 +104,16 @@ return require('packer').startup(function()
         use { 'euclidianAce/BetterLua.vim'}
       -- fancy lua folds, you can check this out.
         use { 'tjdevries/manillua.nvim'}
+-- Flutter
+    use {'thosakwe/vim-flutter'}
+    use {'dart-lang/dart-vim-plugin'}
+-- Markdown
+    use {'suan/vim-instant-markdown'}
+
+
+-- Python 
+    use {'vim-python/python-syntax'}              -- Better  Syntax Highliting
+
 
 
 end)

@@ -5,7 +5,7 @@ local utils = require('utils')
 -------------------------------Vim Specific Key Mappings-----------------------------------
 
 -- Leader
-  vim.g.mapleader = ' '
+  vim.g.mapleader = ','
 
 
 -- Movement
@@ -120,8 +120,8 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
 
 
 
--- nvim-tree
-  utils.map('n', '<C-n>', ':NvimTreeToggle<CR>')
+---------------------- Nvim-tree ------------------------------
+  utils.map('n', '<C-i>', ':NvimTreeToggle<CR>')
   utils.map('n', '<leader>r', ':<NvimTreeRefreshCR>')
   utils.map('n', '<leader>n', ':NvimTreeFindFile<CR>')
     local tree_cb = require'nvim-tree.config'.nvim_tree_callback
@@ -158,13 +158,39 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
 
 
 
--- fugitive
+------------------------ FuGITive -------------------------------
   local utils = require('utils')utils.map('n', '<Leader>gs', '<cmd>Gstatus<CR>')  -- Git status
 
--- Telescope 
+----------------------- Telescope --------------------------------
     utils.map('n','<leader>o','<cmd>Telescope find_files<cr>')
     utils.map('n','<leader>fm','<cmd>Telescope man_pages<cr>')
     utils.map('n','<leader>fg','<cmd>Telescope live_grep<cr>')
     utils.map('n',';','<cmd>Telescope buffers<cr>')
     utils.map('n','<leader>fh','<cmd>Telescope help_tags<cr>')
+
+
+
+
+
+------------------------Multiple cursors keybindings-----------------------
+-- Select n keywords with several keystrokes
+
+    utils.map('n','<silent> <M-j>',':MultipleCursorsFind <C-R>/<CR>')
+    utils.map('v','<silent> <M-j>',':MultipleCursorsFind <C-R>/<')
+
+-- vim-flutter
+    utils.map('n','<leader>fa',':FlutterRun<cr>')
+    utils.map('n','<leader>ft',':FlutterVSplit<cr>')
+    utils.map('n','<leader>ff',':DartFmt<cr>')
+    utils.map('n','<leader>fq',':FlutterQuit<cr>')
+    utils.map('n','<leader>fr',':FlutterHotReload<cr>')
+    utils.map('n','<leader>fR',':FlutterHotRestart<cr>')
+    utils.map('n','<leader>fD',':FlutterVisualDebug<cr>')
+
+
+---------------------- EasyMotion -----------------------------
+    utils.map('','<silent><space>', '<plug>(easymotion-s2)')
+
+    -- TagBar
+    utils.map('n','<F8>',':TagbarToggle<CR>',{})
 
