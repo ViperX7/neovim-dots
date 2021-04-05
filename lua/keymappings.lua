@@ -224,7 +224,7 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
 
     --command that adds new buffer and moves to it
     vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
-    utils.map("n","<S-b>",":New ", opt)
+    -- utils.map("n","<S->",":New ", opt)
 
     --removing a buffer
     utils.map("n","<S-f>",[[<Cmd>bdelete<CR>]], opt)

@@ -15,8 +15,8 @@ g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attri
 g.nvim_tree_root_folder_modifier = ':~' -- This is the default. See :help filename-modifiers for more options
 g.nvim_tree_tab_open = 1 -- 0 by default, will open the tree when entering a new tab and the tree was previously open
 g.nvim_tree_width_allow_resize  = 1 -- 0 by default, will not resize the tree when opening a file
-g.nvim_tree_disable_netrw = 0 -- 1 by default, disables netrw
-g.nvim_tree_hijack_netrw = 0 -- 1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
+g.nvim_tree_disable_netrw = 1 -- 1 by default, disables netrw
+g.nvim_tree_hijack_netrw = 1 -- 1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
 g.nvim_tree_add_trailing = 1 -- 0 by default, append a trailing slash to folder names
 g.nvim_tree_group_empty = 1 --  0 by default, compact folders that only contain a single folder into one node in the file tree
 

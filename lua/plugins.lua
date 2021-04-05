@@ -83,6 +83,9 @@ return require('packer').startup(function()
     -- use {'honza/vim-snippets'}
     use('norcalli/snippets.nvim')
 
+-- Timing plugin
+    use "tweekmonster/startuptime.vim"
+
 -- ************************* Documentatoin *********************************
 -- vim wiki
     use {'vimwiki/vimwiki'}                      -- A personal wiki for vim
