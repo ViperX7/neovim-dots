@@ -1,12 +1,31 @@
 require('config.colorscheme')
--- require('config.completion')
+
+-- Git
 require('config.fugitive')
-require('config.lspkind')
-require('config.telescope')
-require('config.galaxyline')
 require('config.gitsign')
-require('config.bufferline')
+
+-- Visual
+require('config.dashbord-nvim')
+
+-- Tools
+require('config.telescope')
+require('config.nvim-tree')
 require('config.treesetter')
-require('config.easymotion')
+
+-- Bars
+require('config.galaxyline')
+require('config.bufferline')
+
+-- Completion
+require('config.lspkind')
 require('config.nvim-compe')
 require('config.fluttertools')
+require('config.lspsaga')
+require('config.ultisnips')
+
+-- Movement
+require('config.easymotion')
+
+require('config.neoscrool')
+
+require'colorizer'.setup()

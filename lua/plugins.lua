@@ -22,6 +22,9 @@ return require('packer').startup(function()
 ---------------------------------------------------------------------
   -- Fuzzy finder
     use {'nvim-telescope/telescope.nvim',requires = {{'nvim-lua/popup.nvim'},{'nvim-lua/plenary.nvim'}}}
+      -- Preview extension
+        use 'nvim-telescope/telescope-media-files.nvim'
+        use 'nvim-telescope/telescope-symbols.nvim'
 
   -- File explorer 
     use {'kyazdani42/nvim-tree.lua', requires = {{'kyazdani42/nvim-web-devicons'}}}
@@ -47,16 +50,19 @@ return require('packer').startup(function()
 
   -- Mautiple cursors
    use {'terryma/vim-multiple-cursors'}
-  
+
   -- Auto pairying helpers
      use {'jiangmiao/auto-pairs'}
      use {'tpope/vim-surround' }
 
   -- Welcome Dashoard
-   use {'mhinz/vim-startify'}
+   use {'glepnir/dashboard-nvim'}
 
   -- Commenting
     use {'tomtom/tcomment_vim'}
+
+  -- Colors
+    use "norcalli/nvim-colorizer.lua"
 
 
   -- Tagbar
@@ -66,9 +72,15 @@ return require('packer').startup(function()
     use {'easymotion/vim-easymotion'}
     use {'tpope/vim-repeat'}
 
+  -- Scrolling
+    use 'karb94/neoscroll.nvim'
 
 -- Snippets
     use {'hrsh7th/vim-vsnip'}
+        use 'hrsh7th/vim-vsnip-integ'
+        use {'rafamadriz/friendly-snippets'}
+    -- use {'SirVer/ultisnips'}
+    -- use {'honza/vim-snippets'}
     use('norcalli/snippets.nvim')
 
 -- ************************* Documentatoin *********************************
@@ -76,20 +88,20 @@ return require('packer').startup(function()
     use {'vimwiki/vimwiki'}                      -- A personal wiki for vim
 
 
-  use {'ryanoasis/vim-devicons'}                 -- Icons and highlighting for NERDTree
-
 
 ----------------------------------------------------------------------
 -- Language Servers
 ---------------------------------------------------------------------
   -- LSP and completion
-    use { 'neovim/nvim-lspconfig'  }
-    -- use { 'nvim-lua/completion-nvim'  }
-    -- Add symbols to completion menu
-    use {'onsails/lspkind-nvim'}
-    use {'kabouzeid/nvim-lspinstall'}
+    use { 'neovim/nvim-lspconfig'}
+    use {'windwp/nvim-autopairs'}
     use{'glepnir/lspsaga.nvim'}
     use {'hrsh7th/nvim-compe'}
+        -- Add symbols to completion menu
+        use {'onsails/lspkind-nvim'}
+
+  -- Formating
+    use "sbdchd/neoformat"
 -----------------------------------------------------------------------
 ----- Integration
 -----------------------------------------------------------------------
@@ -110,6 +122,9 @@ return require('packer').startup(function()
     -- use {'thosakwe/vim-flutter'}
     -- use {'dart-lang/dart-vim-plugin'}
     use 'akinsho/flutter-tools.nvim'
+    use 'Neevash/awesome-flutter-snippets'
+
+
 -- Markdown
     use {'suan/vim-instant-markdown'}
 

@@ -28,8 +28,8 @@ local utils = require('utils')
 
 
 -- Tabs
-  utils.map('n','<Tab>','gt')
-  utils.map('n','<S-Tab>','gT')
+  -- utils.map('n','<Tab>','gt')
+  -- utils.map('n','<S-Tab>','gT')
   utils.map('n','<silent> <S-t>',':tabnew<CR')
 
 -- Command key optimisation : = ;
@@ -88,7 +88,7 @@ local utils = require('utils')
 
 -- Code Folding
     -- space open/closes folds
-        utils.map('n','<space>f','za')
+        utils.map('n','<M-f>','za')
 
 -- Searching
     -- Turn off search highlightset ignorecase
@@ -121,9 +121,9 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
 
 
 ---------------------- Nvim-tree ------------------------------
-  utils.map('n', '<C-i>', ':NvimTreeToggle<CR>')
-  utils.map('n', '<leader>r', ':<NvimTreeRefreshCR>')
-  utils.map('n', '<leader>n', ':NvimTreeFindFile<CR>')
+  utils.map('n', '<M-i>', ':NvimTreeToggle<CR>')
+  -- utils.map('n', '<leader>r', ':<NvimTreeRefreshCR>')
+  -- utils.map('n', '<leader>n', ':NvimTreeFindFile<CR>')
     local tree_cb = require'nvim-tree.config'.nvim_tree_callback
     vim.g.nvim_tree_bindings = {
       -- default mappings
@@ -153,6 +153,7 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
       ["]c"]             = tree_cb("next_git_item"),
       ["-"]              = tree_cb("dir_up"),
       ["q"]              = tree_cb("close"),
+      ["i"]              = tree_cb("close"),
     }
 
 
@@ -162,7 +163,8 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
   utils.map('n', '<Leader>gs', '<cmd>Gstatus<CR>')  -- Git status
 
 ----------------------- Telescope --------------------------------
-    utils.map('n','<leader>f','<cmd>Telescope find_files<cr>')
+    utils.map('n','<leader>ff','<cmd>Telescope find_files<cr>')
+    utils.map('n','<leader>fe','<cmd>Telescope symbols<cr>')
     utils.map('n','<leader>fm','<cmd>Telescope man_pages<cr>')
     utils.map('n','<leader>fg','<cmd>Telescope live_grep<cr>')
     utils.map('n',';','<cmd>Telescope buffers<cr>')
@@ -189,7 +191,21 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
 
 
 ---------------------- EasyMotion -----------------------------
-    utils.map('','<silent><space>', '<plug>(easymotion-s2)')
+    -- <Leader>f{char} to move to {char}
+    -- utils.map('','<Leader>f','<Plug>(easymotion-bd-f)',{})
+    -- utils.map('n','<Leader>f','<Plug>(easymotion-overwin-f)',{})
+    --
+    -- -- s{char}{char} to move to {char}{char}
+    -- utils.map('n','s','<Plug>(easymotion-overwin-f2)',{})
+    --
+    -- -- Move to line
+    -- utils.map('','<Leader>L','<Plug>(easymotion-bd-jk)',{})
+    -- utils.map('n','<Leader>L','<Plug>(easymotion-overwin-line)',{})
+    --
+    -- -- Move to word
+    -- utils.map('','<Leader>w','<Plug>(easymotion-bd-w)',{})
+    -- utils.map('n','<Leader>w','<Plug>(easymotion-overwin-w)',{})
+    -- utils.map('n','<leader>f','<Plug>(easymotion-s2)',{})
 
     -- TagBar
     utils.map('n','<F8>',':TagbarToggle<CR>',{})
@@ -200,3 +216,21 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     utils.map('i','<silent><expr> <C-e>    ','compe#close("<C-e>")')
     utils.map('i','<silent><expr> <C-f>    ','compe#scroll({ "delta": +4 })')
     utils.map('i','<silent><expr> <C-d>    ','compe#scroll({ "delta": -4 })')
+
+------------------------- Bufferline --------------------------------
+
+    local opt = {silent = true}
+
+
+    --command that adds new buffer and moves to it
+    vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
+    utils.map("n","<S-b>",":New ", opt)
+
+    --removing a buffer
+    utils.map("n","<S-f>",[[<Cmd>bdelete<CR>]], opt)
+
+    -- tabnext and tabprev
+    utils.map("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
+    utils.map("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+    utils.map("n", "<M-b>", ':BufferLinePick<CR>', opt)
+
