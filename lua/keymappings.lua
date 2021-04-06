@@ -193,22 +193,8 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     utils.map('n','<leader>FD',':FlutterVisualDebug<cr>')
 
 
----------------------- EasyMotion -----------------------------
-    -- <Leader>f{char} to move to {char}
-    -- utils.map('','<Leader>f','<Plug>(easymotion-bd-f)',{})
-    -- utils.map('n','<Leader>f','<Plug>(easymotion-overwin-f)',{})
-    --
-    -- -- s{char}{char} to move to {char}{char}
-    -- utils.map('n','s','<Plug>(easymotion-overwin-f2)',{})
-    --
-    -- -- Move to line
-    -- utils.map('','<Leader>L','<Plug>(easymotion-bd-jk)',{})
-    -- utils.map('n','<Leader>L','<Plug>(easymotion-overwin-line)',{})
-    --
-    -- -- Move to word
-    -- utils.map('','<Leader>w','<Plug>(easymotion-bd-w)',{})
-    -- utils.map('n','<Leader>w','<Plug>(easymotion-overwin-w)',{})
-    -- utils.map('n','<leader>f','<Plug>(easymotion-s2)',{})
+---------------------- hop -----------------------------
+    utils.map('n', 's', "<cmd>lua require'hop'.hint_char2()<cr>", {})
 
     -- TagBar
     utils.map('n','<F8>',':TagbarOpenAutoClose<CR>',{})

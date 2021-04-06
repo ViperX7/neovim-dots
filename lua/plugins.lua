@@ -69,7 +69,8 @@ return require('packer').startup(function()
     use {'majutsushi/tagbar'}
 
   -- Fast movement
-    use {'easymotion/vim-easymotion'}
+    -- use {'easymotion/vim-easymotion'}
+    use 'phaazon/hop.nvim'
     use {'tpope/vim-repeat'}
 
   -- Scrolling
