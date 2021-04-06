@@ -28,7 +28,8 @@ return require('packer').startup(function()
 
   -- File explorer 
     use {'kyazdani42/nvim-tree.lua', requires = {{'kyazdani42/nvim-web-devicons'}}}
-
+  -- File Manager
+    use 'kevinhwang91/rnvimr'
   -- Vim dispatch
     use { 'tpope/vim-dispatch'  }
 
@@ -54,6 +55,10 @@ return require('packer').startup(function()
   -- Auto pairying helpers
      use {'jiangmiao/auto-pairs'}
      use {'tpope/vim-surround' }
+     use 'andymass/vim-matchup'
+
+  -- Registers Manager
+    use 'gennaro-tedesco/nvim-peekup'
 
   -- Welcome Dashoard
    use {'glepnir/dashboard-nvim'}

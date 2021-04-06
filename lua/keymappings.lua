@@ -223,3 +223,7 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     -- utils.map("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
     utils.map("n", "<M-b>", ':BufferLinePick<CR>', opt)
 
+----------------------- Ranger ----------------------------------
+    
+    utils.map("n", "<Space>f", ':RnvimrToggle<CR>', opt)
+
