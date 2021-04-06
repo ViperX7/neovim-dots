@@ -123,7 +123,7 @@ return require('packer').startup(function()
         use { 'tjdevries/manillua.nvim'}
 -- Flutter
     -- use {'thosakwe/vim-flutter'}
-    -- use {'dart-lang/dart-vim-plugin'}
+    use {'dart-lang/dart-vim-plugin'}
     use 'akinsho/flutter-tools.nvim'
     use 'Neevash/awesome-flutter-snippets'
 

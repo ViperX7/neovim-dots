@@ -181,12 +181,13 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     utils.map('v','<silent> <M-j>',':MultipleCursorsFind <C-R>/<')
 
 -- vim-flutter
-    utils.map('n','<leader>Fa',':FlutterRun<cr>')
+    utils.map('n','<leader>Fa',':vsplit<CR>:FlutterRun<cr>')
     utils.map('n','<leader>Ft',':FlutterVSplit<cr>')
     utils.map('n','<leader>FF',':DartFmt<cr>')
     utils.map('n','<leader>FQ',':FlutterQuit<cr>')
     utils.map('n','<leader>FR',':FlutterHotRestart<cr>')
     utils.map('n','<leader>Fr',':FlutterHotReload<cr>')
+    utils.map('n','<leader>Fd',':FlutterDevices<cr>')
     utils.map('n','<leader>FD',':FlutterVisualDebug<cr>')
 
 
@@ -208,7 +209,7 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     -- utils.map('n','<leader>f','<Plug>(easymotion-s2)',{})
 
     -- TagBar
-    utils.map('n','<F8>',':TagbarToggle<CR>',{})
+    utils.map('n','<F8>',':TagbarOpenAutoClose<CR>',{})
 
 ----------------------- nvim-compe --------------------------
     utils.map('i','<silent><expr> <C-Space>','compe#complete()')
@@ -227,10 +228,10 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     -- utils.map("n","<S->",":New ", opt)
 
     --removing a buffer
-    utils.map("n","<S-f>",[[<Cmd>bdelete<CR>]], opt)
+    utils.map("n","<S-x>",[[<Cmd>bdelete<CR>]], opt)
 
     -- tabnext and tabprev
     utils.map("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-    utils.map("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+    -- utils.map("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
     utils.map("n", "<M-b>", ':BufferLinePick<CR>', opt)
 
