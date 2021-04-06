@@ -98,7 +98,8 @@ return require('packer').startup(function()
   -- LSP and completion
     use { 'neovim/nvim-lspconfig'}
     use {'windwp/nvim-autopairs'}
-    use{'glepnir/lspsaga.nvim'}
+    use {'kosayoda/nvim-lightbulb'}
+    -- use{'glepnir/lspsaga.nvim'}
     use {'hrsh7th/nvim-compe'}
         -- Add symbols to completion menu
         use {'onsails/lspkind-nvim'}

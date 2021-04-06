@@ -169,6 +169,8 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     utils.map('n','<leader>fg','<cmd>Telescope live_grep<cr>')
     utils.map('n',';','<cmd>Telescope buffers<cr>')
     utils.map('n','<leader>fh','<cmd>Telescope help_tags<cr>')
+    utils.map('n','<leader>ca','<cmd>Telescope lsp_code_actions<cr>')
+    utils.map('v','<leader>ca','<cmd>Telescope lsp_range_code_actions<cr>')
 
 
 
