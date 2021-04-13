@@ -68,9 +68,9 @@ utils.opt('w', 'relativenumber', true)
 -- Indentation
     cmd 'filetype plugin indent on' -- load filetype-specific indent files
 	cmd 'set nowrap'
-    cmd 'smartindent'
-    cmd 'autoindent'
-    cmd 'copyindent'    -- copy the previous indentation on autoindenting
+    cmd 'set smartindent'
+    cmd 'set autoindent'
+    cmd 'set copyindent'    -- copy the previous indentation on autoindenting
 
     -- Spaces and Tabs
         local indent = 4

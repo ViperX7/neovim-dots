@@ -1,13 +1,13 @@
-require("flutter-tools").setup{} -- use defaults
+-- require("flutter-tools").setup{} -- use defaults
 -- alternatively you can override the default configs
 require("flutter-tools").setup {
   experimental = { -- map of feature flags
-    lsp_derive_paths = false, -- experimental: Attempt to find the user's flutter SDK
+    lsp_derive_paths = true, -- experimental: Attempt to find the user's flutter SDK
   },
   debugger = { -- experimental: integrate with nvim dap
     enabled = false,
   },
-  -- flutter_path = "<full/path/if/needed>", -- <-- this takes priority over the lookup
+  flutter_path = "/opt/flutter/bin/flutter", -- <-- this takes priority over the lookup
   flutter_lookup_cmd = nil, -- example "dirname $(which flutter)" or "asdf where flutter"
   widget_guides = {
     enabled = true,

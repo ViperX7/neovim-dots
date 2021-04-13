@@ -92,6 +92,8 @@ return require('packer').startup(function()
 -- Timing plugin
     use "tweekmonster/startuptime.vim"
 
+-- Session Management
+    use 'tpope/vim-obsession.git'
 -- ************************* Documentatoin *********************************
 -- vim wiki
     use {'vimwiki/vimwiki'}                      -- A personal wiki for vim
