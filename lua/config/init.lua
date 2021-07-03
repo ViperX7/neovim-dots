@@ -6,6 +6,7 @@ require('config.gitsign')
 
 -- Visual
 require('config.dashbord-nvim')
+require('config.blankline-indent')
 
 -- Tools
 require('config.telescope')
