@@ -114,8 +114,10 @@ return require('packer').startup(function()
     ---------------------------------------------------------------------
     -- LSP and completion
     use {'neovim/nvim-lspconfig'}
-    -- use {'windwp/nvim-autopairs'}
-    use {'kosayoda/nvim-lightbulb'}
+    -- use {'windwp/nvim-autopairs'}        -- Removed because unused
+    -- use {'kosayoda/nvim-lightbulb'}      -- Removed because lspsaga does better
+    use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
+    use 'folke/lsp-colors.nvim'
     use {'glepnir/lspsaga.nvim'}
     use {'hrsh7th/nvim-compe'}
     -- Add symbols to completion menu

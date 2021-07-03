@@ -191,8 +191,7 @@ map('i', '<silent><expr> <C-d>    ', 'compe#scroll({ "delta": -4 })')
 local opt = {silent = true}
 
 -- command that adds new buffer and moves to it
-vim.api
-    .nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
+vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
 -- map("n","<S->",":New ", opt)
 
 -- removing a buffer
@@ -213,27 +212,20 @@ map("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>",
 map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
 
 -- jump diagnostic
-map("n", "]c",
-    "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
-map("n", "[c",
-    "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
-map("i", "<c-k>",
-    "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
+map("n", "]c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
+map("n", "[c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
+map("i", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
 
 map("n", "<space>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
-map("n", "<space>ca",
-    "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-map("v", "<space>ca",
-    ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+map("n", "<space>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+map("v", "<space>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
 
 -- map("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
 
 -- scroll down hover doc
--- map("n", "<C-f>",
---     [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
+-- map("n", "<C-f>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
 -- -- scroll up hover doc
--- map("n", "<C-b>",
---     [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
+-- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
 
 ------------------------ Compe-nvim ------------------------------------
 -- Mappings.
@@ -247,20 +239,19 @@ map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 -- Workspace Related
 map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-map('n', '<space>wl',
-    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-    opts)
+map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 
 map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 -- map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 -- map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
-    opts)
+map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+-- map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
 map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 map("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
+------------------------- Trouble ----------------------------------
+map('n', '<space>q', ':TroubleToggle<CR>', opts)
