@@ -110,8 +110,9 @@ local utils = require('utils')
     --   vmap <C-c> :w !pbcopy<CR><CR>
     -- endif
 
-
+ 
 utils.map('i', 'jk', '<Esc>')           -- jk to escape
+-- utils.map('', 'lh', '<Esc>:w<cr>')           -- jk to escape
 -------------------------------------------------------------------------------
 
 
@@ -124,36 +125,41 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
   utils.map('n', '<M-i>', ':NvimTreeToggle<CR>')
   -- utils.map('n', '<leader>r', ':<NvimTreeRefreshCR>')
   -- utils.map('n', '<leader>n', ':NvimTreeFindFile<CR>')
-    local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+  local tree_cb = require'nvim-tree.config'.nvim_tree_callback
     vim.g.nvim_tree_bindings = {
-      -- default mappings
-      ["l"]           = tree_cb("edit"),
-      ["<CR>"]           = tree_cb("edit"),
-      ["<2-LeftMouse>"]  = tree_cb("edit"),
-      ["<2-RightMouse>"] = tree_cb("cd"),
-      ["<C-]>"]          = tree_cb("cd"),
-      ["v"]          = tree_cb("vsplit"),
-      ["<C-x>"]          = tree_cb("split"),
-      ["t"]          = tree_cb("tabnew"),
-      ["<"]              = tree_cb("prev_sibling"),
-      [">"]              = tree_cb("next_sibling"),
-      ["h"]           = tree_cb("close_node"),
-      ["<Tab>"]          = tree_cb("preview"),
-      ["I"]              = tree_cb("toggle_ignored"),
-      ["H"]              = tree_cb("toggle_dotfiles"),
-      ["R"]              = tree_cb("refresh"),
-      ["a"]              = tree_cb("create"),
-      ["d"]              = tree_cb("remove"),
-      ["r"]              = tree_cb("rename"),
-      ["<C-r>"]          = tree_cb("full_rename"),
-      ["x"]              = tree_cb("cut"),
-      ["c"]              = tree_cb("copy"),
-      ["p"]              = tree_cb("paste"),
-      ["[c"]             = tree_cb("prev_git_item"),
-      ["]c"]             = tree_cb("next_git_item"),
-      ["-"]              = tree_cb("dir_up"),
-      ["q"]              = tree_cb("close"),
-      ["i"]              = tree_cb("close"),
+      { key = {"<CR>", "l", "<2-LeftMouse>"}, cb = tree_cb("edit") },
+      { key = {"<2-RightMouse>", "<C-]>"},    cb = tree_cb("cd") },
+
+      { key = "v",                        cb = tree_cb("vsplit") },
+      { key = "<C-x>",                        cb = tree_cb("split") },
+      { key = "t",                        cb = tree_cb("tabnew") },
+      { key = "<",                            cb = tree_cb("prev_sibling") },
+      { key = ">",                            cb = tree_cb("next_sibling") },
+      { key = "P",                            cb = tree_cb("parent_node") },
+      { key = "<BS>",                         cb = tree_cb("close_node") },
+      { key = "h",                       cb = tree_cb("close_node") },
+      { key = "<Tab>",                        cb = tree_cb("preview") },
+      { key = "K",                            cb = tree_cb("first_sibling") },
+      { key = "J",                            cb = tree_cb("last_sibling") },
+      { key = "I",                            cb = tree_cb("toggle_ignored") },
+      { key = "H",                            cb = tree_cb("toggle_dotfiles") },
+      { key = "R",                            cb = tree_cb("refresh") },
+      { key = "a",                            cb = tree_cb("create") },
+      { key = "d",                            cb = tree_cb("remove") },
+      { key = "r",                            cb = tree_cb("rename") },
+      { key = "<C-r>",                        cb = tree_cb("full_rename") },
+      { key = "x",                            cb = tree_cb("cut") },
+      { key = "c",                            cb = tree_cb("copy") },
+      { key = "p",                            cb = tree_cb("paste") },
+      { key = "y",                            cb = tree_cb("copy_name") },
+      { key = "Y",                            cb = tree_cb("copy_path") },
+      { key = "gy",                           cb = tree_cb("copy_absolute_path") },
+      { key = "[c",                           cb = tree_cb("prev_git_item") },
+      { key = "]c",                           cb = tree_cb("next_git_item") },
+      { key = "-",                            cb = tree_cb("dir_up") },
+      { key = "q",                            cb = tree_cb("close") },
+      { key = "i",                            cb = tree_cb("close") },
+      { key = "g?",                           cb = tree_cb("toggle_help") },
     }
 
 
@@ -183,12 +189,12 @@ utils.map('i', 'jk', '<Esc>')           -- jk to escape
     utils.map('v','<silent> <M-j>',':MultipleCursorsFind <C-R>/<')
 
 -- vim-flutter
-    utils.map('n','<leader>Fa',':vsplit<CR>:FlutterRun<cr>')
+    utils.map('n','<leader>Fa',':FlutterRun<cr>')
     utils.map('n','<leader>Ft',':FlutterVSplit<cr>')
     utils.map('n','<leader>FF',':DartFmt<cr>')
     utils.map('n','<leader>FQ',':FlutterQuit<cr>')
-    utils.map('n','<leader>FR',':FlutterHotRestart<cr>')
-    utils.map('n','<leader>Fr',':FlutterHotReload<cr>')
+    utils.map('n','<leader>FR',':FlutterRestart<cr>')
+    utils.map('n','<leader>Fr',':FlutterReload<cr>')
     utils.map('n','<leader>Fd',':FlutterDevices<cr>')
     utils.map('n','<leader>FD',':FlutterVisualDebug<cr>')
 
