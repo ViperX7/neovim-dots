@@ -14,7 +14,7 @@ return require('packer').startup(function()
     use { 'joshdick/onedark.vim'}
 
   -- Indentation
-    use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+    use {"lukas-reineke/indent-blankline.nvim"}
 
 
 ----------------------------------------------------------------------
@@ -105,7 +105,7 @@ return require('packer').startup(function()
 ---------------------------------------------------------------------
   -- LSP and completion
     use { 'neovim/nvim-lspconfig'}
-    use {'windwp/nvim-autopairs'}
+    -- use {'windwp/nvim-autopairs'}
     use {'kosayoda/nvim-lightbulb'}
     -- use{'glepnir/lspsaga.nvim'}
     use {'hrsh7th/nvim-compe'}

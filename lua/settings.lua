@@ -81,8 +81,7 @@ utils.opt('w', 'relativenumber', true)
 
 
 utils.opt('b', 'shiftwidth', indent)
-          utils.opt('o', 'smarttab',true)      -- insert tabs on the start of a line according to
-                          -- shiftwidth, not tabstop
+          utils.opt('o', 'smarttab',true)      -- insert tabs on the start of a line according to shiftwidth, not tabstop
 
 -- Searching
   utils.opt('o', 'smartcase',true)      -- ignore case  search pattern is all lowercase, case-sensitive otherwise
