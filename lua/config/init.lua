@@ -22,7 +22,7 @@ require('config.lspkind')
 require('config.nvim-compe')
 require('config.fluttertools')
 require('config.lightbulb')
--- require('config.lspsaga')
+require('config.lspsaga')
 require('config.ultisnips')
 
 -- Movement
