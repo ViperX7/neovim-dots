@@ -66,11 +66,17 @@ function on_attach(client)
     end
 end
 
-local servers = {"bashls",'clangd','pyright','dartls', "cssls", "html"}
+local servers = {"bashls",'clangd','pyls','dartls', "cssls", "html","denols","sumneko_lua"}
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {on_attach = on_attach}
 end
 
+
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--     vim.lsp.diagnostic.on_publish_diagnostics, {
+--         virtual_text = false
+--     }
+-- )
 -- require'lspconfig'.bashls.setup{}
 -- require'lspconfig'.clangd.setup{}
 -- require'lspconfig'.clangd.setup{}
