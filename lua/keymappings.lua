@@ -4,7 +4,7 @@ local map = utils.map
 -------------------------------Vim Specific Key Mappings-----------------------------------
 
 -- Leader
-vim.g.mapleader = ','
+vim.g.mapleader = ' '
 
 -- Movement
 -- Move vertically by visual line
@@ -43,7 +43,7 @@ map('n', '<leader>.', ':lcd %:p:h<CR>')
 -- noremap <Leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 -- Enable dissable indent lines
-map('n', '<leader>zi', ':IndentLinesToggle<CR>')
+map('n', '<leader>zi', ':IndentBlanklineToggle<CR>')
 
 -- Split
 map('n', '<Leader>h', ':<C-u>split<CR>')
@@ -89,14 +89,16 @@ map('n', '<M-f>', 'za')
 -- Turn off search highlightset ignorecase
 map('n', '<leader><space>', ':nohlsearch<CR>')
 
+-- Quiting
+map('n', '<leader>w', ':w<CR>')
+map('n', '<leader>q', ':wq<CR>')
+
 -- Copy/Paste/Cut
 -- if vim.api.nvim_get_option('unnamedplus') then
 vim.api.nvim_set_option('clipboard', 'unnamed,unnamedplus')
 -- end
 
-map('n', 'YY', '+y<CR>')
 map('n', '<leader>p', '+gP<CR>')
-map('n', 'XX', '+x<CR>')
 
 -- TODO
 -- if has('macunix')
@@ -160,8 +162,8 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 ------------------------Multiple cursors keybindings-----------------------
 -- Select n keywords with several keystrokes
 
-map('n', '<silent> <M-j>', ':MultipleCursorsFind <C-R>/<CR>')
-map('v', '<silent> <M-j>', ':MultipleCursorsFind <C-R>/<')
+map('n', '<silent><M-j>', ':MultipleCursorsFind <C-R>/<CR>')
+map('v', '<silent><M-j>', ':MultipleCursorsFind <C-R>/<')
 
 -- vim-flutter
 map('n', '<leader>Fa', ':FlutterRun<cr>')
@@ -186,6 +188,34 @@ map('i', '<silent><expr> <C-e>    ', 'compe#close("<C-e>")')
 map('i', '<silent><expr> <C-f>    ', 'compe#scroll({ "delta": +4 })')
 map('i', '<silent><expr> <C-d>    ', 'compe#scroll({ "delta": -4 })')
 
+-- Mappings.
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+
+-- Workspace Related
+map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+map('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+
+map('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+-- map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+-- map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+map('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+-- map('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+-- map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+-- map("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+
+------------------------- Trouble ----------------------------------
+map('n', '<leader>d', ':TroubleToggle<CR>', opts)
+
 ------------------------- Bufferline --------------------------------
 
 local opt = {silent = true}
@@ -204,11 +234,10 @@ map("n", "<M-b>", ':BufferLinePick<CR>', opt)
 
 ----------------------- Ranger ----------------------------------
 
-map("n", "<Space>f", ':RnvimrToggle<CR>', opt)
+map("n", "<leader>o", ':RnvimrToggle<CR>', opt)
 
 ------------------------ LSP Saga --------------------------------
-map("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>",
-    opts)
+map("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
 map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
 
 -- jump diagnostic
@@ -216,9 +245,9 @@ map("n", "]c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<
 map("n", "[c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
 map("i", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
 
-map("n", "<space>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
-map("n", "<space>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-map("v", "<space>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+map("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
 
 -- map("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
 
@@ -227,31 +256,4 @@ map("v", "<space>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action
 -- -- scroll up hover doc
 -- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
 
------------------------- Compe-nvim ------------------------------------
--- Mappings.
--- See `:help vim.lsp.*` for documentation on any of the below functions
-map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
--- Workspace Related
-map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-
-map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
--- map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
--- map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
--- map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-map("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-
-------------------------- Trouble ----------------------------------
-map('n', '<space>q', ':TroubleToggle<CR>', opts)
