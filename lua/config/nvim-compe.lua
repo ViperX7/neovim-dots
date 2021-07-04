@@ -17,17 +17,18 @@ require "compe".setup {
     max_menu_width = 100,
     documentation = true,
     source = {
-        path = true,
-        buffer = true,
-        calc = true,
-        vsnip = true,
-        nvim_lsp = true,
-        nvim_lua = true,
-        spell = true,
+        path = {kind = "   (Path)"},
+        buffer = {kind = "   (Buffer)"},
+        calc = {kind = "   (Calc)"},
+        vsnip = {kind = "   (Snippet)"},
+        nvim_lsp = {kind = "   (LSP)"},
+        spell = {kind = "   (Spell)"},
+        nvim_lua = {kind = "  "},
         tags = true,
-        snippets_nvim = true,
-        ultisnips = true,
-        treesitter = true
+        snippets_nvim = {kind = "  "},
+        ultisnips = {kind = "  "},
+        treesitter = {kind = "  "},
+        emoji = {kind = " ﲃ  (Emoji)", filetypes={"markdown", "text"}}
     }
 }
 
