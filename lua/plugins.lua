@@ -28,6 +28,9 @@ return require('packer').startup(function()
     use 'nvim-telescope/telescope-media-files.nvim'
     use 'nvim-telescope/telescope-symbols.nvim'
 
+    -- Shortcut helper popup
+    use 'folke/which-key.nvim'
+
     -- File explorer 
     use {
         'kyazdani42/nvim-tree.lua',
@@ -83,6 +86,7 @@ return require('packer').startup(function()
 
     -- Tagbar
     use {'majutsushi/tagbar'}
+    use 'simrat39/symbols-outline.nvim'
 
     -- Fast movement
     -- use {'easymotion/vim-easymotion'}
@@ -96,7 +100,7 @@ return require('packer').startup(function()
     use {'hrsh7th/vim-vsnip'}
     use 'hrsh7th/vim-vsnip-integ'
     use {'rafamadriz/friendly-snippets'}
-    -- use {'SirVer/ultisnips'}
+    use {'SirVer/ultisnips'}
     -- use {'honza/vim-snippets'}
     use('norcalli/snippets.nvim')
 
@@ -151,6 +155,6 @@ return require('packer').startup(function()
     use {'suan/vim-instant-markdown'}
 
     -- Python 
-    use {'vim-python/python-syntax'} -- Better  Syntax Highliting
+    -- use {'vim-python/python-syntax'} -- Better  Syntax Highliting
 
 end)

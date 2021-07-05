@@ -12,6 +12,7 @@ require('config.blankline-indent')
 require('config.telescope')
 require('config.nvim-tree')
 require('config.treesetter')
+require('config.which-key')
 
 -- Bars
 require('config.galaxyline')
@@ -28,7 +29,6 @@ require('config.ultisnips')
 -- require('config.lsp-colors')
 
 -- Movement
-require('config.easymotion')
 
 require('config.neoscrool')
 

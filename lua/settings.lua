@@ -117,3 +117,5 @@ utils.opt('b', 'shiftwidth', indent)
     cmd 'set conceallevel=0'        -- So that I can see `` in markdown files
     cmd 'set clipboard=unnamedplus' -- Copy paste between vim and everything else
 --  **************************************************************************
+-- Hide those ugly swiglies
+    cmd 'highlight EndOfBuffer guifg=bg'

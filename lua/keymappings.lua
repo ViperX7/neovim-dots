@@ -3,7 +3,7 @@ local map = utils.map
 
 -------------------------------Vim Specific Key Mappings-----------------------------------
 
--- Leader
+-- leader
 vim.g.mapleader = ' '
 
 -- Movement
@@ -26,7 +26,7 @@ map('n', '<leader>sc', ':CloseSession<CR>')
 -- Tabs
 -- map('n','<Tab>','gt')
 -- map('n','<S-Tab>','gT')
-map('n', '<silent> <S-t>', ':tabnew<CR')
+map('n', '<silent> <S-t>', ':tabnew<CR>')
 
 -- Command key optimisation : = ;
 -- map('n',':',';')
@@ -36,18 +36,18 @@ map('n', '<leader>.', ':lcd %:p:h<CR>')
 
 -- SUSPENDED in favour of fuzzy finder
 -- Opens an edit command with the path of the currently edited file filled in
--- noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+-- noremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 -- " Open vsplit edit command with the path of the currently edited file filled 
--- noremap <Leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+-- noremap <leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 -- " Opens a tab edit command with the path of the currently edited file filled
--- noremap <Leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
+-- noremap <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 -- Enable dissable indent lines
 map('n', '<leader>zi', ':IndentBlanklineToggle<CR>')
 
 -- Split
-map('n', '<Leader>h', ':<C-u>split<CR>')
-map('n', '<Leader>v', ':<C-u>vsplit<CR>')
+map('n', '<leader>h', ':<C-u>split<CR>')
+map('n', '<leader>v', ':<C-u>vsplit<CR>')
 
 -- Easy window navigation
 map('', '<C-h>', '<C-w>h', {})
@@ -92,6 +92,8 @@ map('n', '<leader><space>', ':nohlsearch<CR>')
 -- Quiting
 map('n', '<leader>w', ':w<CR>')
 map('n', '<leader>q', ':wq<CR>')
+map('n', '<leader>W', ':wqall<CR>')
+map('n', '<leader>Q', ':q!<CR>')
 
 -- Copy/Paste/Cut
 -- if vim.api.nvim_get_option('unnamedplus') then
@@ -112,7 +114,7 @@ map('i', 'jk', '<Esc>') -- jk to escape
 -------------------------------------------------------------------------------
 
 ---------------------- Nvim-tree ------------------------------
-map('n', '<M-i>', ':NvimTreeToggle<CR>')
+map('n', '<leader>i', ':NvimTreeToggle<CR>')
 -- map('n', '<leader>r', ':<NvimTreeRefreshCR>')
 -- map('n', '<leader>n', ':NvimTreeFindFile<CR>')
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
@@ -147,7 +149,7 @@ vim.g.nvim_tree_bindings = {
 }
 
 ------------------------ FuGITive -------------------------------
-map('n', '<Leader>gs', '<cmd>Gstatus<CR>') -- Git status
+map('n', '<leader>gs', '<cmd>Gstatus<CR>') -- Git status
 
 ----------------------- Telescope --------------------------------
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
@@ -177,10 +179,15 @@ map('n', '<leader>FD', ':FlutterVisualDebug<cr>')
 
 ---------------------- hop -----------------------------
 map('n', 's', "<cmd>lua require'hop'.hint_char2()<cr>", {})
+map('n', 'S', ":HopWord<cr>", {})
 
 -- TagBar
 map('n', '<F8>', ':TagbarOpenAutoClose<CR>', {})
+map('n', '<F9>', '::SymbolsOutline<CR>', {})
 
+-- peekup
+vim.g.peekup_open = "''"
+vim.g.peekup_paste_after = '<leader>p'
 ----------------------- nvim-compe --------------------------
 map('i', '<silent><expr> <C-Space>', 'compe#complete()')
 map('i', '<silent><expr> <CR>     ', 'compe#confirm("<CR>")')
@@ -225,11 +232,11 @@ vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blas
 -- map("n","<S->",":New ", opt)
 
 -- removing a buffer
-map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt)
+map("n", "<S-x>", ":NvimTreeClose<cr>:bdelete<cr>", opt)
 
 -- tabnext and tabprev
 map("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
--- map("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+map("n", "<S-h>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
 map("n", "<M-b>", ':BufferLinePick<CR>', opt)
 
 ----------------------- Ranger ----------------------------------
