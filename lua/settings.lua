@@ -32,10 +32,6 @@ utils.opt('w', 'relativenumber', true)
 -- Characters per line limit
   -- That verticle line
     cmd 'set colorcolumn=80'
--- Highlight overflow
-    cmd 'highlight OverLength ctermbg=grey ctermfg=black guibg=#592929'
-    cmd 'match OverLength /\\%81v.\\+/'
-
 
 -- Display different types of white spaces.
   utils.opt('o', 'list',true)
@@ -117,5 +113,3 @@ utils.opt('b', 'shiftwidth', indent)
     cmd 'set conceallevel=0'        -- So that I can see `` in markdown files
     cmd 'set clipboard=unnamedplus' -- Copy paste between vim and everything else
 --  **************************************************************************
--- Hide those ugly swiglies
-    cmd 'highlight EndOfBuffer guifg=bg'
