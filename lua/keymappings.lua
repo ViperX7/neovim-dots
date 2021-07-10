@@ -94,6 +94,7 @@ map('n', '<leader>w', ':w<CR>')
 map('n', '<leader>q', ':wq<CR>')
 map('n', '<leader>W', ':wqall<CR>')
 map('n', '<leader>Q', ':q!<CR>')
+map('n', 'qq', ':q<CR>')
 
 -- Copy/Paste/Cut
 -- if vim.api.nvim_get_option('unnamedplus') then
@@ -169,6 +170,7 @@ map('v', '<silent><M-j>', ':MultipleCursorsFind <C-R>/<')
 
 -- vim-flutter
 map('n', '<leader>Fa', ':FlutterRun<cr>')
+map('n', '<leader>Fo', ':FlutterOutline<cr>')
 map('n', '<leader>Ft', ':FlutterVSplit<cr>')
 map('n', '<leader>FF', ':DartFmt<cr>')
 map('n', '<leader>FQ', ':FlutterQuit<cr>')
@@ -183,7 +185,7 @@ map('n', 'S', ":HopWord<cr>", {})
 
 -- TagBar
 map('n', '<F8>', ':TagbarOpenAutoClose<CR>', {})
-map('n', '<F9>', '::SymbolsOutline<CR>', {})
+map('n', '<F9>', ':SymbolsOutline<CR>', {})
 
 -- peekup
 vim.g.peekup_open = "''"
