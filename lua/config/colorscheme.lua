@@ -15,7 +15,7 @@ cmd 'colorscheme onedark'
 -- Italic Keywords
     cmd 'highlight Keyword cterm=italic gui=italic'
 -- Highlight overflow
-    cmd 'highlight OverLength ctermbg=grey ctermfg=black guibg=#592929'
-    cmd 'match OverLength /\\%81v.\\+/'
+    -- cmd 'highlight OverLength ctermbg=grey ctermfg=black guibg=#592929'
+    -- cmd 'match OverLength /\\%81v.\\+/'
 
 

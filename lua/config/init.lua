@@ -28,6 +28,9 @@ require('config.ultisnips')
 -- require('config.trouble')
 -- require('config.lsp-colors')
 
+-- Functionality
+require('config.context-comment')
+
 -- Movement
 
 require('config.neoscrool')

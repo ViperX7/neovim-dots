@@ -27,6 +27,8 @@ return require('packer').startup(function()
     -- Preview extension
     use 'nvim-telescope/telescope-media-files.nvim'
     use 'nvim-telescope/telescope-symbols.nvim'
+    use 'nvim-telescope/telescope-project.nvim'
+    -- use 'nvim-telescope/telescope-fzy-native.nvim'
 
     -- Shortcut helper popup
     use 'folke/which-key.nvim'
@@ -70,6 +72,7 @@ return require('packer').startup(function()
     -- Auto pairying helpers
     use {'jiangmiao/auto-pairs'}
     use {'tpope/vim-surround'}
+    use {'p00f/nvim-ts-rainbow'}
     use 'andymass/vim-matchup'
 
     -- Registers Manager
@@ -80,6 +83,7 @@ return require('packer').startup(function()
 
     -- Commenting
     use {'tomtom/tcomment_vim'}
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- Colors
     use "norcalli/nvim-colorizer.lua"

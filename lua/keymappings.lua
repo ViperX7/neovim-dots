@@ -157,6 +157,7 @@ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fe', '<cmd>Telescope symbols<cr>')
 map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fp', ':lua require"telescope".extensions.project.project{}<CR>')
 map('n', ';', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 -- map('n','<leader>ca','<cmd>Telescope lsp_code_actions<cr>')
@@ -180,8 +181,8 @@ map('n', '<leader>Fd', ':FlutterDevices<cr>')
 map('n', '<leader>FD', ':FlutterVisualDebug<cr>')
 
 ---------------------- hop -----------------------------
-map('n', 's', "<cmd>lua require'hop'.hint_char2()<cr>", {})
-map('n', 'S', ":HopWord<cr>", {})
+map('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})
+map('n', 's', ":HopWord<cr>", {})
 
 -- TagBar
 map('n', '<F8>', ':TagbarOpenAutoClose<CR>', {})

@@ -51,9 +51,18 @@ require('telescope').setup{
         media_files = {
             filetypes = {"png", "webp", "jpg", "jpeg"},
             find_cmd = "rg" -- find command (defaults to `fd`)
-        }
-    }
+        },
+      project = {
+        display_type = "full",
+        base_dirs = {
+          {'~/AndroidStudioProjects', max_depth = 1},
+          {'~/projects', max_depth = 1},
+          {'~/.config', max_depth = 1}
+      }
+  }
+  }
 }
 
 -- Telescope  Extensions 
 require('telescope').load_extension('media_files')
+require('telescope').load_extension('project')
