@@ -118,39 +118,9 @@ map('i', 'jk', '<Esc>') -- jk to escape
 map('n', '<leader>i', ':NvimTreeToggle<CR>')
 -- map('n', '<leader>r', ':<NvimTreeRefreshCR>')
 -- map('n', '<leader>n', ':NvimTreeFindFile<CR>')
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-vim.g.nvim_tree_bindings = {
-    {key = {"<CR>", "l", "<2-LeftMouse>"}, cb = tree_cb("edit")},
-    {key = {"<2-RightMouse>", "<C-]>"}, cb = tree_cb("cd")},
-
-    {key = "v", cb = tree_cb("vsplit")}, {key = "<C-x>", cb = tree_cb("split")},
-    {key = "t", cb = tree_cb("tabnew")},
-    {key = "<", cb = tree_cb("prev_sibling")},
-    {key = ">", cb = tree_cb("next_sibling")},
-    {key = "P", cb = tree_cb("parent_node")},
-    {key = "<BS>", cb = tree_cb("close_node")},
-    {key = "h", cb = tree_cb("close_node")},
-    {key = "<Tab>", cb = tree_cb("preview")},
-    {key = "K", cb = tree_cb("first_sibling")},
-    {key = "J", cb = tree_cb("last_sibling")},
-    {key = "I", cb = tree_cb("toggle_ignored")},
-    {key = "H", cb = tree_cb("toggle_dotfiles")},
-    {key = "R", cb = tree_cb("refresh")}, {key = "a", cb = tree_cb("create")},
-    {key = "d", cb = tree_cb("remove")}, {key = "r", cb = tree_cb("rename")},
-    {key = "<C-r>", cb = tree_cb("full_rename")},
-    {key = "x", cb = tree_cb("cut")}, {key = "c", cb = tree_cb("copy")},
-    {key = "p", cb = tree_cb("paste")}, {key = "y", cb = tree_cb("copy_name")},
-    {key = "Y", cb = tree_cb("copy_path")},
-    {key = "gy", cb = tree_cb("copy_absolute_path")},
-    {key = "[c", cb = tree_cb("prev_git_item")},
-    {key = "]c", cb = tree_cb("next_git_item")},
-    {key = "-", cb = tree_cb("dir_up")}, {key = "q", cb = tree_cb("close")},
-    {key = "i", cb = tree_cb("close")},
-    {key = "g?", cb = tree_cb("toggle_help")}
-}
 
 ------------------------ FuGITive -------------------------------
-map('n', '<leader>gs', '<cmd>Gstatus<CR>') -- Git status
+map('n', '<leader>gs', '<cmd>Git<CR>') -- Git status
 
 ----------------------- Telescope --------------------------------
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
@@ -246,6 +216,15 @@ map("n", "<M-b>", ':BufferLinePick<CR>', opt)
 
 map("n", "<leader>o", ':RnvimrToggle<CR>', opt)
 
+
+----------------------- Mdeval ----------------------------------
+map("n", "<leader>ee", ':MdEval<CR>', opt)
+map("n", "<leader>ec", ':MdEvalClean<CR>', opt)
+
+
+----------------------- Neorg ----------------------------------
+map("n", "<leader>ew", ':Neorg tangle<CR>', opt)
+
 ------------------------ LSP Saga --------------------------------
 map("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
 map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
@@ -265,5 +244,6 @@ map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_actio
 -- map("n", "<C-f>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
 -- -- scroll up hover doc
 -- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
+
 
 

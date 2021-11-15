@@ -36,8 +36,7 @@ return require('packer').startup(function()
     -- File explorer 
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {{'kyazdani42/nvim-web-devicons'}}
-    }
+        requires = 'kyazdani42/nvim-web-devicons'}
     -- File Manager
     use 'kevinhwang91/rnvimr'
     -- Vim dispatch
@@ -157,8 +156,35 @@ return require('packer').startup(function()
 
     -- Markdown
     use {'suan/vim-instant-markdown'}
+    use 'jubnzv/mdeval.nvim'
+    -- orgmode
+    use { "vhyrro/neorg",
+        branch = "unstable",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require('neorg').setup {
+                -- Tell Neorg what modules to load
+                load = {
+                    ["core.defaults"] = {}, -- Load all the default modules
+                    ["core.norg.tangle"] = {}, -- Load all the default modules
+                    ["core.norg.concealer"] = {}, -- Allows for use of icons
+                    ["core.norg.dirman"] = { -- Manage your directories with Neorg
+                        config = {
+                            workspaces = {
+                                my_workspace = "~/neorg"
+                            }
+                        }
+                    }
+                },
+            }
+        end
+    }
+
+    -- Code runner
+    use { 'michaelb/sniprun', run = 'bash ./install.sh'}
 
     -- Python 
     -- use {'vim-python/python-syntax'} -- Better  Syntax Highliting
+
 
 end)

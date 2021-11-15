@@ -87,11 +87,11 @@ utils.opt('b', 'shiftwidth', indent)
 
 
 -- Code Folding
-  utils.opt('o', 'foldenable',true)       -- enable folding
-    cmd 'set foldlevelstart=10'           -- open folds less than 10 lines
-    cmd 'set foldnestmax=10'              -- 10 nested fold max
+  -- utils.opt('o', 'foldenable',true)       -- enable folding
+    -- cmd 'set foldlevelstart=10'           -- open folds less than 10 lines
+    -- cmd 'set foldnestmax=10'              -- 10 nested fold max
     -- fold based on indent level
-        cmd 'set foldmethod=indent'       -- accepted: marker, manual, expr, syntax, diff, indent
+        -- cmd 'set foldmethod=indent'       -- accepted: marker, manual, expr, syntax, diff, indent
 
 
 
