@@ -1,5 +1,8 @@
 return require('packer').startup(function()
 
+    -- startup optimizations
+    use {'lewis6991/impatient.nvim'}
+
     ----------------------------------------------------------------------
     -- Package Management
     ---------------------------------------------------------------------
@@ -158,16 +161,15 @@ return require('packer').startup(function()
     use {'suan/vim-instant-markdown'}
     use 'jubnzv/mdeval.nvim'
     -- orgmode
-    use { "vhyrro/neorg",
-        branch = "unstable",
+    use { "nvim-neorg/neorg",
         requires = "nvim-lua/plenary.nvim",
         config = function()
             require('neorg').setup {
                 -- Tell Neorg what modules to load
                 load = {
                     ["core.defaults"] = {}, -- Load all the default modules
-                    ["core.norg.tangle"] = {}, -- Load all the default modules
                     ["core.norg.concealer"] = {}, -- Allows for use of icons
+                    ["core.norg.presenter"] = {}, 
                     ["core.norg.dirman"] = { -- Manage your directories with Neorg
                         config = {
                             workspaces = {

@@ -1,12 +1,9 @@
 local g = vim.g
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-g.nvim_tree_ignore = { '.git', 'node_modules', '.cache' } -- empty by default
-g.nvim_tree_gitignore = 1 -- 0 by default
 g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } -- empty by default, don't auto open tree on specific filetypes.
 g.nvim_tree_quit_on_open = 0 -- 0 by default, closes the tree when you open a file
 g.nvim_tree_indent_markers = 1 -- 0 by default, this option shows indent markers when folders are open
-g.nvim_tree_hide_dotfiles = 1 -- 0 by default, this option hides files and folders starting with a dot `.`
 g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
 g.nvim_tree_root_folder_modifier = ':t' -- This is the default. See :help filename-modifiers for more options
 g.nvim_tree_width_allow_resize  = 1 -- 0 by default, will not resize the tree when opening a file
@@ -65,6 +62,20 @@ g.nvim_tree_special_files = vim.api.nvim_eval("{ 'README.md': 1, 'Makefile': 1, 
 
 -- following options are the default
 require'nvim-tree'.setup {
+  -- 0 by default
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+  },
+  nvim_tree_gitignore = true,
+  -- 0 by default, this option hides files and folders starting with a dot `.`
+  filters = {
+    dotfiles = true,
+    custom = { '.git', 'node_modules', '.cache' }
+    }
+        ,
+
   -- disables netrw completely
   disable_netrw       = false,
   -- hijack netrw window on startup
@@ -78,13 +89,11 @@ require'nvim-tree'.setup {
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   open_on_tab         = true,
   -- hijacks new directory buffers when they are opened.
-  update_to_buf_dir   = true,
+  update_to_buf_dir   = {enable = true, auto_open = true},
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor       = true,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
   update_cwd          = true,
-  -- show lsp diagnostics in the signcolumn
-  lsp_diagnostics     = true,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
   update_focused_file = {
     -- enables the feature
