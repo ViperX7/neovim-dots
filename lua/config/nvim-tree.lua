@@ -2,8 +2,7 @@ local g = vim.g
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
 g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } -- empty by default, don't auto open tree on specific filetypes.
-g.nvim_tree_quit_on_open = 0 -- 0 by default, closes the tree when you open a file
-g.nvim_tree_indent_markers = 1 -- 0 by default, this option shows indent markers when folders are open
+
 g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
 g.nvim_tree_root_folder_modifier = ':t' -- This is the default. See :help filename-modifiers for more options
 g.nvim_tree_width_allow_resize  = 1 -- 0 by default, will not resize the tree when opening a file
@@ -49,10 +48,7 @@ g.nvim_tree_icons = {
 -- a list of groups can be found at `:help nvim_tree_highlight`
 -- highlight NvimTreeFolderIcon guibg=blue
 g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
-g.nvim_tree_disable_window_picker = 1 -- 0 by default, will disable the window picker.
 g.nvim_tree_icon_padding = ' ' -- one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-g.nvim_tree_window_picker_exclude = vim.api.nvim_eval("{'filetype': ['packer','qf'],'buftype': ['terminal']}")
-
 -- Dictionary of buffer option names mapped to a list of option values that
 -- indicates to the window picker that the buffer's window should not be
 -- selectable.
@@ -68,7 +64,7 @@ require'nvim-tree'.setup {
     ignore = true,
     timeout = 500,
   },
-  nvim_tree_gitignore = true,
+
   -- 0 by default, this option hides files and folders starting with a dot `.`
   filters = {
     dotfiles = true,
@@ -76,6 +72,43 @@ require'nvim-tree'.setup {
     }
         ,
 
+    -- nvim_tree_indent_markers = true -- 0 by default, this option shows indent markers when folders are open
+    --
+    actions = {
+    use_system_clipboard = true,
+    change_dir = {
+      enable = true,
+      global = false,
+      restrict_above_cwd = false,
+    },
+    open_file = {
+          quit_on_open = false,
+          resize_window = false,
+          window_picker = {
+            enable = true,
+            chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+            exclude = {
+              filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+              buftype = { "nofile", "terminal", "help" },
+            },
+          },
+        },
+      },
+
+    renderer = {
+        indent_markers = {
+          enable = true,
+          icons = {
+            corner = "└ ",
+            edge = "│ ",
+            none = "  ",
+          },
+        },
+        icons = {
+          webdev_colors = true,
+          git_placement = "before",
+        },
+    },
   -- disables netrw completely
   disable_netrw       = false,
   -- hijack netrw window on startup
@@ -85,7 +118,7 @@ require'nvim-tree'.setup {
   -- will not open on setup if the filetype is in this list
   ignore_ft_on_setup  = {},
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close          = true,
+  -- auto_close          = true,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   open_on_tab         = true,
   -- hijacks new directory buffers when they are opened.

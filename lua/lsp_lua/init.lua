@@ -21,7 +21,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-    "bashls", 'clangd', 'pylsp','dartls', "cssls", "html", "denols"
+    "bashls", 'clangd', 'pylsp','dartls', "cssls", "html", "denols", "hls"
 }
 
 for _, lsp in ipairs(servers) do

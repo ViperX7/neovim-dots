@@ -40,3 +40,5 @@ require'colorizer'.setup()
 -- Lang specific
 vim.g.dart_format_on_save = 1
 require('config.mdeval')
+require('config.neorg')
+require('config.zenmode')
