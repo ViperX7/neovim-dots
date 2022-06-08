@@ -1,5 +1,5 @@
 vim.cmd [[packadd nvim-lspconfig]]
-vim.cmd [[packadd nvim-compe]]
+-- vim.cmd [[packadd nvim-compe]]
 
 local nvim_lsp = require("lspconfig")
 
@@ -21,15 +21,26 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-    "bashls", 'clangd', 'pylsp','dartls', "cssls", "html", "denols", "hls"
+    "bashls", 'clangd', 'jedi_language_server','dartls', "cssls", "html", "denols", "hls","csharp_ls"
 }
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
         on_attach = on_attach,
+        capabilities = capabilities,
         flags = {debounce_text_changes = 150}
     }
 end
+
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/home/utkarsh/.dotnet/Omnisharp/OmniSharp"
+require'lspconfig'.omnisharp.setup{
+    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+        capabilities = capabilities,
+}
 
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --     vim.lsp.diagnostic.on_publish_diagnostics, {

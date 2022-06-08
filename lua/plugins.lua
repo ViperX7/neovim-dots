@@ -45,6 +45,11 @@ return require('packer').startup(function()
     -- Vim dispatch
     use {'tpope/vim-dispatch'}
 
+    -- Terminal
+    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+        require("toggleterm").setup()
+    end}
+
     -- Git related stuff
     use {'tpope/vim-fugitive'}
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
@@ -103,15 +108,38 @@ return require('packer').startup(function()
     use 'karb94/neoscroll.nvim'
 
     -- Snippets
-    use {'hrsh7th/vim-vsnip'}
-    use 'hrsh7th/vim-vsnip-integ'
-    use {'rafamadriz/friendly-snippets'}
+    -- use {'hrsh7th/vim-vsnip'}
+    -- use 'hrsh7th/vim-vsnip-integ'
     use {'SirVer/ultisnips'}
+    use {'quangnguyen30192/cmp-nvim-ultisnips'}
     -- use {'honza/vim-snippets'}
     use('norcalli/snippets.nvim')
 
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'molleweide/LuaSnip-snippets.nvim'
+    use {'rafamadriz/friendly-snippets'}
+
+
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-calc'
+    use 'f3fora/cmp-spell'
+    use 'hrsh7th/cmp-emoji'
+
+    use {'romgrk/fzy-lua-native', run = 'make'}
+    use {'tzachar/cmp-fuzzy-buffer', requires = {'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim'}}
+    use {'tzachar/cmp-fuzzy-path', requires = {'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim'}}
+
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-nvim-lsp-document-symbol'
+
+
     -- Timing plugin
-    use "tweekmonster/startuptime.vim"
+    use "dstein64/vim-startuptime"
 
     -- Session Management
     use 'tpope/vim-obsession.git'
@@ -123,13 +151,32 @@ return require('packer').startup(function()
     -- Language Servers
     ---------------------------------------------------------------------
     -- LSP and completion
-    use {'neovim/nvim-lspconfig'}
+    use {
+    {
+        "williamboman/nvim-lsp-installer",
+        config = function ()
+            require("nvim-lsp-installer").setup {}
+        end
+    },
+    {
+        "neovim/nvim-lspconfig",
+        after = "nvim-lsp-installer",
+        config = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.sumneko_lua.setup {}
+        end
+    }
+}
     -- use {'windwp/nvim-autopairs'}        -- Removed because unused
     -- use {'kosayoda/nvim-lightbulb'}      -- Removed because lspsaga does better
     use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
     use 'folke/lsp-colors.nvim'
-    use {'glepnir/lspsaga.nvim'}
-    use {'hrsh7th/nvim-compe'}
+
+    use {'tami5/lspsaga.nvim'}
+
+    -- use {'hrsh7th/nvim-compe'}
+ 	-- use {'tzachar/cmp-tabnine', run='./install.sh'}
+
     -- Add symbols to completion menu
     use {'onsails/lspkind-nvim'}
 

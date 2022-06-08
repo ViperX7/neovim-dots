@@ -13,6 +13,7 @@ require('config.telescope')
 require('config.nvim-tree')
 require('config.treesetter')
 require('config.which-key')
+require('config.floatterm')
 
 -- Bars
 require('config.galaxyline')
@@ -20,7 +21,9 @@ require('config.bufferline')
 
 -- Completion
 require('config.lspkind')
-require('config.nvim-compe')
+-- require('config.nvim-compe')
+require('config.nvim-cmp')
+-- require('config.tabnine')
 require('config.fluttertools')
 -- require('config.lightbulb')
 require('config.lspsaga')
