@@ -206,34 +206,17 @@ return require('packer').startup(function()
 
     -- Markdown
     use {'suan/vim-instant-markdown'}
+    -- use 'iamcco/markdown-preview.nvim' 
     use 'jubnzv/mdeval.nvim'
     -- orgmode
-    use { "nvim-neorg/neorg",
-        requires = "nvim-lua/plenary.nvim",
-        config = function()
-            require('neorg').setup {
-                -- Tell Neorg what modules to load
-                load = {
-                    ["core.defaults"] = {}, -- Load all the default modules
-                    ["core.norg.concealer"] = {}, -- Allows for use of icons
-                    ["core.norg.presenter"] = {}, 
-                    ["core.norg.dirman"] = { -- Manage your directories with Neorg
-                        config = {
-                            workspaces = {
-                                my_workspace = "~/neorg"
-                            }
-                        }
-                    }
-                },
-            }
-        end
-    }
+    use { "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim"}
+    use { "folke/zen-mode.nvim" }
+
 
     -- Code runner
     use { 'michaelb/sniprun', run = 'bash ./install.sh'}
 
-    -- Python 
-    -- use {'vim-python/python-syntax'} -- Better  Syntax Highliting
+    use "https://github.com/mzlogin/vim-smali"
 
 
 end)
