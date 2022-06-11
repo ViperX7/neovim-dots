@@ -90,7 +90,7 @@ map('n', '<M-f>', 'za')
 map('n', '<leader><space>', ':nohlsearch<CR>')
 
 -- Quiting
-map('n', '<leader>w', ':w<CR>')
+map('n', '<leader>w', ':lua vim.lsp.buf.formatting_sync()<CR>:w<CR>')
 map('n', '<leader>q', ':wq<CR>')
 map('n', '<leader>W', ':wqall<CR>')
 map('n', '<leader>Q', ':q!<CR>')

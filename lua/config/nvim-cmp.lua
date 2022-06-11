@@ -72,7 +72,7 @@ formatting = {
           { name = 'buffer' },
           { name = 'path' },
           { name = 'calc' },
-          { name = 'spell' },
+          -- { name = 'spell' },
           { name = 'emoji' },
           { name = 'nvim_lsp_document_symbol' },
     })

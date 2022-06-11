@@ -175,7 +175,11 @@ return require('packer').startup(function()
             lspconfig.sumneko_lua.setup {}
         end
     }
-}
+    }
+
+    -- Formating
+    use 'jose-elias-alvarez/null-ls.nvim'
+
     -- use {'windwp/nvim-autopairs'}        -- Removed because unused
     -- use {'kosayoda/nvim-lightbulb'}      -- Removed because lspsaga does better
     use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
@@ -183,13 +187,11 @@ return require('packer').startup(function()
 
     use {'tami5/lspsaga.nvim'}
 
- 	-- use {'tzachar/cmp-tabnine', run='./install.sh'}
+    -- use {'tzachar/cmp-tabnine', run='./install.sh'}
 
     -- Add symbols to completion menu
     use {'onsails/lspkind-nvim'}
 
-    -- Formating
-    use "sbdchd/neoformat"
     -----------------------------------------------------------------------
     ----- Integration
     -----------------------------------------------------------------------
