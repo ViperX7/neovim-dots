@@ -130,8 +130,8 @@ map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fp', ':lua require"telescope".extensions.project.project{}<CR>')
 map('n', ';', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
--- map('n','<leader>ca','<cmd>Telescope lsp_code_actions<cr>')
--- map('v','<leader>ca','<cmd>Telescope lsp_range_code_actions<cr>')
+map('n', '<leader>p', '<cmd>Telescope registers<cr>')
+map('n', 'gr', '<cmd>Telescope lsp_references<cr>')
 
 ------------------------Multiple cursors keybindings-----------------------
 -- Select n keywords with several keystrokes
@@ -158,9 +158,6 @@ map('n', 's', ":HopWord<cr>", {})
 map('n', '<F8>', ':TagbarOpenAutoClose<CR>', {})
 map('n', '<F9>', ':SymbolsOutline<CR>', {})
 
--- peekup
-vim.g.peekup_open = "''"
-vim.g.peekup_paste_after = '<leader>p'
 ----------------------- nvim-compe --------------------------
 map('i', '<silent><expr> <C-Space>', 'compe#complete()')
 map('i', '<silent><expr> <CR>     ', 'compe#confirm("<CR>")')
@@ -184,7 +181,7 @@ map('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_fo
 map('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 -- map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 -- map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+-- map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 map('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)

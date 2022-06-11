@@ -1,4 +1,5 @@
-require('telescope').setup{
+local telescope = require('telescope')
+telescope.setup{
 
   defaults = {
     vimgrep_arguments = {
@@ -63,6 +64,7 @@ require('telescope').setup{
   }
 }
 
--- Telescope  Extensions 
-require('telescope').load_extension('media_files')
-require('telescope').load_extension('project')
+-- Telescope  Extensions
+telescope.load_extension('media_files')
+telescope.load_extension('project')
+

@@ -23,10 +23,8 @@ return require('packer').startup(function()
     -- Editor Enhancements
     ---------------------------------------------------------------------
     -- Fuzzy finder
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-    }
+    use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}} }
+
     -- Preview extension
     use 'nvim-telescope/telescope-media-files.nvim'
     use 'nvim-telescope/telescope-symbols.nvim'
