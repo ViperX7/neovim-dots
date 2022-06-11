@@ -1,6 +1,6 @@
   -- Setup nvim-cmp.
 local cmp = require'cmp'
-local lspkind = require('lspkind') 
+local lspkind = require('lspkind')
 
 -- local luasnip = require("luasnip")
 -- luasnip.snippets = require("luasnip-snippets").load_snippets()
@@ -77,7 +77,7 @@ formatting = {
           { name = 'nvim_lsp_document_symbol' },
     })
   })
-  
+
 
 
   -- Set configuration for specific filetype.

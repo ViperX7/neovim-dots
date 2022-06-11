@@ -37,7 +37,7 @@ map('n', '<leader>.', ':lcd %:p:h<CR>')
 -- SUSPENDED in favour of fuzzy finder
 -- Opens an edit command with the path of the currently edited file filled in
 -- noremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
--- " Open vsplit edit command with the path of the currently edited file filled 
+-- " Open vsplit edit command with the path of the currently edited file filled
 -- noremap <leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 -- " Opens a tab edit command with the path of the currently edited file filled
 -- noremap <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>

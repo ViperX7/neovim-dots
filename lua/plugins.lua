@@ -76,7 +76,7 @@ return require('packer').startup(function()
     use { 'windwp/nvim-autopairs',
       config = function()
         require('nvim-autopairs').setup()
-      end 
+      end
     }
 
 
@@ -106,7 +106,13 @@ return require('packer').startup(function()
 
     -- Fast movement
     -- use {'easymotion/vim-easymotion'}
-    use 'phaazon/hop.nvim'
+    use {
+      'phaazon/hop.nvim',
+      branch = 'v1', -- optional but strongly recommended
+      config = function()
+      require'hop'.setup{ keys = 'etovxqpdygfblzhckisuran' }
+      end
+    }
     use {'tpope/vim-repeat'}
 
     -- Scrolling
@@ -179,7 +185,6 @@ return require('packer').startup(function()
 
     use {'tami5/lspsaga.nvim'}
 
-    -- use {'hrsh7th/nvim-compe'}
  	-- use {'tzachar/cmp-tabnine', run='./install.sh'}
 
     -- Add symbols to completion menu
@@ -211,7 +216,6 @@ return require('packer').startup(function()
 
     -- Markdown
     use {'suan/vim-instant-markdown'}
-    -- use 'iamcco/markdown-preview.nvim'
     use 'jubnzv/mdeval.nvim'
     -- orgmode
     use { "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim"}
@@ -221,6 +225,7 @@ return require('packer').startup(function()
     -- Code runner
     use { 'michaelb/sniprun', run = 'bash ./install.sh'}
 
+    -- smali reversing
     use "https://github.com/mzlogin/vim-smali"
 
 

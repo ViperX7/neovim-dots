@@ -1,4 +1,4 @@
-g = vim.g
+local g = vim.g
 
 g.dashboard_default_executive ='telescope'
 g.dashboard_custom_header = {
@@ -43,7 +43,6 @@ vim.g.dashboard_custom_shortcut = {
     last_session = 'SPC s l',
     new_file = 'SPC c n',
     book_marks = 'SPC f b',
-    find_history = 'SPC f h',
     find_history = 'SPC f h',
 }
 
