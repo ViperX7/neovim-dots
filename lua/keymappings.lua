@@ -133,11 +133,6 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>p', '<cmd>Telescope registers<cr>')
 map('n', 'gr', '<cmd>Telescope lsp_references<cr>')
 
-------------------------Multiple cursors keybindings-----------------------
--- Select n keywords with several keystrokes
-
-map('n', '<silent><M-j>', ':MultipleCursorsFind <C-R>/<CR>')
-map('v', '<silent><M-j>', ':MultipleCursorsFind <C-R>/<')
 
 -- vim-flutter
 map('n', '<leader>Fa', ':FlutterRun<cr>')

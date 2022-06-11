@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 return require('packer').startup(function()
 
     -- startup optimizations
@@ -24,29 +25,26 @@ return require('packer').startup(function()
     ---------------------------------------------------------------------
     -- Fuzzy finder
     use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}} }
-
     -- Preview extension
-    use 'nvim-telescope/telescope-media-files.nvim'
-    use 'nvim-telescope/telescope-symbols.nvim'
-    use 'nvim-telescope/telescope-project.nvim'
-    -- use 'nvim-telescope/telescope-fzy-native.nvim'
+        use 'nvim-telescope/telescope-media-files.nvim'
+        use 'nvim-telescope/telescope-symbols.nvim'
+        use 'nvim-telescope/telescope-project.nvim'
+        -- use 'nvim-telescope/telescope-fzy-native.nvim'
 
     -- Shortcut helper popup
     use 'folke/which-key.nvim'
 
-    -- File explorer 
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons'}
-    -- File Manager
+    -- File explorer
+    use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
+
+    -- File Managers
     use 'kevinhwang91/rnvimr'
+
     -- Vim dispatch
-    use {'tpope/vim-dispatch'}
+    -- use {'tpope/vim-dispatch'}
 
     -- Terminal
-    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-        require("toggleterm").setup()
-    end}
+    use {"akinsho/toggleterm.nvim", tag = 'v1.*',}
 
     -- Git related stuff
     use {'tpope/vim-fugitive'}
@@ -72,23 +70,32 @@ return require('packer').startup(function()
     use {'jeffkreeftmeijer/vim-numbertoggle'}
 
     -- Mautiple cursors
-    use {'terryma/vim-multiple-cursors'}
+    use {'mg979/vim-visual-multi'}
 
     -- Auto pairying helpers
-    use {'jiangmiao/auto-pairs'}
+    use { 'windwp/nvim-autopairs',
+      config = function()
+        require('nvim-autopairs').setup()
+      end 
+    }
+
+
     use {'tpope/vim-surround'}
     use {'p00f/nvim-ts-rainbow'}
     use 'andymass/vim-matchup'
 
-    -- Registers Manager
-    use 'gennaro-tedesco/nvim-peekup'
 
     -- Welcome Dashoard
     use {'glepnir/dashboard-nvim'}
 
     -- Commenting
-    use {'tomtom/tcomment_vim'}
-    use 'JoosepAlviste/nvim-ts-context-commentstring'
+    -- use {'tomtom/tcomment_vim'}
+    use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+    }
 
     -- Colors
     use "norcalli/nvim-colorizer.lua"
@@ -140,7 +147,7 @@ return require('packer').startup(function()
     use "dstein64/vim-startuptime"
 
     -- Session Management
-    use 'tpope/vim-obsession.git'
+    use 'tpope/vim-obsession'
     -- ************************* Documentatoin *********************************
     -- vim wiki
     use {'vimwiki/vimwiki'} -- A personal wiki for vim
@@ -190,7 +197,7 @@ return require('packer').startup(function()
     -- Language Specific
     -----------------------------------------------------
 
-    -- Lua 
+    -- Lua
     use {'tjdevries/nlua.nvim'}
     --  better Lua syntax highlighting
     use {'euclidianAce/BetterLua.vim'}
@@ -204,7 +211,7 @@ return require('packer').startup(function()
 
     -- Markdown
     use {'suan/vim-instant-markdown'}
-    -- use 'iamcco/markdown-preview.nvim' 
+    -- use 'iamcco/markdown-preview.nvim'
     use 'jubnzv/mdeval.nvim'
     -- orgmode
     use { "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim"}

@@ -3,18 +3,8 @@ local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
 g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } -- empty by default, don't auto open tree on specific filetypes.
 
-g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
-g.nvim_tree_root_folder_modifier = ':t' -- This is the default. See :help filename-modifiers for more options
 g.nvim_tree_width_allow_resize  = 1 -- 0 by default, will not resize the tree when opening a file
-g.nvim_tree_add_trailing = 1 -- 0 by default, append a trailing slash to folder names
-g.nvim_tree_group_empty = 1 --  0 by default, compact folders that only contain a single folder into one node in the file tree
 
-g.nvim_tree_show_icons = {
-        git = 1,
-        folders = 1,
-        files = 1,
-        folder_arrows = 1
-    }
 
 -- If 0, do not show the icons for one of 'git' 'folder' and 'files'
 -- 1 by default, notice that if 'files' is 1, it will only display
@@ -22,37 +12,15 @@ g.nvim_tree_show_icons = {
 
 --  default will show icon by default if no icon is provided
 --  default shows no icon by default
-g.nvim_tree_icons = {
-    default = '',
-    symlink = '',
-    git = {
-        unstaged = "✗",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        deleted = "",
-        untracked = "★",
-        ignored = "◌"
-    },
-    folder = {
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
-    }
-}
+
 -- NvimTreeOpen and NvimTreeClose are also available if you need them
 
 
 -- a list of groups can be found at `:help nvim_tree_highlight`
 -- highlight NvimTreeFolderIcon guibg=blue
-g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
-g.nvim_tree_icon_padding = ' ' -- one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 -- Dictionary of buffer option names mapped to a list of option values that
 -- indicates to the window picker that the buffer's window should not be
 -- selectable.
-g.nvim_tree_special_files = vim.api.nvim_eval("{ 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 }") -- List of filenames that gets highlighted with NvimTreeSpecialFile
 
 
 
@@ -96,23 +64,72 @@ require'nvim-tree'.setup {
       },
 
     renderer = {
+        add_trailing = false,
+        group_empty = true,
+        highlight_git = true,
+        full_name = false,
+        highlight_opened_files = "none",
+        root_folder_modifier = ":~",
         indent_markers = {
           enable = true,
           icons = {
             corner = "└ ",
             edge = "│ ",
+            item = "│ ",
             none = "  ",
           },
         },
         icons = {
-          webdev_colors = true,
-          git_placement = "before",
+              webdev_colors = true,
+              git_placement = "before",
+              padding = " ",
+              symlink_arrow = " ➛ ",
+              show = {
+                file = true,
+                folder = true,
+                folder_arrow = true,
+                git = true,
+              },
+              glyphs = {
+                default = "",
+                symlink = "",
+                folder = {
+                  arrow_closed = "",
+                  arrow_open = "",
+                  default = "",
+                  open = "",
+                  empty = "",
+                  empty_open = "",
+                  symlink = "",
+                  symlink_open = "",
+                },
+                git = {
+                  unstaged = "✗",
+                  staged = "✓",
+                  unmerged = "",
+                  renamed = "➜",
+                  untracked = "★",
+                  deleted = "",
+                  ignored = "◌",
+                },
+            },
         },
+  special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
     },
+
+  auto_reload_on_write = true,
+  create_in_closed_folder = false,
+  hijack_unnamed_buffer_when_opening = false,
+  ignore_buffer_on_setup = false,
+  open_on_setup_file = false,
+  sort_by = "name",
+  reload_on_bufenter = false,
+  respect_buf_cwd = false,
+
   -- disables netrw completely
   disable_netrw       = false,
   -- hijack netrw window on startup
-  hijack_netrw        = false,
+  hijack_netrw        = true,
   -- open the tree when running this setup function
   open_on_setup       = false,
   -- will not open on setup if the filetype is in this list
@@ -147,12 +164,20 @@ require'nvim-tree'.setup {
   },
 
   view = {
+    adaptive_size = false,
+    centralize_selection = false,
+    height = 30,
+    hide_root_folder = false,
+    preserve_window_proportions = false,
+    number = false,
+    relativenumber = false,
+    signcolumn = "yes",
     -- width of the window, can be either a number (columns) or a string in `%`
     width = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
     -- if true the tree will resize itself after opening a file
-    auto_resize = false,
+    auto_resize = true,
     mappings = {
       -- custom only false will merge the list with the default mappings
       -- if true, it will only use your list to set the mappings

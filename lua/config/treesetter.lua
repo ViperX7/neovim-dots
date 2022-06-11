@@ -30,6 +30,9 @@ require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   },
+  context_commentstring = {
+    enable = true
+  },
   highlight = {
     enable = true,              -- false will disable the whole extension
     use_languagetree = true,
