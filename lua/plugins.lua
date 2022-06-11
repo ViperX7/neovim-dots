@@ -15,7 +15,8 @@ return require('packer').startup(function()
     ---------------------------------------------------------------------
     -- Color scheme
     use {'sainnhe/gruvbox-material'}
-    use {'joshdick/onedark.vim'}
+    use 'navarasu/onedark.nvim'
+    -- use {'joshdick/onedark.vim'}
 
     -- Indentation
     use {"lukas-reineke/indent-blankline.nvim"}
@@ -58,10 +59,7 @@ return require('packer').startup(function()
     }
 
     -- Tab line
-    use {
-        'akinsho/nvim-bufferline.lua',
-        requires = 'kyazdani42/nvim-web-devicons'
-    }
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
     -- treesetter
     use {'nvim-treesitter/nvim-treesitter'}
@@ -86,7 +84,7 @@ return require('packer').startup(function()
 
 
     -- Welcome Dashoard
-    use {'glepnir/dashboard-nvim'}
+    -- use {'glepnir/dashboard-nvim'}
 
     -- Commenting
     -- use {'tomtom/tcomment_vim'}
@@ -156,7 +154,7 @@ return require('packer').startup(function()
     use 'tpope/vim-obsession'
     -- ************************* Documentatoin *********************************
     -- vim wiki
-    use {'vimwiki/vimwiki'} -- A personal wiki for vim
+    -- use {'vimwiki/vimwiki'} -- A personal wiki for vim
 
     ----------------------------------------------------------------------
     -- Language Servers

@@ -68,13 +68,13 @@ require'nvim-tree'.setup {
         group_empty = true,
         highlight_git = true,
         full_name = false,
-        highlight_opened_files = "none",
+        highlight_opened_files = "name",
         root_folder_modifier = ":~",
         indent_markers = {
           enable = true,
           icons = {
             corner = "└ ",
-            edge = "│ ",
+            edge = "│",
             item = "│ ",
             none = "  ",
           },
@@ -117,13 +117,29 @@ require'nvim-tree'.setup {
   special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
     },
 
+  hijack_directories = {
+    enable = true,
+    auto_open = true,
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+    icons = {
+      hint = "",
+      info = "",
+      error = "",
+      warning = "",
+
+        },
+    },
+
   auto_reload_on_write = true,
   create_in_closed_folder = false,
   hijack_unnamed_buffer_when_opening = false,
   ignore_buffer_on_setup = false,
   open_on_setup_file = false,
   sort_by = "name",
-  reload_on_bufenter = false,
+  reload_on_bufenter = true,
   respect_buf_cwd = false,
 
   -- disables netrw completely
