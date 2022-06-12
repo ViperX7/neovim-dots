@@ -119,8 +119,8 @@ map('n', '<leader>i', ':NvimTreeToggle<CR>')
 -- map('n', '<leader>r', ':<NvimTreeRefreshCR>')
 -- map('n', '<leader>n', ':NvimTreeFindFile<CR>')
 
------------------------- FuGITive -------------------------------
-map('n', '<leader>gs', '<cmd>Git<CR>') -- Git status
+------------------------ Neogit -------------------------------
+map('n', '<leader>gs', '<cmd>Neogit<CR>') -- Git status
 
 ----------------------- Telescope --------------------------------
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
@@ -144,6 +144,13 @@ map('n', '<leader>FR', ':FlutterRestart<cr>')
 map('n', '<leader>Fr', ':FlutterReload<cr>')
 map('n', '<leader>Fd', ':FlutterDevices<cr>')
 map('n', '<leader>FD', ':FlutterVisualDebug<cr>')
+
+-- SnipRun
+map('n', '<S-CR>', ':SnipRun<cr>')
+map('v', '<S-CR>', ':lua require"sniprun".run("v")<cr>')
+map('n', '<leader>rf', ':lua require"sniprun".run("n")<CR>')
+map('n', '<leader>rr', ':RunCode<CR>')
+map('n', '<leader>ri', ':lua require"sniprun.live_mode".toggle()<CR>')
 
 ---------------------- hop -----------------------------
 map('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})
@@ -190,14 +197,14 @@ map('n', '<leader>d', ':TroubleToggle<CR>', opts)
 
 ------------------------- Bufferline --------------------------------
 
-local opt = {silent = true}
+local opt = { silent = true }
 
 -- command that adds new buffer and moves to it
 vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
 -- map("n","<S->",":New ", opt)
 
 -- removing a buffer
-map("n", "<S-x>", ":NvimTreeClose<cr>:bdelete<cr>", opt)
+map("n", "<S-x>", ":lua require('bufdelete').bufdelete(0, true)<CR>", opt)
 
 -- tabnext and tabprev
 map("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
@@ -236,6 +243,3 @@ map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_actio
 -- map("n", "<C-f>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
 -- -- scroll up hover doc
 -- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
-
-
-
