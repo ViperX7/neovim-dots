@@ -14,7 +14,8 @@
 -- -- Italic Keywords
 --     cmd 'highlight Keyword cterm=italic gui=italic'
 -- -- Highlight overflow
-    -- cmd 'highlight OverLength ctermbg=grey ctermfg=black guibg=#592929'
+-- cmd 'highlight OverLength ctermbg=grey ctermfg=black guibg=#592929'
 --     -- cmd 'match OverLength /\\%81v.\\+/'
 --
 require("config.onedark")
+-- require("config.onedarkpro")

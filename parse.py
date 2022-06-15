@@ -13,7 +13,7 @@ def dsan(msg):
 
 
 def dat_parse(line):
-    line = line[line.find("map("):].split("map(")
+    line = line[line.find("map(") :].split("map(")
     line = line[1].split(",")
 
     mode = line[0]
@@ -37,4 +37,3 @@ print("| --- | --- | --- |")
 for line in data:
     if "map(" in line:
         dat_parse(line)
-
