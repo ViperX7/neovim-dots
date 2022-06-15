@@ -1,5 +1,29 @@
+local fn = vim.fn
+local execute = vim.api.nvim_command
+
+-- Auto install packer.nvim if not exists
+local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+vim.cmd [[packadd packer.nvim]]
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
 ---@diagnostic disable: undefined-global
-return require('packer').startup(function()
+return packer.startup(function()
 
 
   -- startup optimizations
@@ -92,7 +116,7 @@ return require('packer').startup(function()
 
   use { 'tpope/vim-surround' }
   use { 'p00f/nvim-ts-rainbow' }
-  use 'andymass/vim-matchup'
+  use { 'andymass/vim-matchup', event = 'VimEnter' }
 
 
   -- Welcome Dashoard
@@ -111,7 +135,7 @@ return require('packer').startup(function()
   use "norcalli/nvim-colorizer.lua"
 
   -- Tagbar
-  use { 'majutsushi/tagbar' }
+  -- use { 'majutsushi/tagbar' }  -- removed in favour of symboloutlinee
   use 'simrat39/symbols-outline.nvim'
 
   -- Fast movement
@@ -150,8 +174,8 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-emoji'
 
   use { 'romgrk/fzy-lua-native', run = 'make' }
-  use { 'tzachar/cmp-fuzzy-buffer', requires = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' } }
-  use { 'tzachar/cmp-fuzzy-path', requires = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' } }
+  -- use { 'tzachar/cmp-fuzzy-buffer', requires = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' } }
+  -- use { 'tzachar/cmp-fuzzy-path', requires = { 'hrsh7th/nvim-cmp', 'tzachar/fuzzy.nvim' } }
 
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -192,7 +216,6 @@ return require('packer').startup(function()
   -- Formating
   use 'jose-elias-alvarez/null-ls.nvim'
 
-  -- use {'windwp/nvim-autopairs'}        -- Removed because unused
   -- use {'kosayoda/nvim-lightbulb'}      -- Removed because lspsaga does better
   use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
   use 'folke/lsp-colors.nvim'
@@ -215,22 +238,21 @@ return require('packer').startup(function()
   -----------------------------------------------------
 
   -- Lua
-  use { 'tjdevries/nlua.nvim' }
-  --  better Lua syntax highlighting
-  use { 'euclidianAce/BetterLua.vim' }
-  -- fancy lua folds, you can check this out.
-  use { 'tjdevries/manillua.nvim' }
+  use { 'tjdevries/nlua.nvim', ft = "lua" }
+  use { 'euclidianAce/BetterLua.vim', ft = "lua" } --  better Lua syntax highlighting
+  use { 'tjdevries/manillua.nvim', ft = "lua" } -- fancy lua folds, you can check this out.
+
   -- Flutter
   -- use {'thosakwe/vim-flutter'}
-  use { 'dart-lang/dart-vim-plugin' }
-  use 'akinsho/flutter-tools.nvim'
-  use 'Neevash/awesome-flutter-snippets'
+  use { 'dart-lang/dart-vim-plugin', ft = "dart" }
+  use { 'akinsho/flutter-tools.nvim', ft = "dart", config = require("config.fluttertools")() }
+  use { 'Neevash/awesome-flutter-snippets', ft = "dart" }
 
   -- Markdown
-  use { 'suan/vim-instant-markdown' }
-  use 'jubnzv/mdeval.nvim'
+  use { 'suan/vim-instant-markdown', ft = "markdown" }
+  use { 'jubnzv/mdeval.nvim', config = require("config.mdeval"), ft = { "markdown", "norg" }, }
   -- orgmode
-  use { "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim" }
+  use { "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim", config = require("config.neorg")(), ft = "norg" }
   use { "folke/zen-mode.nvim" }
 
 
@@ -239,7 +261,7 @@ return require('packer').startup(function()
   use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- smali reversing
-  use "https://github.com/mzlogin/vim-smali"
+  use { "https://github.com/mzlogin/vim-smali", ft = "smali" }
 
 
 end)

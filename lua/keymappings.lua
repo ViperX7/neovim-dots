@@ -156,9 +156,8 @@ map('n', '<leader>ri', ':lua require"sniprun.live_mode".toggle()<CR>')
 map('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})
 map('n', 's', ":HopWord<cr>", {})
 
--- TagBar
-map('n', '<F8>', ':TagbarOpenAutoClose<CR>', {})
-map('n', '<F9>', ':SymbolsOutline<CR>', {})
+-- Symbol outline
+map('n', '<F8>', ':SymbolsOutline<CR>', {})
 
 ----------------------- nvim-compe --------------------------
 map('i', '<silent><expr> <C-Space>', 'compe#complete()')

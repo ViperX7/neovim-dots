@@ -1,3 +1,4 @@
+return function()
 local neorg = require('neorg')
 
 neorg.setup({
@@ -70,4 +71,4 @@ neorg.setup({
 		level = 'warn',
 	},
 })
-
+end

@@ -27,7 +27,7 @@ require("config.nullls")
 -- require('config.nvim-compe')
 require("config.nvim-cmp")
 -- require('config.tabnine')
-require("config.fluttertools")
+-- require("config.fluttertools")  -- lazyload
 -- require('config.lightbulb')
 require("config.lspsaga")
 require("config.ultisnips")
@@ -44,6 +44,6 @@ require("fidget").setup()
 
 -- Lang specific
 vim.g.dart_format_on_save = 1
-require("config.mdeval")
-require("config.neorg")
+-- require("config.mdeval")   -- lazyload
+-- require("config.neorg")
 require("config.zenmode")
