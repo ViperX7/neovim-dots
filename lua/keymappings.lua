@@ -101,7 +101,7 @@ map('n', 'qq', ':q<CR>')
 vim.api.nvim_set_option('clipboard', 'unnamed,unnamedplus')
 -- end
 
-map('n', '<leader>p', '+gP<CR>')
+-- map('n', '<leader>p', '+gP<CR>')
 
 -- TODO
 -- if has('macunix')
@@ -111,6 +111,7 @@ map('n', '<leader>p', '+gP<CR>')
 -- endif
 
 map('i', 'jk', '<Esc>') -- jk to escape
+map('i', 'kj', '<Esc>') -- jk to escape
 -- map('', 'lh', '<Esc>:w<cr>')           -- jk to escape
 -------------------------------------------------------------------------------
 
@@ -235,6 +236,22 @@ map("i", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR
 map("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
 map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
 map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+
+--  packer
+
+map("n", "<leader>Pi", ':PackerInstall<CR>', opt)
+map("n", "<leader>Pc", ':PackerClean<CR>', opt)
+map("n", "<leader>Pu", ':PackerUpdate<CR>', opt)
+map("n", "<leader>Ps", ':PackerStatus<CR>', opt)
+map("n", "<leader>Py", ':PackerSync<CR>', opt)
+map("n", "<leader>Po", ':PackerCompile<CR>', opt)
+
+
+-- startuptime
+
+map("n", "<leader>ls", ':StartupTime<CR>', opt)
+map("n", "<leader>ll", ':StartupTime --tries 100<CR>', opt)
+
 
 -- map("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
 

@@ -42,19 +42,29 @@ return packer.startup(function()
   use { 'sainnhe/gruvbox-material' }
   use 'navarasu/onedark.nvim'
   use 'olimorris/onedarkpro.nvim'
+  use {'EdenEast/nightfox.nvim'}
 
   -- use {'joshdick/onedark.vim'}
   --
   -- use { 'goolord/alpha-nvim'}
 
   -- Indentation
-  use { "lukas-reineke/indent-blankline.nvim" }
+  use { "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("config.blankline-indent")
+    end
+  }
 
   ----------------------------------------------------------------------
   -- Editor Enhancements
   ---------------------------------------------------------------------
   -- Fuzzy finder
-  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'kyazdani42/nvim-web-devicons' }
+  use { 'nvim-telescope/telescope.nvim',
+    config = function()
+      require("config.telescope")
+    end }
   -- Preview extension
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'nvim-telescope/telescope-symbols.nvim'
@@ -63,13 +73,22 @@ return packer.startup(function()
   --
   use 'gpanders/editorconfig.nvim'
 
-  use 'j-hui/fidget.nvim'
+  use { 'j-hui/fidget.nvim',
+    config = function()
+      require("fidget").setup()
+    end }
 
   -- Shortcut helper popup
-  use 'folke/which-key.nvim'
+  use { 'folke/which-key.nvim', config = function()
+    require("config.which-key")
+  end }
 
   -- File explorer
-  use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' }
+  use { 'kyazdani42/nvim-tree.lua',
+    config = function()
+      require("config.nvim-tree")
+    end
+  }
 
   -- File Managers
   use 'kevinhwang91/rnvimr'
@@ -78,27 +97,46 @@ return packer.startup(function()
   -- use {'tpope/vim-dispatch'}
 
   -- Terminal
-  use { "akinsho/toggleterm.nvim", tag = 'v1.*', }
+  use { "akinsho/toggleterm.nvim", tag = 'v1.*',
+    config = function()
+
+      require("config.floatterm")
+    end }
 
   -- Git related stuff
-  -- use { 'tpope/vim-fugitive' }
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use { 'TimUntersberger/neogit' }
+  -- use { 'tpope/vim-fugitive' } -- removed in favour of neogit
+  use { 'lewis6991/gitsigns.nvim',
+    config = function()
+      require("config.gitsign")
+    end }
+  use { 'TimUntersberger/neogit',
+    config = function()
+      require("config.neogit")
+    end }
 
 
   -- status line
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    config = function()
+
+      require("config.galaxyline")
+    end
+
   }
 
   -- Tab line
-  use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
+  use { 'akinsho/bufferline.nvim', tag = "v2.*", config = function()
+    require("config.bufferline")
+  end }
   use 'famiu/bufdelete.nvim'
 
   -- treesetter
-  use { 'nvim-treesitter/nvim-treesitter' }
+  use { 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require("config.treesetter")
+    end }
 
   -- Automatic line number toggle
   use { 'jeffkreeftmeijer/vim-numbertoggle' }
@@ -132,7 +170,10 @@ return packer.startup(function()
   }
 
   -- Colors
-  use "norcalli/nvim-colorizer.lua"
+  use { "norcalli/nvim-colorizer.lua", config = function()
+    require("colorizer").setup()
+  end
+  }
 
   -- Tagbar
   -- use { 'majutsushi/tagbar' }  -- removed in favour of symboloutlinee
@@ -150,12 +191,17 @@ return packer.startup(function()
   use { 'tpope/vim-repeat' }
 
   -- Scrolling
-  use 'karb94/neoscroll.nvim'
+  use { 'karb94/neoscroll.nvim', config = function()
+    require("config.neoscrool")
+  end }
 
   -- Snippets
   -- use {'hrsh7th/vim-vsnip'}
   -- use 'hrsh7th/vim-vsnip-integ'
-  use { 'SirVer/ultisnips' }
+  use { 'SirVer/ultisnips', config = function()
+
+    require("config.ultisnips")
+  end }
   use { 'quangnguyen30192/cmp-nvim-ultisnips' }
   -- use {'honza/vim-snippets'}
   use('norcalli/snippets.nvim')
@@ -166,7 +212,11 @@ return packer.startup(function()
   use { 'rafamadriz/friendly-snippets' }
 
 
-  use 'hrsh7th/nvim-cmp'
+  use { 'hrsh7th/nvim-cmp',
+    config = function()
+      require("config.nvim-cmp")
+    end
+  }
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-calc'
@@ -214,18 +264,27 @@ return packer.startup(function()
   }
 
   -- Formating
-  use 'jose-elias-alvarez/null-ls.nvim'
+  use { 'jose-elias-alvarez/null-ls.nvim', config = function()
+
+    require("config.nullls")
+  end }
 
   -- use {'kosayoda/nvim-lightbulb'}      -- Removed because lspsaga does better
   use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
   use 'folke/lsp-colors.nvim'
 
-  use { 'tami5/lspsaga.nvim' }
+  use { 'tami5/lspsaga.nvim',
+    config = function()
+      require("config.lspsaga")
+    end }
 
   -- use { 'tzachar/cmp-tabnine', run = './install.sh' }
 
   -- Add symbols to completion menu
-  use { 'onsails/lspkind-nvim' }
+  use { 'onsails/lspkind-nvim',
+    config = function()
+      require("config.lspkind")
+    end }
 
   -----------------------------------------------------------------------
   ----- Integration
@@ -245,20 +304,41 @@ return packer.startup(function()
   -- Flutter
   -- use {'thosakwe/vim-flutter'}
   use { 'dart-lang/dart-vim-plugin', ft = "dart" }
-  use { 'akinsho/flutter-tools.nvim', ft = "dart", config = require("config.fluttertools")() }
+  use { 'akinsho/flutter-tools.nvim', ft = "dart", config = function()
+    require("config.fluttertools")
+  end
+  }
   use { 'Neevash/awesome-flutter-snippets', ft = "dart" }
 
   -- Markdown
   use { 'suan/vim-instant-markdown', ft = "markdown" }
-  use { 'jubnzv/mdeval.nvim', config = require("config.mdeval"), ft = { "markdown", "norg" }, }
-  -- orgmode
-  use { "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim", config = require("config.neorg")(), ft = "norg" }
-  use { "folke/zen-mode.nvim" }
 
+  use { 'jubnzv/mdeval.nvim',
+    config = function()
+      require("config.mdeval")
+    end, ft = { "markdown", "norg" },
+  }
+  -- orgmode
+  use { "nvim-neorg/neorg",
+    config = function()
+      require("config.neorg")
+    end,
+    ft = "norg" }
+  use { "folke/zen-mode.nvim",
+    config = function()
+      require("config.zenmode")
+    end }
+
+  use { 'jdhao/better-escape.vim', event = 'InsertEnter', config = function()
+    vim.g.better_escape_shortcut = { "jk", "kj" }
+    vim.g.better_escape_interval = 50
+  end }
 
   -- Code runner
   use { 'michaelb/sniprun', run = 'bash ./install.sh' }
-  use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use { 'CRAG666/code_runner.nvim', config = function()
+    require("config.code_runner")
+  end }
 
   -- smali reversing
   use { "https://github.com/mzlogin/vim-smali", ft = "smali" }
