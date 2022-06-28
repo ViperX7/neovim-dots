@@ -234,9 +234,12 @@ map("n", "<leader>ec", ':MdEvalClean<CR>', opt)
 ----------------------- Neorg ----------------------------------
 map("n", "<leader>ew", ':Neorg tangle<CR>', opt)
 
+------------------------ goto preview --------------------------------
+map("n", "gp", ':lua require("goto-preview").goto_preview_definition()<CR>', opt)
+map("n", "gpi", ':lua require("goto-preview").goto_preview_implementatiol()<CR>', opt)
+map("n", "gpd", ':lua require("goto-preview").close_all_win()<CR>', opt)
+
 ------------------------ LSP Saga --------------------------------
-map("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
-map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
 
 -- jump diagnostic
 map("n", "]c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)

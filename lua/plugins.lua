@@ -74,6 +74,13 @@ return packer.startup(function()
   use 'nvim-telescope/telescope-project.nvim'
   -- use 'nvim-telescope/telescope-fzy-native.nvim'
   --
+  use {
+    'rmagatti/goto-preview',
+    config = function()
+      require("config.goto_preview")
+    end
+  }
+
   use 'gpanders/editorconfig.nvim'
 
   use { 'j-hui/fidget.nvim',
