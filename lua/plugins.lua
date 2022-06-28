@@ -117,6 +117,7 @@ return packer.startup(function()
     config = function()
       require("config.neogit")
     end }
+  use {"sindrets/diffview.nvim"}
 
 
   -- status line

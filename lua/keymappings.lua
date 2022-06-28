@@ -120,8 +120,16 @@ map('n', '<leader>i', ':NvimTreeToggle<CR>')
 -- map('n', '<leader>r', ':<NvimTreeRefreshCR>')
 -- map('n', '<leader>n', ':NvimTreeFindFile<CR>')
 
------------------------- Neogit -------------------------------
+------------------------ Neogit Diffview Gitsigns ----------------------------
 map('n', '<leader>gs', '<cmd>Neogit<CR>') -- Git status
+map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>') -- Git diff
+map('n', '<leader>gl', '<cmd>DiffviewFileHistory<CR>') -- Git log
+---- Togglabless
+map('n', '<leader>gtd', ':Gitsigns toggle_deleted<CR>')
+map('n', '<leader>gtw', ':Gitsigns toggle_word_diff<CR>')
+map('n', '<leader>gtl', ':Gitsigns toggle_linehl<CR>')
+map('n', '<leader>gtn', ':Gitsigns toggle_numhl<CR>')
+map('n', '<leader>gtb', ':Gitsigns toggle_current_line_blame<CR>')
 
 ----------------------- Telescope --------------------------------
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
