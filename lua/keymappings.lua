@@ -120,6 +120,7 @@ map('n', '<leader>i', ':NvimTreeToggle<CR>')
 -- map('n', '<leader>r', ':<NvimTreeRefreshCR>')
 -- map('n', '<leader>n', ':NvimTreeFindFile<CR>')
 
+
 ------------------------ Neogit Diffview Gitsigns ----------------------------
 map('n', '<leader>gs', '<cmd>Neogit<CR>') -- Git status
 map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>') -- Git diff
@@ -136,6 +137,7 @@ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fe', '<cmd>Telescope symbols<cr>')
 map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
 map('n', '<leader>fp', ':lua require"telescope".extensions.project.project{}<CR>')
 map('n', ';', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')

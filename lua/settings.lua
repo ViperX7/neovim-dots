@@ -116,7 +116,7 @@ cmd 'set clipboard=unnamedplus' -- Copy paste between vim and everything else
 --
 --
 cmd 'set timeoutlen=500' -- Copy paste between vim and everything else
-vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.python3_host_prog = '/sbin/python3'
 
 local vim = vim
 local g = vim.g

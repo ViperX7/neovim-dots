@@ -25,9 +25,15 @@ g.indent_blankline_filetype_exclude = {
   "gitmessengerpopup",
   "diagnosticpopup",
   "NVIMTREE",
-  "dashboard"
+  "dashboard",
+  "Trouble",
+  "packer",
+  "NeogitStatus",
+
 }
-g.indent_blankline_buftype_exclude = { "terminal" }
+g.indent_blankline_buftype_exclude = {
+  "terminal",
+}
 
 g.indent_blankline_context_patterns = {
   "class",

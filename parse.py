@@ -24,7 +24,7 @@ def dat_parse(line):
     key = dsan(key)
     cmd = dsan(cmd)
 
-    modes = {"": "Universal", "i": "Insert", "n": "Normal", "v": "Nisual"}
+    modes = {"": "Universal", "i": "Insert", "n": "Normal", "v": "Visual"}
     mode = modes[mode]
     # key = key.replace("<leader>", "⭐")
 

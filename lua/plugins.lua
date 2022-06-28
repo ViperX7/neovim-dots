@@ -48,7 +48,6 @@ return packer.startup(function()
   use { 'marko-cerovac/material.nvim' }
   use { 'rmehri01/onenord.nvim' }
 
-  -- use {'joshdick/onedark.vim'}
   --
   -- use { 'goolord/alpha-nvim'}
 
@@ -117,19 +116,23 @@ return packer.startup(function()
     config = function()
       require("config.neogit")
     end }
-  use {"sindrets/diffview.nvim"}
+  use { "sindrets/diffview.nvim" }
 
 
   -- status line
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
+    'nvim-lualine/lualine.nvim',
     config = function()
-
-      require("config.galaxyline")
+      require("config.lualine")
     end
-
   }
+  -- use {
+  --   'glepnir/galaxyline.nvim',
+  --   branch = 'main',
+  --   config = function()
+  --     require("config.galaxyline")
+  --   end
+  -- }
 
   -- Tab line
   use { 'akinsho/bufferline.nvim', tag = "v2.*", config = function()
