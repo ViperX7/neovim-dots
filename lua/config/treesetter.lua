@@ -27,6 +27,9 @@ parser_configs.norg_table = {
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all", -- one of "all" (parsers with maintainers), or a list of languages
   ignore_install = {  }, -- List of parsers to ignore installing
+  autotag = {
+    enable = true
+  },
   indent = {
     enable = true
   },

@@ -152,7 +152,8 @@ return packer.startup(function()
     config = function()
       require("config.treesetter")
     end }
-
+  use { 'windwp/nvim-ts-autotag' }
+  use { 'JoosepAlviste/nvim-ts-context-commentstring' }
   -- Automatic line number toggle
   use { 'jeffkreeftmeijer/vim-numbertoggle' }
 
