@@ -42,7 +42,11 @@ return packer.startup(function()
   use { 'sainnhe/gruvbox-material' }
   use 'navarasu/onedark.nvim'
   use 'olimorris/onedarkpro.nvim'
-  use {'EdenEast/nightfox.nvim'}
+  use { 'EdenEast/nightfox.nvim' }
+  use { 'folke/tokyonight.nvim' }
+  use { 'shaunsingh/moonlight.nvim' }
+  use { 'marko-cerovac/material.nvim' }
+  use { 'rmehri01/onenord.nvim' }
 
   -- use {'joshdick/onedark.vim'}
   --

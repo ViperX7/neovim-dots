@@ -19,3 +19,7 @@
 --
 require("config.onedark")
 -- require("config.onedarkpro")
+-- require("config.nightfox")
+-- require("config.tokyonight")
+-- require('config.material')
+-- require('config.onenord')
