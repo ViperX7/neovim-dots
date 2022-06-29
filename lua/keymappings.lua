@@ -89,6 +89,9 @@ map('n', '<M-f>', 'za')
 -- Turn off search highlightset ignorecase
 map('n', '<leader><space>', ':nohlsearch<CR>')
 
+-- Light/dark modemode
+map('n', '<leader>zd', ':set background=dark<CR>')
+map('n', '<leader>zl', ':set background=light<CR>')
 -- Quiting
 map('n', '<leader>w', ':lua vim.lsp.buf.formatting_sync()<CR>:w<CR>')
 map('n', '<leader>q', ':wq<CR>')
@@ -126,11 +129,11 @@ map('n', '<leader>gs', '<cmd>Neogit<CR>') -- Git status
 map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>') -- Git diff
 map('n', '<leader>gl', '<cmd>DiffviewFileHistory<CR>') -- Git log
 ---- Togglabless
-map('n', '<leader>gtd', ':Gitsigns toggle_deleted<CR>')
-map('n', '<leader>gtw', ':Gitsigns toggle_word_diff<CR>')
-map('n', '<leader>gtl', ':Gitsigns toggle_linehl<CR>')
-map('n', '<leader>gtn', ':Gitsigns toggle_numhl<CR>')
-map('n', '<leader>gtb', ':Gitsigns toggle_current_line_blame<CR>')
+map('n', '<leader>ggd', ':Gitsigns toggle_deleted<CR>')
+map('n', '<leader>ggw', ':Gitsigns toggle_word_diff<CR>')
+map('n', '<leader>ggl', ':Gitsigns toggle_linehl<CR>')
+map('n', '<leader>ggn', ':Gitsigns toggle_numhl<CR>')
+map('n', '<leader>ggb', ':Gitsigns toggle_current_line_blame<CR>')
 
 ----------------------- Telescope --------------------------------
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
@@ -171,11 +174,11 @@ map('n', 's', ":HopWord<cr>", {})
 map('n', '<F8>', ':SymbolsOutline<CR>', {})
 
 ----------------------- nvim-compe --------------------------
-map('i', '<silent><expr> <C-Space>', 'compe#complete()')
-map('i', '<silent><expr> <CR>     ', 'compe#confirm("<CR>")')
-map('i', '<silent><expr> <C-e>    ', 'compe#close("<C-e>")')
-map('i', '<silent><expr> <C-f>    ', 'compe#scroll({ "delta": +4 })')
-map('i', '<silent><expr> <C-d>    ', 'compe#scroll({ "delta": -4 })')
+-- map('i', '<silent><expr> <C-Space>', 'compe#complete()')
+-- map('i', '<silent><expr> <CR>     ', 'compe#confirm("<CR>")')
+-- map('i', '<silent><expr> <C-e>    ', 'compe#close("<C-e>")')
+-- map('i', '<silent><expr> <C-f>    ', 'compe#scroll({ "delta": +4 })')
+-- map('i', '<silent><expr> <C-d>    ', 'compe#scroll({ "delta": -4 })')
 
 -- Mappings.
 -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -241,10 +244,11 @@ map("n", "gpd", ':lua require("goto-preview").close_all_win()<CR>', opt)
 
 ------------------------ LSP Saga --------------------------------
 
+map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
 -- jump diagnostic
 map("n", "]c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
 map("n", "[c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
-map("i", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
+map("n", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
 
 map("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
 map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
