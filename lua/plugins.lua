@@ -63,6 +63,11 @@ return packer.startup(function()
   ---------------------------------------------------------------------
   -- Fuzzy finder
   use { 'nvim-lua/plenary.nvim' }
+  use { 'rcarriga/nvim-notify',
+    config = function()
+      vim.notify = require("notify")
+      require("notify").setup()
+    end }
   use { 'kyazdani42/nvim-web-devicons' }
   use { 'nvim-telescope/telescope.nvim',
     config = function()
