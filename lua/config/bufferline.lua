@@ -72,8 +72,8 @@ require "bufferline".setup {
     --     guibg = "#282c34"
     -- },
     fill = {
-        guifg = comment_fg,
-        guibg = "#282c34"
+        fg = comment_fg,
+        bg = "#282c34"
     },
     -- buffer_selected = {
     --     guifg = normal_fg,
