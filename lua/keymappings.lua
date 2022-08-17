@@ -165,6 +165,15 @@ map('v', '<S-CR>', ':lua require"sniprun".run("v")<cr>')
 map('n', '<leader>rf', ':lua require"sniprun".run("n")<CR>')
 map('n', '<leader>rr', ':RunCode<CR>')
 map('n', '<leader>ri', ':lua require"sniprun.live_mode".toggle()<CR>')
+map('n', '<leader>rll', ':MagmaInit<CR>1<CR><CR>')
+map('n', '<leader>rl', ':MagmaEvaluateLine<CR>')
+map('v', '<leader>rl', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
+
+-- Neogen
+map('n', '<leader>cp', ':Neogen file<CR>')
+map('n', '<leader>cf', ':Neogen func<CR>')
+map('n', '<leader>cc', ':Neogen class<CR>')
+map('n', '<leader>ct', ':Neogen type<CR>')
 
 ---------------------- hop -----------------------------
 map('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})

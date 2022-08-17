@@ -130,6 +130,13 @@ return packer.startup(function()
     end }
   use { "sindrets/diffview.nvim" }
 
+  -- Anotations and documentation
+  use {
+    "danymat/neogen",
+    config = function()
+      require('neogen').setup {}
+    end,
+  }
 
   -- status line
   use {
@@ -363,6 +370,8 @@ return packer.startup(function()
 
   -- smali reversing
   use { "https://github.com/mzlogin/vim-smali", ft = "smali" }
+  -- python
+  use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
 
 end)
