@@ -15,7 +15,7 @@ neorg.setup({
     ['core.keybinds'] = {
       config = {
         default_keybings = true,
-        neorg_leader = '<leader>o',
+        neorg_leader = '<leader>n',
       },
     },
     ['core.norg.qol.toc'] = {
@@ -51,9 +51,9 @@ neorg.setup({
     ['core.norg.dirman'] = {
       config = {
         workspaces = {
-          neorg = '~/docs/notes/neorg',
-          gtd = '~/docs/notes/gtd',
-          journal = '~/docs/notes/journal',
+          neorg = '~/Documents/notes/neorg',
+          gtd = '~/Documents/notes/gtd',
+          journal = '~/Documents/notes/journal',
         },
       },
     },

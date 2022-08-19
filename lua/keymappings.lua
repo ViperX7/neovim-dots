@@ -165,8 +165,12 @@ map('v', '<S-CR>', ':lua require"sniprun".run("v")<cr>')
 map('n', '<leader>rf', ':lua require"sniprun".run("n")<CR>')
 map('n', '<leader>rr', ':RunCode<CR>')
 map('n', '<leader>ri', ':lua require"sniprun.live_mode".toggle()<CR>')
-map('n', '<leader>rll', ':MagmaInit<CR>1<CR><CR>')
+map('n', '<leader>rmi', ':MagmaInit<CR>1<CR><CR>')
+map('n', '<leader>rms', ':MagmaShow<CR>')
 map('n', '<leader>rl', ':MagmaEvaluateLine<CR>')
+map('n', '<leader>rmr', ':MagmaReevaluateCell<CR>')
+map('n', 'm', '0v/@<CR>k$:<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>:nohlsearch<CR>')
+map('v', 'm', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
 map('v', '<leader>rl', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
 
 -- Neogen
@@ -244,7 +248,9 @@ map("n", "<leader>ec", ':MdEvalClean<CR>', opt)
 
 
 ----------------------- Neorg ----------------------------------
-map("n", "<leader>ew", ':Neorg tangle<CR>', opt)
+map("n", "<leader>ew", ':lua vim.lsp.buf.formatting_sync()<CR>:w<CR>:Neorg tangle current-file<CR>', opt)
+map("n", "<leader>bo", ':Neorg keybind all core.looking-glass.magnify-code-block<CR>', opt)
+map("n", "<leader>be", ':FeMaco<CR>', opt)
 
 ------------------------ goto preview --------------------------------
 map("n", "gp", ':lua require("goto-preview").goto_preview_definition()<CR>', opt)

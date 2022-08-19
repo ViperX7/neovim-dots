@@ -291,7 +291,7 @@ return packer.startup(function()
     }
   }
 
-  -- Formating
+  -- Formatting
   use { 'jose-elias-alvarez/null-ls.nvim', config = function()
 
     require("config.nullls")
@@ -352,6 +352,10 @@ return packer.startup(function()
       require("config.neorg")
     end,
     ft = "norg" }
+  use {
+  'ViperX7/nvim-FeMaco.lua',
+  config = 'require("femaco").setup()',
+}
   use { "folke/zen-mode.nvim",
     config = function()
       require("config.zenmode")
