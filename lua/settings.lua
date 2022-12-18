@@ -1,14 +1,8 @@
 local utils = require('utils')
 
 local cmd = vim.cmd
-local indent = 4
-
-utils.opt('b', 'tabstop', indent)
 utils.opt('o', 'hidden', true)
-utils.opt('o', 'ignorecase', true)
-utils.opt('o', 'scrolloff', 4)
 utils.opt('o', 'wildmode', 'list:longest')
-utils.opt('o', 'clipboard', 'unnamed,unnamedplus')
 
 -- Highlight on yank
 -- vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
@@ -30,7 +24,7 @@ utils.opt('o', 'showmatch', true)
 
 
 -- Characters per line limit
--- That verticle line
+-- That vertical line
 cmd 'set colorcolumn=80'
 
 -- Display different types of white spaces.
@@ -87,11 +81,11 @@ utils.opt('o', 'ignorecase', true) -- ignore case when searching
 
 
 -- Code Folding
--- utils.opt('o', 'foldenable',true)       -- enable folding
--- cmd 'set foldlevelstart=10'           -- open folds less than 10 lines
--- cmd 'set foldnestmax=10'              -- 10 nested fold max
+utils.opt('o', 'foldenable',true)       -- enable folding
+cmd 'set foldlevelstart=10'           -- open folds less than 10 lines
+cmd 'set foldnestmax=10'              -- 10 nested fold max
 -- fold based on indent level
--- cmd 'set foldmethod=indent'       -- accepted: marker, manual, expr, syntax, diff, indent
+cmd 'set foldmethod=indent'       -- accepted: marker, manual, expr, syntax, diff, indent
 
 
 
@@ -111,7 +105,7 @@ cmd 'set complete+=kspell'
 
 cmd 'set iskeyword+=-' -- treat dash separated words as a word text object"
 cmd 'set conceallevel=0' -- So that I can see `` in markdown files
-cmd 'set clipboard=unnamedplus' -- Copy paste between vim and everything else
+utils.opt('o', 'clipboard', 'unnamed,unnamedplus') -- Copy paste between vim and everything else
 --  **************************************************************************
 --
 --
@@ -144,3 +138,8 @@ g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
+vim.g.loaded_man = 1
+vim.g.loaded_remote_plugins = 1
+vim.g.loaded_shada_plugin = 1
+vim.g.loaded_spellfile_plugin = 1
+vim.g.loaded_tutor_mode_plugin= 1

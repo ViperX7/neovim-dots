@@ -35,6 +35,7 @@ cmp.setup({
         calc = "🖩",
         path = "[Path]",
         emoji = "[emoji]",
+        tmux = "[TMUX]",
       })
     }),
   },
@@ -90,6 +91,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'luasnip' },
     { name = 'ultisnips' },
+    { name = 'nvim_lua' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
   },
@@ -100,6 +102,7 @@ cmp.setup({
       -- { name = 'spell' },
       { name = 'emoji' },
       { name = 'nvim_lsp_document_symbol' },
+      { name = 'tmux' }
       -- { name = 'cmp_tabnine' },
     })
 })

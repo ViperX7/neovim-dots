@@ -56,9 +56,8 @@ telescope.setup{
       project = {
         display_type = "full",
         base_dirs = {
-          {'~/AndroidStudioProjects', max_depth = 1},
-          {'~/projects', max_depth = 1},
-          {'~/.config', max_depth = 1}
+          {'~/projects', max_depth = 2},
+          {'~/.config', max_depth = 2}
       }
   }
   }

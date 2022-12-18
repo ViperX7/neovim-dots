@@ -4,11 +4,12 @@ neorg.setup({
   load = {
     ['core.defaults'] = {},
     ['core.ui'] = {},
-    ['core.neorgcmd'] = {},
+    -- ['core.neorgcmd'] = {},
     ['core.norg.concealer'] = {
       config = {
         -- markup_preset = 'dimmed',
         -- icon_preset = 'diamond',
+        width = "content",
       },
     },
     -- ['core.integrations.treesitter '] = {},
@@ -24,7 +25,7 @@ neorg.setup({
         toc_split_placement = 'right',
       },
     },
-    ['core.norg.esupports.hop'] = {},
+    -- ['core.norg.esupports.hop'] = {},
     -- ['core.integrations.telescope'] = {},
     -- ['core.zettelkasten'] = {},
     ['core.norg.journal'] = {

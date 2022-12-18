@@ -18,6 +18,7 @@ g.indent_blankline_debug = false
 
 g.indent_blankline_filetype_exclude = {
   "help",
+  "alpha",
   "defx",
   "vimwiki",
   "md",
@@ -29,6 +30,7 @@ g.indent_blankline_filetype_exclude = {
   "Trouble",
   "packer",
   "NeogitStatus",
+  "mason"
 
 }
 g.indent_blankline_buftype_exclude = {

@@ -40,9 +40,9 @@ map('n', '<leader>.', ':lcd %:p:h<CR>')
 -- " Open vsplit edit command with the path of the currently edited file filled
 -- noremap <leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 -- " Opens a tab edit command with the path of the currently edited file filled
--- noremap <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
+-- noremap <leader>et :table <C-R>=expand("%:p:h") . "/" <CR>
 
--- Enable dissable indent lines
+-- Enable disable indent lines
 map('n', '<leader>zi', ':IndentBlanklineToggle<CR>')
 
 -- Split
@@ -75,7 +75,7 @@ map('v', 'K', "m '<-2<CR>gv=gv")
 map('v', '<down>', ":m '>+1<CR>gv=gv")
 map('v', '<up>', ":m '<-2<CR>gv=gv")
 
--- Dissable Arrow keys
+-- Disable Arrow keys
 map('n', '<Left>', ':echoe "Use h"<CR>')
 map('n', '<Right>', ':echoe "Use l"<CR>')
 map('n', '<Up>', ':echoe "Use k"<CR>')
@@ -92,12 +92,13 @@ map('n', '<leader><space>', ':nohlsearch<CR>')
 -- Light/dark modemode
 map('n', '<leader>zd', ':set background=dark<CR>')
 map('n', '<leader>zl', ':set background=light<CR>')
--- Quiting
-map('n', '<leader>w', ':lua vim.lsp.buf.formatting_sync()<CR>:w<CR>')
+-- Quitting
+map('n', '<leader>w', ':w<CR>')
 map('n', '<leader>q', ':wq<CR>')
 map('n', '<leader>W', ':wqall<CR>')
 map('n', '<leader>Q', ':q!<CR>')
 map('n', 'qq', ':q<CR>')
+map('n', '<leader>a', ':lua vim.lsp.buf.format()<CR>')
 
 -- Copy/Paste/Cut
 -- if vim.api.nvim_get_option('unnamedplus') then
@@ -138,6 +139,8 @@ map('n', '<leader>ggb', ':Gitsigns toggle_current_line_blame<CR>')
 ----------------------- Telescope --------------------------------
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fe', '<cmd>Telescope symbols<cr>')
+map('n', '<leader>fs', '<cmd>Telescope spell_sugest<cr>')
+
 map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
@@ -145,8 +148,13 @@ map('n', '<leader>fp', ':lua require"telescope".extensions.project.project{}<CR>
 map('n', ';', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>p', '<cmd>Telescope registers<cr>')
-map('n', 'gr', '<cmd>Telescope lsp_references<cr>')
 
+map('n', 'gr', '<cmd>Telescope lsp_references<cr>')
+map('n', 'gs', '<cmd>Telescope lsp_workspace_symbols<cr>')
+map('n', 'gws', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
+map('n', 'gi', '<cmd>Telescope lsp_implementations<cr>')
+map('n', 'gd', '<cmd>Telescope lsp_definitions<cr>')
+map('n', 'gtd', '<cmd>Telescope lsp_type_definitions<cr>')
 
 -- vim-flutter
 map('n', '<leader>Fa', ':FlutterRun<cr>')
@@ -196,9 +204,7 @@ map('n', '<F8>', ':SymbolsOutline<CR>', {})
 -- Mappings.
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
 -- Workspace Related
@@ -251,6 +257,7 @@ map("n", "<leader>ec", ':MdEvalClean<CR>', opt)
 map("n", "<leader>ew", ':lua vim.lsp.buf.formatting_sync()<CR>:w<CR>:Neorg tangle current-file<CR>', opt)
 map("n", "<leader>bo", ':Neorg keybind all core.looking-glass.magnify-code-block<CR>', opt)
 map("n", "<leader>be", ':FeMaco<CR>', opt)
+map("n", "<leader>np", ':Neorg presenter start<CR>:set colorcolumn=400<CR>:IndentBlankLineDisable<cr>', opt)
 
 ------------------------ goto preview --------------------------------
 map("n", "gp", ':lua require("goto-preview").goto_preview_definition()<CR>', opt)
