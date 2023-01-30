@@ -46,7 +46,7 @@ return packer.startup(function(use)
   -- Package Management
   ---------------------------------------------------------------------
   -- Packer can manage itself as an optional plugin
-  use { 'wbthomason/packer.nvim', opt = true }
+  use { 'wbthomason/packer.nvim' }
 
   ----------------------------------------------------------------------
   -- Visual Enhancement
@@ -85,9 +85,9 @@ return packer.startup(function(use)
   use { 'j-hui/fidget.nvim', config = function() require("fidget").setup() end }
 
   -- status line
-  -- use { 'nvim-lualine/lualine.nvim', config = function() require("config.lualine") end }
-  use { 'glepnir/galaxyline.nvim', branch = 'main',
-    config = function() require("config.galaxyline") end }
+  use { 'nvim-lualine/lualine.nvim', config = function() require("config.lualine") end }
+  -- use { 'glepnir/galaxyline.nvim', branch = 'main',
+  --   config = function() require("config.galaxyline") end }
 
   -- Tab line
   use { 'akinsho/bufferline.nvim', tag = "v2.*", config = function() require("config.bufferline") end }
@@ -100,7 +100,7 @@ return packer.startup(function(use)
 
   -- Welcome Dashoard
   use { 'goolord/alpha-nvim',
-    config = function() require 'alpha'.setup(require 'alpha.themes.startify'.config) end
+    config = function() require 'alpha'.setup(require 'alpha.themes.dashboard'.config) end
   }
 
   -- Fuzzy finder
@@ -221,6 +221,9 @@ return packer.startup(function(use)
     -- Colors
     { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end },
 
+    -- provides pair changing capabilities
+    { "tpope/vim-surround" },
+
 
 
     event = 'BufEnter'
@@ -320,7 +323,7 @@ return packer.startup(function(use)
 
   -- Flutter
   use {
-    { 'dart-lang/dart-vim-plugin', ft = "dart" },
+    -- { 'dart-lang/dart-vim-plugin', ft = "dart" },
     { 'akinsho/flutter-tools.nvim', ft = "dart", config = function() require("config.fluttertools") end },
     { 'Neevash/awesome-flutter-snippets', ft = "dart" },
   }
@@ -341,7 +344,8 @@ return packer.startup(function(use)
       require("config.neorg")
     end,
     ft = "norg", cmd = "Neorg" }
-  use { 'ViperX7/nvim-FeMaco.lua', config = function() require("femaco").setup() end, ft = { "markdown", "neorg" } }
+  use { 'ViperX7/nvim-FeMaco.lua', config = function() require("femaco").setup() end,
+    ft = { "markdown", "norg", "neorg" } }
   use { "folke/zen-mode.nvim",
     config = function()
       require("config.zenmode")
@@ -361,11 +365,24 @@ return packer.startup(function(use)
   -- smali reversing
   use { "mzlogin/vim-smali", ft = "smali" }
   -- python
+
   use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins', config = function()
     require("config.magma")
   end }
 
 
+use {
+    "jcdickinson/codeium.nvim",
+    requires = {
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim"
+    },
+    config = function()
+        require("codeium").setup({
+        })
+    end,
+    cmd = "Codeium"
+}
   -- Vim dispatch
   -- use {'tpope/vim-dispatch'}
 
