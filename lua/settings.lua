@@ -139,7 +139,7 @@ g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
 vim.g.loaded_man = 1
--- vim.g.loaded_remote_plugins = 1
+vim.g.loaded_remote_plugins = 1
 vim.g.loaded_shada_plugin = 1
 vim.g.loaded_spellfile_plugin = 1
 vim.g.loaded_tutor_mode_plugin= 1

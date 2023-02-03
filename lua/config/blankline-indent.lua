@@ -30,9 +30,7 @@ g.indent_blankline_filetype_exclude = {
   "Trouble",
   "packer",
   "NeogitStatus",
-  "mason",
-  "Notification",
-  "notification",
+  "mason"
 
 }
 g.indent_blankline_buftype_exclude = {

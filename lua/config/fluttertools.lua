@@ -28,16 +28,8 @@ require("flutter-tools").setup {
   },
   outline = {
     open_cmd = "40vnew", -- command to use to open the outline buffer
-    auto_open = true -- if true this will open the outline automatically when it is first populated
   },
   lsp = {
-    color = { -- show the derived colours for dart variables
-      enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-      background = flase, -- highlight the background
-      foreground = false, -- highlight the foreground
-      virtual_text = true, -- show the highlight using virtual text
-      virtual_text_str = "██", -- the virtual text character to highlight
-    },
     -- on_attach = my_custom_on_attach,
     -- capabilities = my_custom_capabilities -- e.g. lsp_status capabilities
     --- OR you can specify a function to deactivate or change or control how the config is created

@@ -22,7 +22,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  "bashls", 'clangd', 'pyright', "cssls", "html", "denols", "hls", "sumneko_lua",
+  "bashls", 'clangd', 'pyright', 'dartls', "cssls", "html", "denols", "hls", "sumneko_lua",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

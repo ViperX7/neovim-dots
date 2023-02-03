@@ -29,11 +29,9 @@ cmp.setup({
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
-        vsnip = "[vsnip]",
         nvim_lua = "[Lua]",
         latex_symbols = "[Latex]",
-        codeium = "[Codeium]",
-        -- cmp_tabnine = "[Tabnine]",
+        cmp_tabnine = "[Tabnine]",
         calc = "🖩",
         path = "[Path]",
         emoji = "[emoji]",
@@ -42,7 +40,6 @@ cmp.setup({
     }),
   },
   --
-  -- 
 
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -60,8 +57,6 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -73,8 +68,6 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expandable()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif has_words_before() then
@@ -96,22 +89,21 @@ cmp.setup({
 
   }),
   sources = cmp.config.sources({
-    { name = 'codeium' },
     { name = 'luasnip' },
     { name = 'ultisnips' },
     { name = 'nvim_lua' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
-    { name = 'cmp_tabnine' },
   },
     {
       { name = 'buffer' },
       { name = 'path' },
       { name = 'calc' },
-      { name = 'spell' },
+      -- { name = 'spell' },
       { name = 'emoji' },
       { name = 'nvim_lsp_document_symbol' },
-      { name = 'tmux' },
+      { name = 'tmux' }
+      -- { name = 'cmp_tabnine' },
     })
 })
 

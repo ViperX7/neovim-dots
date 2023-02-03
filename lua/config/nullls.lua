@@ -11,19 +11,12 @@ local sources = {
   -- diagnostics
   null_ls.builtins.diagnostics.eslint_d,
   null_ls.builtins.diagnostics.alex,
+  null_ls.builtins.diagnostics.write_good,
   null_ls.builtins.diagnostics.proselint,
   null_ls.builtins.diagnostics.checkmake,
   null_ls.builtins.diagnostics.chktex,
   null_ls.builtins.diagnostics.codespell,
-
-  null_ls.builtins.diagnostics.write_good.with({
-     extra_filetypes = { "norg" },
-    }),
-
-  null_ls.builtins.diagnostics.cspell.with({
-     filetypes = { "norg","markdown" },
-    }),
-
+  -- null_ls.builtins.diagnostics.cspell,
   null_ls.builtins.diagnostics.cppcheck,
   null_ls.builtins.diagnostics.deadnix,
   null_ls.builtins.diagnostics.shellcheck,
@@ -53,7 +46,6 @@ local sources = {
   -- null_ls.builtins.diagnostics.uncrustify,
 
   -- codeaction
-  null_ls.builtins.code_actions.cspell,
   null_ls.builtins.code_actions.eslint_d,
   null_ls.builtins.code_actions.proselint,
   -- null_ls.builtins.code_actions.refactoring,

@@ -44,7 +44,6 @@ require('lspkind').init({
     Struct = "פּ ",
     Event = " ",
     Operator = " ",
-    TypeParameter = "",
-    Suggestion = "⭐"
+    TypeParameter = ""
   },
 })
