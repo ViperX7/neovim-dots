@@ -53,16 +53,7 @@ neorg.setup({
       config = {
         workspaces = {
           neorg = '~/Documents/notes/neorg',
-          gtd = '~/Documents/notes/gtd',
           journal = '~/Documents/notes/journal',
-        },
-      },
-    },
-    ['core.gtd.base'] = {
-      config = {
-        workspace = 'gtd',
-        displayers = {
-          close_after_task_select = false,
         },
       },
     },
