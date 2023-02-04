@@ -307,7 +307,11 @@ return packer.startup(function(use)
   ----- Integration
   -----------------------------------------------------------------------
   -- TMUX navigation
-  use { 'christoomey/vim-tmux-navigator' }
+  use({
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+  })
+  -- use { 'christoomey/vim-tmux-navigator' }
 
   -----------------------------------------------------
   -- Language Specific
@@ -371,22 +375,32 @@ return packer.startup(function(use)
   end }
 
 
-use {
+  use {
     "jcdickinson/codeium.nvim",
     requires = {
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim"
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim"
     },
     config = function()
-        require("codeium").setup({
-        })
+      require("codeium").setup({
+      })
     end,
-    cmd = "Codeium"
-}
+    keys = "<localleader>cs"
+  }
   -- Vim dispatch
   -- use {'tpope/vim-dispatch'}
 
-
+  use {
+    'Exafunction/codeium.vim',
+    config = function()
+      vim.g.codeium_disable_bindings = 1
+      vim.g.codeium_enabled = 0
+      vim.keymap.set('i', "<C-x>", function() return vim.fn['codeium#Accept']() end, { expr = true })
+      -- vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      -- vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+      -- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+    end,
+  }
 
   if packer_bootstrap then
     require('packer').sync()

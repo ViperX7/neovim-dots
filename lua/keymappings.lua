@@ -2,9 +2,11 @@ local utils = require('utils')
 local map = utils.map
 
 -------------------------------Vim Specific Key Mappings-----------------------------------
+-- Sessions
 
 -- leader
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ';'
 
 -- Movement
 -- Move vertically by visual line
@@ -18,32 +20,22 @@ map('n', '$', '<nop>')
 map('n', '^', '<nop>')
 
 -- Sessions
-map('n', '<leader>so', ':OpenSession<Space>')
-map('n', '<leader>ss', ':SaveSession<Space>')
-map('n', '<leader>sd', ':DeleteSession<CR>')
-map('n', '<leader>sc', ':CloseSession<CR>')
+-- TODO Session Handelling
+-- map('n', '<leader>so', ':OpenSession<Space>')
+-- map('n', '<leader>ss', ':SaveSession<Space>')
+-- map('n', '<leader>sd', ':DeleteSession<CR>')
+-- map('n', '<leader>sc', ':CloseSession<CR>')
 
 -- Tabs
 -- map('n','<Tab>','gt')
 -- map('n','<S-Tab>','gT')
-map('n', '<silent> <S-t>', ':tabnew<CR>')
+-- map('n', '<silent> <S-t>', ':tabnew<CR>')
 
 -- Command key optimisation : = ;
 -- map('n',':',';')
 
 -- Set working directory
 map('n', '<leader>.', ':lcd %:p:h<CR>')
-
--- SUSPENDED in favour of fuzzy finder
--- Opens an edit command with the path of the currently edited file filled in
--- noremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
--- " Open vsplit edit command with the path of the currently edited file filled
--- noremap <leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
--- " Opens a tab edit command with the path of the currently edited file filled
--- noremap <leader>et :table <C-R>=expand("%:p:h") . "/" <CR>
-
--- Enable disable indent lines
-map('n', '<leader>zi', ':IndentBlanklineToggle<CR>')
 
 -- Split
 map('n', '<leader>h', ':<C-u>split<CR>')
@@ -56,22 +48,17 @@ map('', '<C-k>', '<C-w>k', {})
 map('', '<C-l>', '<C-w>l', {})
 
 -- Use alt + hjkl to resize windows
-map('n', '<M-j>', ':resize -2<CR>')
-map('n', '<M-k>', ':resize +2<CR>')
-map('n', '<M-h>', ':vertical resize -2<CR>')
-map('n', '<M-l>', ':vertical resize +2<CR>')
+map('n', '<M-h>', ':lua require("tmux").resize_left()<CR>')
+map('n', '<M-l>', ':lua require("tmux").resize_right()<CR>')
+map('n', '<M-k>', ':lua require("tmux").resize_top()<CR>')
+map('n', '<M-j>', ':lua require("tmux").resize_bottom()<CR>')
 
 -- Visual mode Text Selection
 -- Vmap for maintain Visual Mode after shifting > and <
-map('v', '<', '<gv', {})
-map('v', '>', '>gv', {})
-
+-- map('v', '<', '<gv', {})
+-- map('v', '>', '>gv', {})
 map('v', '<left>', '<gv', {})
 map('v', '<right>', '>gv', {})
-
--- Move visual block
-map('v', 'Jv', "m '>+1<CR>gv=gv")
-map('v', 'K', "m '<-2<CR>gv=gv")
 map('v', '<down>', ":m '>+1<CR>gv=gv")
 map('v', '<up>', ":m '<-2<CR>gv=gv")
 
@@ -90,15 +77,17 @@ map('n', '<M-f>', 'za')
 map('n', '<leader><space>', ':nohlsearch<CR>')
 
 -- Light/dark modemode
-map('n', '<leader>zd', ':set background=dark<CR>')
-map('n', '<leader>zl', ':set background=light<CR>')
+map('n', '<localleader>td', ':set background=dark<CR>')
+map('n', '<localleader>tl', ':set background=light<CR>')
 -- Quitting
 map('n', '<leader>w', ':w<CR>')
 map('n', '<leader>q', ':wq<CR>')
 map('n', '<leader>W', ':wqall<CR>')
 map('n', '<leader>Q', ':q!<CR>')
 map('n', 'qq', ':q<CR>')
-map('n', '<leader>a', ':lua vim.lsp.buf.format()<CR>')
+
+
+map('n', '<localleader>w', ':lua vim.lsp.buf.format()<CR>:w<CR>')
 
 -- Copy/Paste/Cut
 -- if vim.api.nvim_get_option('unnamedplus') then
@@ -118,6 +107,12 @@ map('i', 'jk', '<Esc>') -- jk to escape
 map('i', 'kj', '<Esc>') -- jk to escape
 -- map('', 'lh', '<Esc>:w<cr>')           -- jk to escape
 -------------------------------------------------------------------------------
+---
+------------------------  Feature Toggles -------------------------------------
+-- Enable disable indent lines
+map('n', '<leader>zi', ':IndentBlanklineToggle<CR>')
+
+
 
 ---------------------- Nvim-tree ------------------------------
 map('n', '<leader>i', ':NvimTreeToggle<CR>')
@@ -135,20 +130,74 @@ map('n', '<leader>ggw', ':Gitsigns toggle_word_diff<CR>')
 map('n', '<leader>ggl', ':Gitsigns toggle_linehl<CR>')
 map('n', '<leader>ggn', ':Gitsigns toggle_numhl<CR>')
 map('n', '<leader>ggb', ':Gitsigns toggle_current_line_blame<CR>')
+map('n', '<leader>ggp', ':Gitsigns preview_hunk_inline<CR>')
+--- Actions
+map('n', '<leader>gas', ':Gitsigns stage_hunk<CR>')
+map('n', '<leader>gar', ':Gitsigns reset_hunk<CR>')
+map('n', '<leader>gaS', ':Gitsigns stage_buffer<CR>')
+map('n', '<leader>gaR', ':Gitsigns reset_buffer<CR>')
+map('v', '<leader>gas', ':Gitsigns stage_hunk<CR>')
+map('v', '<leader>gar', ':Gitsigns reset_hunk<CR>')
+map('v', '<leader>gaS', ':Gitsigns stage_buffer<CR>')
+map('v', '<leader>gaR', ':Gitsigns reset_buffer<CR>')
+
+
+
+-- local gs = package.loaded.gitsigns
+-- -- Navigation
+-- map('n', ']c', function()
+--   if vim.wo.diff then return ']c' end
+--   vim.schedule(function() gs.next_hunk() end)
+--   return '<Ignore>'
+-- end, {expr=true})
+--
+-- map('n', '[c', function()
+--   if vim.wo.diff then return '[c' end
+--   vim.schedule(function() gs.prev_hunk() end)
+--   return '<Ignore>'
+-- end, {expr=true})
+--
+-- -- Actions
+-- map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+-- map('n', '<leader>hu', gs.undo_stage_hunk)
+-- map('n', '<leader>hR', gs.reset_buffer)
+-- map('n', '<leader>hp', gs.preview_hunk)
+-- map('n', '<leader>hb', function() gs.blame_line{full=true} end)
+--
+-- map('n', '<leader>hd', gs.diffthis)
+-- map('n', '<leader>hD', function() gs.diffthis('~') end)
+--
+
+
+
+-- Text object
+-- map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+
+
+
 
 ----------------------- Telescope --------------------------------
+--- File Navigation
+map('n', '<leader>fp', ':lua require"telescope".extensions.project.project{}<CR>')
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-map('n', '<leader>fe', '<cmd>Telescope symbols<cr>')
-map('n', '<leader>fs', '<cmd>Telescope spell_sugest<cr>')
-
-map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
-map('n', '<leader>fp', ':lua require"telescope".extensions.project.project{}<CR>')
-map('n', ';', '<cmd>Telescope buffers<cr>')
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+
+-- Insert stuff
+map('n', '<leader>fe', '<cmd>Telescope symbols<cr>')
+map('n', '<leader>fs', '<cmd>Telescope spell_suggest<cr>')
 map('n', '<leader>p', '<cmd>Telescope registers<cr>')
 
+-- lookup stuff
+map('n', '<leader>fm', '<cmd>Telescope man_pages<cr>')
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+
+-- Actions
+map('n', '<leader>fc', '<cmd>Telescope commands<cr>')
+map('n', '<leader>fo', '<cmd>Telescope colorscheme<cr>')
+
+-- lsp stuff
 map('n', 'gr', '<cmd>Telescope lsp_references<cr>')
 map('n', 'gs', '<cmd>Telescope lsp_workspace_symbols<cr>')
 map('n', 'gws', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
@@ -168,18 +217,20 @@ map('n', '<leader>Fd', ':FlutterDevices<cr>')
 map('n', '<leader>FD', ':FlutterVisualDebug<cr>')
 
 -- SnipRun
-map('n', '<S-CR>', ':SnipRun<cr>')
-map('v', '<S-CR>', ':lua require"sniprun".run("v")<cr>')
+-- map('n', '<S-CR>', ':SnipRun<cr>')
 map('n', '<leader>rf', ':lua require"sniprun".run("n")<CR>')
 map('n', '<leader>rr', ':RunCode<CR>')
+map('v', '<leader>rr', ':lua require"sniprun".run("v")<cr>')
 map('n', '<leader>ri', ':lua require"sniprun.live_mode".toggle()<CR>')
-map('n', '<leader>rmi', ':MagmaInit<CR>1<CR><CR>')
-map('n', '<leader>rms', ':MagmaShow<CR>')
-map('n', '<leader>rl', ':MagmaEvaluateLine<CR>')
-map('n', '<leader>rmr', ':MagmaReevaluateCell<CR>')
-map('n', 'm', '0v/@<CR>k$:<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>:nohlsearch<CR>')
-map('v', 'm', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
-map('v', '<leader>rl', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
+
+map('n', '<localleader>ri', ':MagmaInit<CR>1<CR><CR>')
+map('n', '<localleader>rs', ':MagmaShow<CR>')
+map('n', '<localleader>rl', ':MagmaEvaluateLine<CR>')
+map('n', '<localleader>rr', ':MagmaReevaluateCell<CR>')
+map('n', '<S-CR>', '0v/@<CR>k$:<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>:nohlsearch<CR>')
+map('v', '<S-CR>', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
+-- map('n', 'm', '0v/@<CR>k$:<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>:nohlsearch<CR>')
+-- map('v', 'm', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
 
 -- Neogen
 map('n', '<leader>cp', ':Neogen file<CR>')
@@ -188,11 +239,11 @@ map('n', '<leader>cc', ':Neogen class<CR>')
 map('n', '<leader>ct', ':Neogen type<CR>')
 
 ---------------------- hop -----------------------------
-map('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})
-map('n', 's', ":HopWord<cr>", {})
+map('n', 's', "<cmd>lua require'hop'.hint_char2()<cr>", {})
+map('n', 'S', ":HopWord<cr>", {})
 
 -- Symbol outline
-map('n', '<F8>', ':SymbolsOutline<CR>', {})
+map('n', '<leader>o', ':SymbolsOutline<CR>', {})
 
 ----------------------- nvim-compe --------------------------
 -- map('i', '<silent><expr> <C-Space>', 'compe#complete()')
@@ -245,7 +296,7 @@ map("n", "<M-b>", ':BufferLinePick<CR>', opt)
 
 ----------------------- Ranger ----------------------------------
 
-map("n", "<leader>o", ':RnvimrToggle<CR>', opt)
+map("n", "<localleader>o", ':RnvimrToggle<CR>', opt)
 
 
 ----------------------- Mdeval ----------------------------------
@@ -298,3 +349,6 @@ map("n", "<leader>ll", ':StartupTime --tries 100<CR>', opt)
 -- map("n", "<C-f>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
 -- -- scroll up hover doc
 -- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
+
+-- map("n", "<localleader>cc", ':Codeium Enable<CR>:lua vim.notify("Codeium Enabled")<CR>', opt)
+map("n", "<localleader>cc", ':lua vim.g.codeium_enabled = (vim.g.codeium_enabled+1)%2<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
