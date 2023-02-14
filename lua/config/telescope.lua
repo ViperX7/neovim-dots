@@ -64,6 +64,6 @@ telescope.setup{
 }
 
 -- Telescope  Extensions
-telescope.load_extension('media_files')
+-- telescope.load_extension('media_files')
 telescope.load_extension('project')
 

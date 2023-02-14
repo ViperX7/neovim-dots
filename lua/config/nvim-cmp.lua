@@ -74,7 +74,7 @@ cmp.setup({
       if vim.g.codeium_enabled == 1  and  " 0 " ~= vim.fn['codeium#GetStatusString']() then
         -- vim.notify("cmp")
         -- vim.notify("*"..vim.fn['codeium#Accept']() .. "*")
-        vim.api.nvim_input("<C-x>")
+        vim.api.nvim_input("<C-r>")
         -- vim.notify("cmpdone")
       elseif cmp.visible() then
         cmp.select_next_item()

@@ -81,11 +81,11 @@ utils.opt('o', 'ignorecase', true) -- ignore case when searching
 
 
 -- Code Folding
-utils.opt('o', 'foldenable',true)       -- enable folding
-cmd 'set foldlevelstart=10'           -- open folds less than 10 lines
-cmd 'set foldnestmax=10'              -- 10 nested fold max
+utils.opt('o', 'foldenable', true) -- enable folding
+cmd 'set foldlevelstart=10' -- open folds less than 10 lines
+cmd 'set foldnestmax=10' -- 10 nested fold max
 -- fold based on indent level
-cmd 'set foldmethod=indent'       -- accepted: marker, manual, expr, syntax, diff, indent
+cmd 'set foldmethod=indent' -- accepted: marker, manual, expr, syntax, diff, indent
 
 
 
@@ -142,4 +142,11 @@ vim.g.loaded_man = 1
 -- vim.g.loaded_remote_plugins = 1
 vim.g.loaded_shada_plugin = 1
 vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_tutor_mode_plugin= 1
+vim.g.loaded_tutor_mode_plugin = 1
+
+
+
+
+-- plugin specific--------------------------
+vim.g.codeium_enabled = 0
+------------------------------------------

@@ -6,7 +6,7 @@ local sources = {
   null_ls.builtins.formatting.prettier,
   null_ls.builtins.formatting.markdownlint,
   null_ls.builtins.formatting.mdformat,
-  null_ls.builtins.diagnostics.mdl,
+  -- null_ls.builtins.diagnostics.mdl,
 
   -- diagnostics
   null_ls.builtins.diagnostics.eslint_d,
@@ -17,12 +17,12 @@ local sources = {
   null_ls.builtins.diagnostics.codespell,
 
   null_ls.builtins.diagnostics.write_good.with({
-     extra_filetypes = { "norg" },
-    }),
+    extra_filetypes = { "norg" },
+  }),
 
   null_ls.builtins.diagnostics.cspell.with({
-     filetypes = { "norg","markdown" },
-    }),
+    filetypes = { "norg", "markdown" },
+  }),
 
   null_ls.builtins.diagnostics.cppcheck,
   null_ls.builtins.diagnostics.deadnix,
@@ -34,6 +34,7 @@ local sources = {
   null_ls.builtins.formatting.isort,
   null_ls.builtins.formatting.codespell,
   null_ls.builtins.formatting.shfmt,
+  null_ls.builtins.formatting.csharpier,
   -- null_ls.builtins.formatting.stylua,
   -- null_ls.builtins.diagnostics.gccdiag,
   -- null_ls.builtins.diagnostics.gdblint,

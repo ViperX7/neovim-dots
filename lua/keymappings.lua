@@ -67,6 +67,8 @@ map('n', '<Left>', ':echoe "Use h"<CR>')
 map('n', '<Right>', ':echoe "Use l"<CR>')
 map('n', '<Up>', ':echoe "Use k"<CR>')
 map('n', '<Down>', ':echoe "Use j"<CR>')
+map('n', 'l', 'w')
+map('n', 'h', 'b')
 
 -- Code Folding
 -- space open/closes folds

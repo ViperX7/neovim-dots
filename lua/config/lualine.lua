@@ -11,17 +11,22 @@ end
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'onenord',
+    theme = 'catppuccin',
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
       "NvimTree",
+      "DiffviewFiles",
       statusline = {},
       winbar = {},
     },
-    ignore_focus = {},
+    ignore_focus = {
+
+      "NvimTree",
+      "DiffviewFiles",
+    },
     always_divide_middle = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
