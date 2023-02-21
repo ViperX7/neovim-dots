@@ -38,7 +38,7 @@ packer.init {
 
 ---@diagnostic disable: undefined-global
 return packer.startup(function(use)
-
+  -- ------------------- Plugins  -----------------------
   -- startup optimizations
   use { 'lewis6991/impatient.nvim' }
 
@@ -63,6 +63,9 @@ return packer.startup(function(use)
     'marko-cerovac/material.nvim',
     'rmehri01/onenord.nvim',
     'NTBBloodbath/doom-one.nvim',
+    { "catppuccin/nvim", as = "catppuccin", config = function()
+      require("config.catppuccin")
+    end }
   }
 
   -- Essentials --
@@ -70,6 +73,9 @@ return packer.startup(function(use)
     -- UI stuff
     { 'nvim-lua/plenary.nvim' },
     { "MunifTanjim/nui.nvim" },
+    { 'stevearc/dressing.nvim', init = function()
+      require("config.dressing")
+    end },
     -- Icons
     { 'kyazdani42/nvim-web-devicons' },
   }
@@ -79,7 +85,10 @@ return packer.startup(function(use)
   -- use { "folke/noice.nvim", config = function() require("config.noice") end }
 
   -- Notifications --
-  use { 'rcarriga/nvim-notify', config = function() vim.notify = require("notify") require("notify").setup() end }
+  use { 'rcarriga/nvim-notify', config = function()
+    vim.notify = require("notify")
+    require("notify").setup()
+  end }
 
   -- LSP status indicator
   use { 'j-hui/fidget.nvim', config = function() require("fidget").setup() end }
@@ -134,7 +143,7 @@ return packer.startup(function(use)
   -- Git related stuff
   use {
     { 'lewis6991/gitsigns.nvim', config = function() require("config.gitsign") end }, -- git gigns in signcolumn
-    { 'TimUntersberger/neogit', config = function() require("config.neogit") end }, -- git manager
+    { 'TimUntersberger/neogit',  config = function() require("config.neogit") end }, -- git manager
     { "sindrets/diffview.nvim" }, -- diff helper
   }
 
@@ -238,13 +247,22 @@ return packer.startup(function(use)
 
   -- Fast movement
   -- use {'easymotion/vim-easymotion'}
+  -- use {
+  --   'phaazon/hop.nvim',
+  --   branch = 'v1', -- optional but strongly recommended
+  --   config = function()
+  --     require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  --   end
+  -- }
   use {
-    'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
+    "ggandor/leap.nvim",
     config = function()
-      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      local leap = require("leap")
+      leap.add_default_mappings()
+      leap.opts.safe_labels = {}
     end
   }
+
   use { 'tpope/vim-repeat' }
 
   -- Scrolling
