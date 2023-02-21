@@ -160,15 +160,16 @@ return packer.startup(function(use)
   -- Language Servers
   ---------------------------------------------------------------------
   use { -- Lsp Manager --
-    { "williamboman/mason.nvim", config = function() require("mason").setup() end },
+    { "williamboman/mason.nvim",          config = function() require("mason").setup() end },
 
     -- LSP config providers
     { "williamboman/mason-lspconfig.nvim" },
-    { "neovim/nvim-lspconfig", config = function() local lspconfig = require("lspconfig") end },
+    { "neovim/nvim-lspconfig",            config = function() local lspconfig = require("lspconfig") end },
 
     -- Formatting
-    { 'jose-elias-alvarez/null-ls.nvim', config = function() require("config.nullls") end },
+    { 'jose-elias-alvarez/null-ls.nvim',  config = function() require("config.nullls") end },
   }
+
 
   use { -- LSP Utils --
     -- Diagnostic colors for lsp
@@ -178,7 +179,7 @@ return packer.startup(function(use)
     { "folke/trouble.nvim", },
 
     -- Lsp utilities
-    { 'tami5/lspsaga.nvim', config = function() require("config.lspsaga") end },
+    { 'tami5/lspsaga.nvim',    config = function() require("config.lspsaga") end },
 
     -- goto preview live
     { 'rmagatti/goto-preview', config = function() require("config.goto_preview") end },
@@ -196,13 +197,13 @@ return packer.startup(function(use)
 
   use { -- Treesetter --
     { 'nvim-treesitter/nvim-treesitter', config = function() require("config.treesetter") end },
-    { 'windwp/nvim-ts-autotag', ft = { "html", "markdown", "xml" } },
+    { 'windwp/nvim-ts-autotag',          ft = { "html", "markdown", "xml" } },
   }
 
 
   use { -- Comment --
     { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
+    { 'numToStr/Comment.nvim',                      config = function() require('Comment').setup() end },
 
     event = 'BufEnter'
   }
@@ -273,7 +274,7 @@ return packer.startup(function(use)
   ---------------------------------------------------------------------
   use {
     -- Completions --
-    { 'hrsh7th/nvim-cmp', config = function() require("config.nvim-cmp") end },
+    { 'hrsh7th/nvim-cmp',                    config = function() require("config.nvim-cmp") end },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-calc' },
@@ -281,9 +282,9 @@ return packer.startup(function(use)
     { 'hrsh7th/cmp-emoji' },
     { 'andersevenrud/cmp-tmux' },
 
-    { 'romgrk/fzy-lua-native', run = 'make' },
-    { 'tzachar/cmp-fuzzy-buffer', requires = { 'tzachar/fuzzy.nvim' } },
-    { 'tzachar/cmp-fuzzy-path', requires = { 'tzachar/fuzzy.nvim' } },
+    { 'romgrk/fzy-lua-native',               run = 'make' },
+    { 'tzachar/cmp-fuzzy-buffer',            requires = { 'tzachar/fuzzy.nvim' } },
+    { 'tzachar/cmp-fuzzy-path',              requires = { 'tzachar/fuzzy.nvim' } },
 
     { 'hrsh7th/cmp-nvim-lua' },
     { 'hrsh7th/cmp-nvim-lsp' },
@@ -291,7 +292,7 @@ return packer.startup(function(use)
     { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
 
     -- Add symbols to completion menu
-    { 'onsails/lspkind-nvim', config = function() require("config.lspkind") end },
+    { 'onsails/lspkind-nvim',                config = function() require("config.lspkind") end },
   }
 
 
@@ -299,7 +300,7 @@ return packer.startup(function(use)
     -- Snippets --
     -- use {'hrsh7th/vim-vsnip'},
     -- use 'hrsh7th/vim-vsnip-integ',
-    { 'SirVer/ultisnips', config = function() require("config.ultisnips") end },
+    { 'SirVer/ultisnips',                   config = function() require("config.ultisnips") end },
     { 'quangnguyen30192/cmp-nvim-ultisnips' },
     -- use {'honza/vim-snippets'},
     { 'norcalli/snippets.nvim' },
@@ -346,7 +347,7 @@ return packer.startup(function(use)
   -- Flutter
   use {
     -- { 'dart-lang/dart-vim-plugin', ft = "dart" },
-    { 'akinsho/flutter-tools.nvim', ft = "dart", config = function() require("config.fluttertools") end },
+    { 'akinsho/flutter-tools.nvim',       ft = "dart", config = function() require("config.fluttertools") end },
     { 'Neevash/awesome-flutter-snippets', ft = "dart" },
   }
 
@@ -405,8 +406,6 @@ return packer.startup(function(use)
     end,
     keys = "<localleader>cs"
   }
-  -- Vim dispatch
-  -- use {'tpope/vim-dispatch'}
 
   use {
     'Exafunction/codeium.vim',
@@ -423,5 +422,4 @@ return packer.startup(function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
-
 end)
