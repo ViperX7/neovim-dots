@@ -221,8 +221,8 @@ map('n', '<leader>FD', ':FlutterVisualDebug<cr>')
 -- SnipRun
 -- map('n', '<S-CR>', ':SnipRun<cr>')
 map('n', '<leader>rf', ':lua require"sniprun".run("n")<CR>')
-map('n', '<leader>rr', ':RunCode<CR>')
-map('v', '<leader>rr', ':lua require"sniprun".run("v")<cr>')
+map('n', '<leader>rr', ':w<cr>:RunCode<CR>')
+map('v', '<leader>rr', ':w<cr>:lua require"sniprun".run("v")<cr>')
 map('n', '<leader>ri', ':lua require"sniprun.live_mode".toggle()<CR>')
 
 map('n', '<localleader>ri', ':MagmaInit<CR>1<CR><CR>')
@@ -241,8 +241,8 @@ map('n', '<leader>cc', ':Neogen class<CR>')
 map('n', '<leader>ct', ':Neogen type<CR>')
 
 ---------------------- hop -----------------------------
-map('n', 's', "<cmd>lua require'hop'.hint_char2()<cr>", {})
-map('n', 'S', ":HopWord<cr>", {})
+-- map('n', 's', "<cmd>lua require'hop'.hint_char2()<cr>", {})
+-- map('n', 'S', ":HopWord<cr>", {})
 
 -- Symbol outline
 map('n', '<leader>o', ':SymbolsOutline<CR>', {})

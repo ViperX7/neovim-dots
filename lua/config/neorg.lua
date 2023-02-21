@@ -8,7 +8,7 @@ neorg.setup({
     ['core.norg.concealer'] = {
       config = {
         -- markup_preset = 'dimmed',
-        -- icon_preset = 'diamond',
+        icon_preset = 'basic', -- diamond
         width = "content",
       },
     },
@@ -52,7 +52,7 @@ neorg.setup({
     ['core.norg.dirman'] = {
       config = {
         workspaces = {
-          neorg = '~/Documents/notes/neorg',
+          main = '~/Documents/notes/neorg',
           journal = '~/Documents/notes/journal',
         },
       },
