@@ -123,8 +123,8 @@ map('n', '<leader>i', ':NvimTreeToggle<CR>')
 
 
 ------------------------ Neogit Diffview Gitsigns ----------------------------
-map('n', '<leader>gs', '<cmd>Neogit<CR>') -- Git status
-map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>') -- Git diff
+map('n', '<leader>gs', '<cmd>Neogit<CR>')              -- Git status
+map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>')        -- Git diff
 map('n', '<leader>gl', '<cmd>DiffviewFileHistory<CR>') -- Git log
 ---- Togglabless
 map('n', '<leader>ggd', ':Gitsigns toggle_deleted<CR>')
@@ -233,6 +233,19 @@ map('n', '<S-CR>', '0v/@<CR>k$:<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>:nohls
 map('v', '<S-CR>', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
 -- map('n', 'm', '0v/@<CR>k$:<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>:nohlsearch<CR>')
 -- map('v', 'm', ':<BS><BS><BS><BS><BS>MagmaEvaluateVisual<CR>')
+
+---------------------- Binsploit specific keybindings -----------------------
+map('n', '<leader>sr', ':lua _binspgdb_toggle("remote")<CR>')
+
+map('n', '<leader>ss', ':lua _binspgdb_toggle("")<CR>')
+map('n', '<leader>sp', ':lua _binspgdb_toggle("preload")<CR>')
+map('n', '<leader>si', ':lua _binspgdb_toggle("reinit")<CR>')
+
+map('n', '<leader>sdd', ':lua _binspgdb_toggle("gdb")<CR>')
+map('n', '<leader>sdp', ':lua _binspgdb_toggle("gdb preload")<CR>')
+map('n', '<leader>sdi', ':lua _binspgdb_toggle("gdb reinit")<CR>')
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxx Binsploit specific keybindings END xxxxxxxxxxxxx
 
 -- Neogen
 map('n', '<leader>cp', ':Neogen file<CR>')
@@ -353,4 +366,5 @@ map("n", "<leader>ll", ':StartupTime --tries 100<CR>', opt)
 -- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
 
 -- map("n", "<localleader>cc", ':Codeium Enable<CR>:lua vim.notify("Codeium Enabled")<CR>', opt)
-map("n", "<localleader>cc", ':lua vim.g.codeium_enabled = (vim.g.codeium_enabled+1)%2<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
+map("n", "<localleader>cc",
+':lua vim.g.codeium_enabled = (vim.g.codeium_enabled+1)%2<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
