@@ -42,10 +42,10 @@ map('n', '<leader>h', ':<C-u>split<CR>')
 map('n', '<leader>v', ':<C-u>vsplit<CR>')
 
 -- Easy window navigation
-map('', '<C-h>', '<C-w>h', {})
-map('', '<C-j>', '<C-w>j', {})
-map('', '<C-k>', '<C-w>k', {})
-map('', '<C-l>', '<C-w>l', {})
+-- map('', '<C-h>', '<C-w>h', {})
+-- map('', '<C-j>', '<C-w>j', {})
+-- map('', '<C-k>', '<C-w>k', {})
+-- map('', '<C-l>', '<C-w>l', {})
 
 -- Use alt + hjkl to resize windows
 map('n', '<M-h>', ':lua require("tmux").resize_left()<CR>')
@@ -89,7 +89,7 @@ map('n', '<leader>Q', ':q!<CR>')
 map('n', 'qq', ':q<CR>')
 
 
-map('n', '<localleader>w', ':lua vim.lsp.buf.format()<CR>:w<CR>')
+map('n', '<localleader>w', ':lua vim.lsp.buf.format({timeout_ms=5000})<CR>:w<CR>')
 
 -- Copy/Paste/Cut
 -- if vim.api.nvim_get_option('unnamedplus') then
@@ -344,12 +344,12 @@ map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_actio
 
 --  packer
 
-map("n", "<leader>Pi", ':PackerInstall<CR>', opt)
-map("n", "<leader>Pc", ':PackerClean<CR>', opt)
-map("n", "<leader>Pu", ':PackerUpdate<CR>', opt)
-map("n", "<leader>Ps", ':PackerStatus<CR>', opt)
-map("n", "<leader>Py", ':PackerSync<CR>', opt)
-map("n", "<leader>Po", ':PackerCompile<CR>', opt)
+map("n", "<localleader>pi", ':Lazy install<CR>', opt)
+map("n", "<localleader>pc", ':Lazy clean<CR>', opt)
+map("n", "<localleader>pu", ':Lazy update<CR>', opt)
+map("n", "<localleader>pp", ':Lazy profile<CR>', opt)
+map("n", "<localleader>py", ':Lazy sync<CR>', opt)
+map("n", "<localleader>po", ':Lazy compile<CR>', opt)
 
 
 -- startuptime
