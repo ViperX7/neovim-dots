@@ -17,8 +17,6 @@ require("lazy").setup({
 
 
   -- ------------------- Plugins  -----------------------
-  -- startup optimizations
-  { 'lewis6991/impatient.nvim' },
 
   ----------------------------------------------------------------------
   -- Package Management
@@ -32,9 +30,9 @@ require("lazy").setup({
 
   {
     -- Color schemes --
-    -- { 'olimorris/onedarkpro.nvim' } -- removed because confiicts with others
-    'sainnhe/gruvbox-material',
+    -- { 'olimorris/onedarkpro.nvim' }, -- removed because confiicts with others
     'navarasu/onedark.nvim',
+    'sainnhe/gruvbox-material',
     'EdenEast/nightfox.nvim',
     'folke/tokyonight.nvim',
     'shaunsingh/moonlight.nvim',
@@ -150,10 +148,10 @@ require("lazy").setup({
 
 
   -- Editor config support --
-  {'gpanders/editorconfig.nvim'},
+  { 'gpanders/editorconfig.nvim' },
 
   -- Buffer Management --
-  {'famiu/bufdelete.nvim'},
+  { 'famiu/bufdelete.nvim' },
 
 
 
@@ -204,8 +202,8 @@ require("lazy").setup({
 
   {
     -- Comment --
-    { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    { 'numToStr/Comment.nvim',                      config = function() require('Comment').setup() end },
+    { 'JoosepAlviste/nvim-ts-context-commentstring', ft = { "html" } },
+    { 'numToStr/Comment.nvim',                       config = function() require('Comment').setup() end },
     event = 'BufEnter'
   },
 
@@ -216,7 +214,7 @@ require("lazy").setup({
     -- Highlight pairs
     { 'andymass/vim-matchup' },
     -- Rainbow paren
-    { 'p00f/nvim-ts-rainbow' },
+    -- { 'p00f/nvim-ts-rainbow' },
     event = 'BufEnter'
   },
 
@@ -299,8 +297,8 @@ require("lazy").setup({
     -- Snippets --
     -- {'hrsh7th/vim-vsnip'},
     -- use 'hrsh7th/vim-vsnip-integ',
-    { 'SirVer/ultisnips',                   config = function() require("config.ultisnips") end },
-    { 'quangnguyen30192/cmp-nvim-ultisnips' },
+    -- { 'SirVer/ultisnips',                   config = function() require("config.ultisnips") end },
+    -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
     -- {'honza/vim-snippets'},
     { 'norcalli/snippets.nvim' },
     { 'L3MON4D3/LuaSnip' },
@@ -336,87 +334,109 @@ require("lazy").setup({
   -----------------------------------------------------
 
   -- Lua
-      {
-        { 'tjdevries/nlua.nvim' },
-        { 'euclidianAce/BetterLua.vim' }, --  better Lua syntax highlighting
-        { 'tjdevries/manillua.nvim' }, -- fancy lua folds, you can check this out.
-        ft = "lua",
-      },
+  {
+    { 'tjdevries/nlua.nvim' },
+    { 'euclidianAce/BetterLua.vim' }, --  better Lua syntax highlighting
+    { 'tjdevries/manillua.nvim' },    -- fancy lua folds, you can check this out.
+    ft = "lua",
+  },
 
   -- Flutter
-      {
-        -- { 'dart-lang/dart-vim-plugin', ft = "dart" },
-        { 'akinsho/flutter-tools.nvim',       ft = "dart", config = function() require("config.fluttertools") end },
-        { 'Neevash/awesome-flutter-snippets', ft = "dart" },
-      },
+  {
+    -- { 'dart-lang/dart-vim-plugin', ft = "dart" },
+    { 'akinsho/flutter-tools.nvim',       ft = "dart", config = function() require("config.fluttertools") end },
+    { 'Neevash/awesome-flutter-snippets', ft = "dart" },
+  },
 
 
   -- Markdown
-      { 'suan/vim-instant-markdown', ft = "markdown" },
+  { 'suan/vim-instant-markdown', ft = "markdown" },
 
-      { 'jubnzv/mdeval.nvim',
-        config = function()
-          require("config.mdeval")
-        end, ft = { "markdown", "norg" },
-      },
+  {
+    'jubnzv/mdeval.nvim',
+    config = function()
+      require("config.mdeval")
+    end,
+    ft = { "markdown", "norg" },
+  },
   -- orgmode
-      { "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers",
-        config = function()
-          require("config.neorg")
-        end,
-        ft = "norg", cmd = "Neorg" },
-      { 'ViperX7/nvim-FeMaco.lua', config = function() require("femaco").setup() end,
-        ft = { "markdown", "norg", "neorg" } },
-      { "folke/zen-mode.nvim",
-        config = function()
-          require("config.zenmode")
-        end },
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    config = function()
+      require("config.neorg")
+    end,
+    ft = "norg",
+    cmd = "Neorg"
+  },
+  {
+    'ViperX7/nvim-FeMaco.lua',
+    config = function() require("femaco").setup() end,
+    ft = { "markdown", "norg", "neorg" }
+  },
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("config.zenmode")
+    end
+  },
 
-      { 'jdhao/better-escape.vim', event = 'InsertEnter', config = function()
-        vim.g.better_escape_shortcut = { "jk", "kj" }
-        vim.g.better_escape_interval = 50
-      end },
+  {
+    'jdhao/better-escape.vim',
+    event = 'InsertEnter',
+    config = function()
+      vim.g.better_escape_shortcut = { "jk", "kj" }
+      vim.g.better_escape_interval = 50
+    end
+  },
 
   -- Code runner
-      { 'michaelb/sniprun', build = 'bash ./install.sh' },
-      { 'CRAG666/code_runner.nvim', config = function()
-        require("config.code_runner")
-      end },
+  { 'michaelb/sniprun',  build = 'bash ./install.sh' },
+  {
+    'CRAG666/code_runner.nvim',
+    config = function()
+      require("config.code_runner")
+    end
+  },
 
   -- smali reversing
-      { "mzlogin/vim-smali", ft = "smali" },
+  { "mzlogin/vim-smali", ft = "smali" },
   -- python
 
-      { 'dccsillag/magma-nvim', build = ':UpdateRemotePlugins', config = function()
-        require("config.magma")
-      end },
+  {
+    'dccsillag/magma-nvim',
+    build = ':UpdateRemotePlugins',
+    config = function()
+      require("config.magma")
+    end
+  },
 
 
-      {
-        "jcdickinson/codeium.nvim",
-        dependencies = {
-          "nvim-lua/plenary.nvim",
-          "MunifTanjim/nui.nvim"
-        },
-        config = function()
-          require("codeium").setup({
-          })
-        end,
-        keys = "<localleader>cs"
-      },
+  {
+    "jcdickinson/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim"
+    },
+    config = function()
+      require("codeium").setup({
+      })
+    end,
+    keys = "<localleader>cs"
+  },
 
-      {
-        'Exafunction/codeium.vim',
-        config = function()
-          vim.g.codeium_disable_bindings = 1
-          vim.g.codeium_enabled = 0
-          vim.keymap.set('i', "<C-x>", function() return vim.fn['codeium#Accept']() end, { expr = true })
-          -- vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-          -- vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-          -- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-        end,
-      },
+  {
+    'Exafunction/codeium.vim',
+    config = function()
+      vim.g.codeium_disable_bindings = 1
+      vim.g.codeium_enabled = 0
+      vim.keymap.set('i', "<C-x>", function() return vim.fn['codeium#Accept']() end, { expr = true })
+      -- vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      -- vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+      -- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+    end,
+    -- keys = "<localleader>cc"
+  },
 
 
 
