@@ -1,59 +1,54 @@
-local g = vim.g
-
-g.dashboard_default_executive ='telescope'
-g.dashboard_custom_header = {
-      '              ▄▄▄▄▄▄▄▄▄            ',
-      '           ▄█████████████▄          ',
-      '   █████  █████████████████  █████  ',
-      '   ▐████▌ ▀███▄       ▄███▀ ▐████▌  ',
-      '    █████▄  ▀███▄   ▄███▀  ▄█████    ',
-      '    ▐██▀███▄  ▀███▄███▀  ▄███▀██▌    ',
-      '     ███▄▀███▄  ▀███▀  ▄███▀▄███    ',
-      '     ▐█▄▀█▄▀███ ▄ ▀ ▄ ███▀▄█▀▄█▌    ',
-      '      ███▄▀█▄██ ██▄██ ██▄█▀▄███      ',
-      '       ▀███▄▀██ █████ ██▀▄███▀      ',
-      '      █▄ ▀█████ █████ █████▀ ▄█      ',
-      '      ███        ███        ███      ',
-      '      ███▄    ▄█ ███ █▄    ▄███      ',
-      '      █████ ▄███ ███ ███▄ █████      ',
-      '      █████ ████ ███ ████ █████      ',
-      '      █████ ████▄▄▄▄▄████ █████      ',
-      '       ▀███ █████████████ ███▀      ',
-      '         ▀█ ███ ▄▄▄▄▄ ███ █▀        ',
-      '            ▀█▌▐█████▌▐█▀            ',
-      '               ███████              ',
-   }
-
-vim.g.dashboard_default_executive = 'telescope'
-
-vim.g.dashboard_custom_section = {
-    b = {description = {'  Recently Used Files'}, command = 'Telescope oldfiles'},
-    a = {description = {'  Find File          '}, command = 'Telescope find_files'},
-    d = {description = {'  Find Word          '}, command = 'Telescope live_grep'},
-    f = {description = {'  File Manager        '}, command = 'RnvimrToggle'},
-    c = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
-    e = {description = {'  Configs            '}, command = ':e ~/.config/nvim/init.lua|:lcd %:p:h'},
-    g = {description = {'  Marks              '}, command = 'Telescope marks'}
-}
-
-
-vim.g.dashboard_custom_shortcut = {
-    a = 'f',
-    find_word = 'SPC f a',
-    last_session = 'SPC s l',
-    new_file = 'SPC c n',
-    book_marks = 'SPC f b',
-    find_history = 'SPC f h',
-}
-
-
-vim.cmd("let g:dashboard_session_directory = $HOME..'/.config/nvim/.sessions'")
-vim.cmd("let packages = len(globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1))")
-
-vim.api.nvim_exec([[
-let g:dashboard_custom_footer = [ 'Loaded '..packages..' plugins']
-]], false)
-
--- vim.g.dashboard_session_directory = '~/.cache/nvim/session'
--- vim.g.dashboard_custom_footer = {'ViperX7'}
-
+local db = require('dashboard')
+db.setup({
+  theme = 'hyper',
+  config = {
+    week_header = {
+      enable = true,
+    },
+    project = {
+      enable = true,
+    },
+    disable_move = true,
+    shortcut = {
+      {
+        desc = 'Update',
+        icon = ' ',
+        group = '@variable.builtin',
+        action = 'Lazy update',
+        key = 'u',
+      },
+      {
+        icon = ' ',
+        desc = 'Files',
+        group = '@number',
+        action = 'Telescope find_files',
+        key = 'f',
+      },
+      {
+        icon = ' ',
+        desc = 'Apps',
+        group = 'String',
+        action = 'Telescope app',
+        key = 'a',
+      },
+      {
+        icon = ' ',
+        desc = 'Projects',
+        group = 'Constant',
+        action = 'Telescope project',
+        key = 'p',
+      },
+    },
+  },
+  -- preview = {
+  --   command = 'cat | lolcat -F 0.3',
+  --   file_path = vim.env.HOME .. '/.config/nvim/static/neovim.cat',
+  --   file_height = 11,
+  --   file_width = 70,
+  -- },
+})
+vim.api.nvim_create_autocmd('TabNewEntered', {
+  callback = function()
+    vim.cmd('Dashboard')
+  end
+})

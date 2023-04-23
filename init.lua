@@ -1,6 +1,3 @@
--- Startup optimization
-require('impatient')
-
 -- Sensible defaults
 require('settings')
 
