@@ -5,7 +5,7 @@ neorg.setup({
     ['core.defaults'] = {},
     ['core.ui'] = {},
     -- ['core.neorgcmd'] = {},
-    ['core.norg.concealer'] = {
+    ['core.concealer'] = {
       config = {
         -- markup_preset = 'dimmed',
         icon_preset = 'basic', -- diamond
@@ -19,7 +19,7 @@ neorg.setup({
         neorg_leader = '<leader>n',
       },
     },
-    ['core.norg.qol.toc'] = {
+    ['core.qol.toc'] = {
       config = {
         close_split_on_jump = false,
         toc_split_placement = 'right',
@@ -28,7 +28,7 @@ neorg.setup({
     -- ['core.norg.esupports.hop'] = {},
     -- ['core.integrations.telescope'] = {},
     -- ['core.zettelkasten'] = {},
-    ['core.norg.journal'] = {
+    ['core.journal'] = {
       config = {
         workspaces = 'journal',
       },
@@ -49,7 +49,7 @@ neorg.setup({
         extensions = "all",
       }
     },
-    ['core.norg.dirman'] = {
+    ['core.dirman'] = {
       config = {
         workspaces = {
           main = '~/Documents/notes/neorg',

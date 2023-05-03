@@ -390,6 +390,15 @@ require("lazy").setup({
     end
   },
 
+
+  {
+    'lukas-reineke/headlines.nvim',
+    config = function()
+      require('headlines').setup()
+    end,
+
+  },
+
   -- Code runner
   { 'michaelb/sniprun',  build = 'bash ./install.sh' },
   {
