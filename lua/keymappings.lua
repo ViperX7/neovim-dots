@@ -367,4 +367,4 @@ map("n", "<leader>ll", ':StartupTime --tries 100<CR>', opt)
 
 -- map("n", "<localleader>cc", ':Codeium Enable<CR>:lua vim.notify("Codeium Enabled")<CR>', opt)
 map("n", "<localleader>cc",
-':lua vim.g.codeium_enabled = (vim.g.codeium_enabled+1)%2<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
+':lua vim.g.codeium_enabled = (vim.g.codeium_enabled==false)<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
