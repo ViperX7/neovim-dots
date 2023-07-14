@@ -66,7 +66,9 @@ require("lazy").setup({
     'rcarriga/nvim-notify',
     config = function()
       vim.notify = require("notify")
-      require("notify").setup()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
     end
   },
 
@@ -92,7 +94,7 @@ require("lazy").setup({
     "utilyre/barbecue.nvim",
     name = "barbecue",
     version = "*",
-    dependencies = {"SmiteshP/nvim-navic"},
+    dependencies = { "SmiteshP/nvim-navic" },
     opts = {
       -- configurations go here
     },
@@ -430,6 +432,34 @@ require("lazy").setup({
 
 
   {
+    "Bryley/neoai.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    cmd = {
+      "NeoAI",
+      "NeoAIOpen",
+      "NeoAIClose",
+      "NeoAIToggle",
+      "NeoAIContext",
+      "NeoAIContextOpen",
+      "NeoAIContextClose",
+      "NeoAIInject",
+      "NeoAIInjectCode",
+      "NeoAIInjectContext",
+      "NeoAIInjectContextCode",
+    },
+    keys = {
+      { "<leader>as", desc = "summarize text" },
+      { "<leader>ag", desc = "generate git message" },
+    },
+    config = function()
+      require("config.neoai")
+    end,
+  },
+
+
+  {
     "jcdickinson/codeium.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -446,13 +476,13 @@ require("lazy").setup({
     'Exafunction/codeium.vim',
     config = function()
       vim.g.codeium_disable_bindings = 1
-      vim.g.codeium_enabled = 0
+      vim.g.codeium_enabled = false
       vim.keymap.set('i', "<C-x>", function() return vim.fn['codeium#Accept']() end, { expr = true })
       -- vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
       -- vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
       -- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end,
-    -- keys = "<localleader>cc"
+    keys = "<localleader>cc"
   },
 
 

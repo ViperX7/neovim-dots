@@ -185,6 +185,7 @@ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
 
 -- Insert stuff
 map('n', '<leader>fe', '<cmd>Telescope symbols<cr>')
@@ -271,7 +272,7 @@ map('n', '<leader>o', ':SymbolsOutline<CR>', {})
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+-- map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
 -- Workspace Related
 map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
