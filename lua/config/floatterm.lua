@@ -10,7 +10,7 @@ require("toggleterm").setup {
   open_mapping = [[<F7>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_filetypes = {},
-  autochdir = false, -- when neovim changes it current directory the terminal will change it's own when next it's opened
+  autochdir = true, -- when neovim changes it current directory the terminal will change it's own when next it's opened
   shade_terminals = true,
   shading_factor = 3, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
   start_in_insert = true,
@@ -59,7 +59,7 @@ function _binspgdb_toggle(args)
   local cmd = "python -u sol.py " .. args
   local binspgdb = Terminal:new({
     cmd = cmd,
-    direction = "tab",
+    direction = "horizontal",
     on_open = function(term)
       vim.cmd("startinsert!")
       vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<cr>", { noremap = true, silent = true })

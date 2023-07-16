@@ -21,8 +21,6 @@ require("lazy").setup({
   ----------------------------------------------------------------------
   -- Package Management
   ---------------------------------------------------------------------
-  -- Packer can manage itself as an optional plugin
-  { 'wbthomason/packer.nvim' },
 
   ----------------------------------------------------------------------
   -- Visual Enhancement
@@ -73,7 +71,7 @@ require("lazy").setup({
   },
 
   -- LSP status indicator
-  { 'j-hui/fidget.nvim',         config = function() require("fidget").setup() end },
+  { 'j-hui/fidget.nvim',         config = function() require("fidget").setup() end, tag = "legacy" },
 
   -- status line
   { 'nvim-lualine/lualine.nvim', config = function() require("config.lualine") end },
@@ -83,7 +81,7 @@ require("lazy").setup({
   -- Tab line
   {
     'akinsho/bufferline.nvim',
-    version = "v2.*",
+    version = "v4.*",
     config = function()
       require(
         "config.bufferline")
@@ -95,9 +93,7 @@ require("lazy").setup({
     name = "barbecue",
     version = "*",
     dependencies = { "SmiteshP/nvim-navic" },
-    opts = {
-      -- configurations go here
-    },
+    opts = require("config.barbecue"),
   },
 
 
@@ -112,12 +108,14 @@ require("lazy").setup({
   -- }
 
   {
-    'glepnir/dashboard-nvim',
+    'nvimdev/dashboard-nvim',
     config = function()
       require('config.dashbord-nvim')
     end,
+    dependencies = {
+      "MaximilianLloyd/ascii.nvim",
+    }
   },
-  { "MaximilianLloyd/ascii.nvim" },
 
 
   -- Fuzzy finder
@@ -151,9 +149,11 @@ require("lazy").setup({
 
   -- Git related stuff
   {
-    { 'lewis6991/gitsigns.nvim', config = function() require("config.gitsign") end }, -- git gigns in signcolumn
-    { 'TimUntersberger/neogit',  config = function() require("config.neogit") end },  -- git manager
-    { "sindrets/diffview.nvim" },                                                     -- diff helper
+    { 'lewis6991/gitsigns.nvim',   config = function() require("config.gitsign") end },              -- git gigns in signcolumn
+    { 'TimUntersberger/neogit',    config = function() require("config.neogit") end },               -- git manager
+    { "sindrets/diffview.nvim" },                                                                    -- diff helper
+    { 'akinsho/git-conflict.nvim', version = "*",                                    config = true } -- helps with git conflicts
+
   },
 
 
@@ -361,6 +361,12 @@ require("lazy").setup({
 
   -- Markdown
   { 'suan/vim-instant-markdown', ft = "markdown" },
+  -- install without yarn or npm
+  {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  },
+
 
   {
     'jubnzv/mdeval.nvim',

@@ -113,6 +113,7 @@ map('i', 'kj', '<Esc>') -- jk to escape
 ------------------------  Feature Toggles -------------------------------------
 -- Enable disable indent lines
 map('n', '<leader>zi', ':IndentBlanklineToggle<CR>')
+map('n', '<leader>zw', ':lua require("barbecue.ui").toggle()<CR>')
 
 
 
@@ -368,4 +369,19 @@ map("n", "<leader>ll", ':StartupTime --tries 100<CR>', opt)
 
 -- map("n", "<localleader>cc", ':Codeium Enable<CR>:lua vim.notify("Codeium Enabled")<CR>', opt)
 map("n", "<localleader>cc",
-':lua vim.g.codeium_enabled = (vim.g.codeium_enabled==false)<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
+  ':lua vim.g.codeium_enabled = (vim.g.codeium_enabled==false)<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
+
+
+----- NeoAI
+
+map("n", "<leader>aa", ':NeoAIToggle<CR>', opt)
+map("n", "<leader>ae", ':NeoAIContext<CR>', opt)
+map("v", "<leader>ae", ':NeoAIContext<CR>', opt)
+
+map("n", "<localleader>ac", ':put c<CR>', opt)
+map("n", "<localleader>ag", ':put g<CR>', opt)
+
+map("n", "<leader>aii", ':NeoAIInject ', opt)
+map("n", "<leader>aic", ':NeoAIInjectContext ', opt)
+
+
