@@ -54,6 +54,26 @@ function _lazygit_toggle()
   lazygit:toggle()
 end
 
+local lazydocker  = Terminal:new({
+  cmd = "lazydocker",
+  dir = "git_dir",
+  direction = "float",
+  float_opts = {
+    border = "curved",
+  },
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<cr>", { noremap = true, silent = true })
+    -- this is the trick to make <esc> work properly since it's mapped below
+    vim.api.nvim_buf_set_keymap(term.bufnr, 't', '<esc>', "<esc>", { noremap = true })
+  end,
+})
+
+function _lazydocker_toggle()
+  lazydocker:toggle()
+end
+
+
 function _binspgdb_toggle(args)
   -- gdb analysis pty reinit remote, preload raw print bin debug clean -s rich auto"
   local cmd = "python -u sol.py " .. args
@@ -70,7 +90,8 @@ function _binspgdb_toggle(args)
   binspgdb:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<Space>gz", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", ";eg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", ";ed", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
 
 function _G.set_terminal_keymaps()
   local opts = { noremap = true }
