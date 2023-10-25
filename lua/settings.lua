@@ -81,7 +81,7 @@ utils.opt('o', 'ignorecase', true) -- ignore case when searching
 
 
 -- Code Folding
-utils.opt('o', 'foldenable', true) -- enable folding
+utils.opt('o', 'foldenable', false) -- folding
 cmd 'set foldlevelstart=10' -- open folds less than 10 lines
 cmd 'set foldnestmax=10' -- 10 nested fold max
 -- fold based on indent level
