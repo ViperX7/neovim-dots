@@ -134,7 +134,12 @@ map('n', '<leader>ggl', ':Gitsigns toggle_linehl<CR>')
 map('n', '<leader>ggn', ':Gitsigns toggle_numhl<CR>')
 map('n', '<leader>ggb', ':Gitsigns toggle_current_line_blame<CR>')
 map('n', '<leader>ggp', ':Gitsigns preview_hunk_inline<CR>')
+map('n', '<leader>ggc', ':GitConflictListQf<CR>')
 --- Actions
+
+map('n', '<leader>gaco', ':GitConflictChooseOurs<CR>')
+map('n', '<leader>gact', ':GitConflictChooseTheirs<CR>')
+
 map('n', '<leader>gas', ':Gitsigns stage_hunk<CR>')
 map('n', '<leader>gar', ':Gitsigns reset_hunk<CR>')
 map('n', '<leader>gaS', ':Gitsigns stage_buffer<CR>')
@@ -338,7 +343,7 @@ map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
 -- jump diagnostic
 map("n", "]c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
 map("n", "[c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
-map("n", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
+-- map("n", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
 
 map("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
 map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
