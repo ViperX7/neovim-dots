@@ -163,6 +163,20 @@ require("lazy").setup({
   -- Buffer Management --
   { 'famiu/bufdelete.nvim' },
 
+  -- Better code folding
+  {
+    'kevinhwang91/nvim-ufo',
+    config = function() require("config.ufo") end,
+    dependencies = { 'kevinhwang91/promise-async' }
+  },
+
+  -- fstring conversion auto
+  {
+    "chrisgrieser/nvim-puppeteer",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    lazy = false, -- plugin lazy-loads itself
+  },
+
 
 
   ----------------------------------------------------------------------
