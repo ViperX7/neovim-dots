@@ -251,8 +251,14 @@ require("lazy").setup({
     -- Indentation
     {
       "lukas-reineke/indent-blankline.nvim",
-      config = function() require("config.blankline-indent") end
+      main = "ibl",
+      opts = {},
+      config = function()
+        require("config.blankline-indent")
+      end,
     },
+
+
     -- Colors
     { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end },
     -- provides pair changing capabilities
