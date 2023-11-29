@@ -14,7 +14,7 @@ local sources = {
   null_ls.builtins.diagnostics.proselint,
   null_ls.builtins.diagnostics.checkmake,
   null_ls.builtins.diagnostics.chktex,
-  null_ls.builtins.diagnostics.codespell,
+  -- null_ls.builtins.diagnostics.codespell,
   null_ls.builtins.diagnostics.ansiblelint,
 
   null_ls.builtins.diagnostics.write_good.with({

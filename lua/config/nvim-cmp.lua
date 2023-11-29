@@ -33,6 +33,7 @@ cmp.setup({
         nvim_lua = "[Lua]",
         latex_symbols = "[Latex]",
         codeium = "[Codeium]",
+        neorg = "[Neorg]",
         -- cmp_tabnine = "[Tabnine]",
         calc = "🖩",
         path = "[Path]",

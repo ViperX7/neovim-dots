@@ -57,7 +57,7 @@ require("lazy").setup({
 
 
   --  Better UI --
-  -- { "folke/noice.nvim", config = function() require("config.noice") end }
+  -- { "folke/noice.nvim", config = function() require("config.noice") end },
 
   -- Notifications --
   {
@@ -309,6 +309,7 @@ require("lazy").setup({
 
         end
   },
+
 
   { 'tpope/vim-repeat' },
 
