@@ -282,13 +282,32 @@ require("lazy").setup({
   --     require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   --   end
   -- }
+  -- {
+  --   "ggandor/leap.nvim",
+  --   config = function()
+  --     local leap = require("leap")
+  --     leap.add_default_mappings()
+  --     leap.opts.safe_labels = {}
+  --   end
+  -- },
+
   {
-    "ggandor/leap.nvim",
-    config = function()
-      local leap = require("leap")
-      leap.add_default_mappings()
-      leap.opts.safe_labels = {}
-    end
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    --- @type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+        config = function()
+            require("config.flash")
+
+        end
   },
 
   { 'tpope/vim-repeat' },
