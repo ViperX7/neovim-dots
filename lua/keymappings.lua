@@ -377,6 +377,10 @@ map("n", "<localleader>cc",
   ':lua vim.g.codeium_enabled = (vim.g.codeium_enabled==false)<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
 
 
+map("n", "<localleader>cs",
+  ':lua print("ok")<CR>', opt)
+
+
 ----- NeoAI
 
 map("n", "<leader>aa", ':NeoAIToggle<CR>', opt)
