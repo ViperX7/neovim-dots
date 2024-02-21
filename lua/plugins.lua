@@ -73,6 +73,19 @@ require("lazy").setup({
   -- LSP status indicator
   { 'j-hui/fidget.nvim',         config = function() require("fidget").setup() end, tag = "legacy" },
 
+  --
+  -- -- lsp diagnostic indicator
+  -- {
+  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   config = function()
+  --     require("lsp_lines").setup()
+  --   end
+  -- },
+  --
+  -- {"lvimuser/lsp-inlayhints.nvim", config=function()
+  --   require("lsp-inlayhints").setup()
+  -- end},
+
   -- status line
   { 'nvim-lualine/lualine.nvim', config = function() require("config.lualine") end },
   -- { 'glepnir/galaxyline.nvim', branch = 'main',
@@ -191,6 +204,12 @@ require("lazy").setup({
 
     -- Formatting
     { 'jose-elias-alvarez/null-ls.nvim',  config = function() require("config.nullls") end },
+    {
+      "ThePrimeagen/refactoring.nvim",
+      config = function()
+        require("refactoring").setup()
+      end,
+    },
   },
 
 
@@ -399,10 +418,26 @@ require("lazy").setup({
 
   -- Markdown
   { 'suan/vim-instant-markdown', ft = "markdown" },
+  {
+    '3rd/image.nvim',
+    config = function()
+      require("config.image")
+    end
+  },
+
+  -- auto wrap
+  {
+    "andrewferrier/wrapping.nvim",
+    config = function()
+      require("wrapping").setup()
+    end
+  },
   -- install without yarn or npm
   {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
 
 

@@ -16,13 +16,16 @@ local on_attach = function(client, bufnr)
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  "bashls", 'clangd', 'pyright', "cssls", "html", "denols", "hls", "lua_ls","rust_analyzer","yamlls", "ansiblels"
+  "bashls", 'ccls', "cssls", "html", "denols", "hls", "lua_ls", "rust_analyzer", "yamlls", "ansiblels",
+  "pyright","marksman"
+  -- "ruff_lsp",
+  -- "pylyzer",
+  -- "pylsp"
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -39,7 +42,7 @@ end
 local pid = vim.fn.getpid()
 local omnisharp_bin = "/home/utkarsh/.dotnet/Omnisharp/OmniSharp"
 require 'lspconfig'.omnisharp.setup {
-  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
+  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
   capabilities = capabilities,
 }
 

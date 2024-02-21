@@ -10,7 +10,7 @@ utils.opt('o', 'wildmode', 'list:longest')
 
 -- Syntax Highlighting
 cmd 'syntax enable'
-utils.opt('o', 'background', 'dark') -- tell vim what the background color looks like
+utils.opt('o', 'background', 'dark')  -- tell vim what the background color looks like
 utils.opt('o', 'termguicolors', true) -- Use all colors
 
 -- Line Numbering
@@ -65,7 +65,7 @@ cmd 'set copyindent' -- copy the previous indentation on autoindenting
 -- Spaces and Tabs
 local indent = 4
 utils.opt('b', 'tabstop', indent) -- number of visual spaces per TAB fixed tab length
-cmd 'set softtabstop=4' -- number of spaces in tab when editing
+cmd 'set softtabstop=4'           -- number of spaces in tab when editing
 
 utils.opt('b', 'expandtab', true) -- tabs are spaces
 
@@ -74,18 +74,18 @@ utils.opt('b', 'shiftwidth', indent)
 utils.opt('o', 'smarttab', true) -- insert tabs on the start of a line according to shiftwidth, not tabstop
 
 -- Searching
-utils.opt('o', 'smartcase', true) -- ignore case  search pattern is all lowercase, case-sensitive otherwise
-utils.opt('o', 'hlsearch', true) -- Highlight all matches
+utils.opt('o', 'smartcase', true)  -- ignore case  search pattern is all lowercase, case-sensitive otherwise
+utils.opt('o', 'hlsearch', true)   -- Highlight all matches
 utils.opt('o', 'ignorecase', true) -- ignore case when searching
 
 
 
 -- Code Folding
 utils.opt('o', 'foldenable', false) -- folding
-cmd 'set foldlevelstart=10' -- open folds less than 10 lines
-cmd 'set foldnestmax=10' -- 10 nested fold max
+cmd 'set foldlevelstart=10'         -- open folds less than 10 lines
+cmd 'set foldnestmax=10'            -- 10 nested fold max
 -- fold based on indent level
-cmd 'set foldmethod=indent' -- accepted: marker, manual, expr, syntax, diff, indent
+cmd 'set foldmethod=indent'         -- accepted: marker, manual, expr, syntax, diff, indent
 
 
 
@@ -103,8 +103,8 @@ cmd 'set mouse=a'
 -- Autocomplete with dictionary words when spell check is on
 cmd 'set complete+=kspell'
 
-cmd 'set iskeyword+=-' -- treat dash separated words as a word text object"
-cmd 'set conceallevel=0' -- So that I can see `` in markdown files
+cmd 'set iskeyword+=-'                             -- treat dash separated words as a word text object"
+cmd 'set conceallevel=0'                           -- So that I can see `` in markdown files
 utils.opt('o', 'clipboard', 'unnamed,unnamedplus') -- Copy paste between vim and everything else
 --  **************************************************************************
 --

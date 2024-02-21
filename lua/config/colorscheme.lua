@@ -17,8 +17,8 @@
 -- cmd 'highlight OverLength ctermbg=grey ctermfg=black guibg=#592929'
 --     -- cmd 'match OverLength /\\%81v.\\+/'
 --
-require("config.onedark")
--- require("config.catppuccin")
+-- require("config.onedark")
+require("config.catppuccin")
 -- require("config.onedarkpro")
 -- require("config.nightfox")
 -- require("config.tokyonight")
