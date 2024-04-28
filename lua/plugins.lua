@@ -52,7 +52,7 @@ require("lazy").setup({
       end
     },
     -- Icons
-    { 'kyazdani42/nvim-web-devicons' },
+    { 'nvim-tree/nvim-web-devicons' },
   },
 
 
@@ -94,7 +94,7 @@ require("lazy").setup({
   -- Tab line
   {
     'akinsho/bufferline.nvim',
-    version = "v4.*",
+    version = "*",
     config = function()
       require(
         "config.bufferline")
@@ -162,10 +162,14 @@ require("lazy").setup({
 
   -- Git related stuff
   {
-    { 'lewis6991/gitsigns.nvim',   config = function() require("config.gitsign") end },              -- git gigns in signcolumn
-    { 'TimUntersberger/neogit',    config = function() require("config.neogit") end },               -- git manager
-    { "sindrets/diffview.nvim" },                                                                    -- diff helper
-    { 'akinsho/git-conflict.nvim', version = "*",                                    config = true } -- helps with git conflicts
+    { 'lewis6991/gitsigns.nvim', config = function() require("config.gitsign") end },   -- git gigns in signcolumn
+    { 'TimUntersberger/neogit',  config = function() require("config.neogit") end },    -- git manager
+    { "sindrets/diffview.nvim" },                                                       -- diff helper
+    {
+      'akinsho/git-conflict.nvim',
+      version = "*",
+      config = true
+    } -- helps with git conflicts
 
   },
 
