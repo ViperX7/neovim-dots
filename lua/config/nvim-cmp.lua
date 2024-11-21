@@ -23,25 +23,34 @@ cmp.setup({
     entries = { name = 'custom', selection_order = 'near_cursor' }
   },
   formatting = {
-    format = lspkind.cmp_format({
-      mode = "symbol_text",
-      menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        vsnip = "[vsnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
-        codeium = "[Codeium]",
-        symbol_map = { Codeium = "", },
-        neorg = "[Neorg]",
-        -- cmp_tabnine = "[Tabnine]",
-        calc = "🖩",
-        path = "[Path]",
-        emoji = "[emoji]",
-        tmux = "[TMUX]",
-      })
-    }),
+    format = function(entry, item)
+      local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+      item = require("lspkind").cmp_format({
+        mode = "symbol_text",
+        menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[LuaSnip]",
+          vsnip = "[vsnip]",
+          nvim_lua = "[Lua]",
+          latex_symbols = "[Latex]",
+          codeium = "[Codeium]",
+          symbol_map = { Codeium = "", },
+          neorg = "[Neorg]",
+          -- cmp_tabnine = "[Tabnine]",
+          calc = "🖩",
+          path = "[Path]",
+          emoji = "[emoji]",
+          tmux = "[TMUX]",
+        })
+        -- any lspkind format settings here
+      })(entry, item)
+      if color_item.abbr_hl_group then
+        item.kind_hl_group = color_item.abbr_hl_group
+        item.kind = color_item.abbr
+      end
+      return item
+    end
   },
   --
   --
@@ -73,7 +82,7 @@ cmp.setup({
     --
     --
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if vim.g.codeium_enabled == 1  and  " 0 " ~= vim.fn['codeium#GetStatusString']() then
+      if vim.g.codeium_enabled == 1 and " 0 " ~= vim.fn['codeium#GetStatusString']() then
         -- vim.notify("cmp")
         -- vim.notify("*"..vim.fn['codeium#Accept']() .. "*")
         vim.api.nvim_input("<C-x>")
@@ -103,14 +112,14 @@ cmp.setup({
 
   }),
   sources = cmp.config.sources({
-    { name = 'codeium' },
-    { name = 'luasnip' },
-    { name = 'ultisnips' },
-    { name = 'nvim_lua' },
-    { name = 'nvim_lsp_signature_help' },
-    { name = 'nvim_lsp' },
-    { name = 'cmp_tabnine' },
-  },
+      { name = 'codeium' },
+      { name = 'luasnip' },
+      { name = 'ultisnips' },
+      { name = 'nvim_lua' },
+      { name = 'nvim_lsp_signature_help' },
+      { name = 'nvim_lsp' },
+      { name = 'cmp_tabnine' },
+    },
     {
       { name = 'buffer' },
       { name = 'path' },

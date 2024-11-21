@@ -36,6 +36,7 @@ require("neoai").setup({
         ["select_down"] = "<C-j>",
     },
     open_ai = {
+        api_base = "http://localhost:5000/v1/chat/completions",
         api_key = {
             env = "OPENAI_API_KEY",
             value = nil,

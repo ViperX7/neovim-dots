@@ -4,8 +4,8 @@ local null_ls = require("null-ls")
 local sources = {
   -- formatting
   null_ls.builtins.formatting.prettier,
-  null_ls.builtins.formatting.markdownlint,
-  null_ls.builtins.formatting.mdformat,
+  -- null_ls.builtins.formatting.markdownlint,
+  -- null_ls.builtins.formatting.mdformat,
   -- null_ls.builtins.diagnostics.mdl,
 
   -- diagnostics
@@ -27,7 +27,7 @@ local sources = {
 
   null_ls.builtins.diagnostics.cppcheck,
   null_ls.builtins.diagnostics.deadnix,
-  null_ls.builtins.diagnostics.shellcheck,
+  -- null_ls.builtins.diagnostics.shellcheck,
   null_ls.builtins.diagnostics.flake8,
   null_ls.builtins.formatting.yapf,
   null_ls.builtins.formatting.reorder_python_imports,

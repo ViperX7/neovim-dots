@@ -11,3 +11,5 @@ require('keymappings')
 require('lsp_lua')
 
 require("config.colorscheme")
+
+require('md')

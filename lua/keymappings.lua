@@ -372,25 +372,37 @@ map("n", "<leader>ll", ':StartupTime --tries 100<CR>', opt)
 -- -- scroll up hover doc
 -- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
 
+----- ccodeium 
 -- map("n", "<localleader>cc", ':Codeium Enable<CR>:lua vim.notify("Codeium Enabled")<CR>', opt)
-map("n", "<localleader>cc",
-  ':lua vim.g.codeium_enabled = (vim.g.codeium_enabled==false)<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
-
-
-map("n", "<localleader>cs",
-  ':lua print("ok")<CR>', opt)
+-- map("n", "<localleader>cc",
+--   ':lua vim.g.codeium_enabled = (vi m.g.codeium_enabled==false)<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
+--
+--
+-- map("n", "<localleader>cs",
+--   ':lua print("ok")<CR>', opt)
 
 
 ----- NeoAI
 
-map("n", "<leader>aa", ':NeoAIToggle<CR>', opt)
-map("n", "<leader>ae", ':NeoAIContext<CR>', opt)
-map("v", "<leader>ae", ':NeoAIContext<CR>', opt)
+map("n", "<localleader>a", ':CodeCompanionChat Toggle<CR>', opt)
+map("v", "<localleader>a", ':CodeCompanionChat Toggle<CR>', opt)
+map("v", "<localleader>a", ':CodeCompanionChat Add<CR>', opt)
+map("v", "<C-a>", ':CodeCompanion<CR>', opt)
 
-map("n", "<localleader>ac", ':put c<CR>', opt)
-map("n", "<localleader>ag", ':put g<CR>', opt)
 
-map("n", "<leader>aii", ':NeoAIInject ', opt)
-map("n", "<leader>aic", ':NeoAIInjectContext ', opt)
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
 
+
+------- llm nvim
+
+map("n", "<leader>at", ':LLMToggleAutoSuggest<CR>', opt)
+map("i", "<c-i>", ':LLMSuggestion<cr> ', opt)
+
+
+
+
+
+
+map("n", "<localleader>l", ':LspStart<CR>', opt)
 

@@ -21,8 +21,8 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  "bashls", 'ccls', "cssls", "html", "denols", "hls", "lua_ls", "rust_analyzer", "yamlls", "ansiblels",
-  "pyright","marksman"
+   'ccls', "cssls", "html", "denols", "hls", "lua_ls", "rust_analyzer", "yamlls", "ansiblels",
+  "pyright",
   -- "ruff_lsp",
   -- "pylyzer",
   -- "pylsp"
@@ -55,3 +55,5 @@ require 'lspconfig'.omnisharp.setup {
 -- vim.diagnostic.config({
 -- virtual_text = false,
 -- })
+--
+-- vim.diagnostic.config({ virtual_text = false })

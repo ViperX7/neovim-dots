@@ -33,11 +33,16 @@ require("lazy").setup({
     'sainnhe/gruvbox-material',
     'EdenEast/nightfox.nvim',
     'folke/tokyonight.nvim',
+    { 'Everblush/nvim',  name = 'everblush' },
+    'nealmckee/penumbra',
     'shaunsingh/moonlight.nvim',
     'marko-cerovac/material.nvim',
     'rmehri01/onenord.nvim',
+    'nyoom-engineering/oxocarbon.nvim',
     'NTBBloodbath/doom-one.nvim',
-    { "catppuccin/nvim", name = "catppuccin" }
+    { "catppuccin/nvim", name = "catppuccin" },
+    {'Shatur/neovim-ayu'},
+    'scottmckendry/cyberdream.nvim',
   },
 
   -- Essentials --
@@ -73,18 +78,25 @@ require("lazy").setup({
   -- LSP status indicator
   { 'j-hui/fidget.nvim',         config = function() require("fidget").setup() end, tag = "legacy" },
 
-  --
+
+
   -- -- lsp diagnostic indicator
   -- {
-  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   "rachartier/tiny-inline-diagnostic.nvim",
+  --   event = "VeryLazy",
   --   config = function()
-  --     require("lsp_lines").setup()
+  --     require('tiny-inline-diagnostic').setup()
   --   end
   -- },
-  --
-  -- {"lvimuser/lsp-inlayhints.nvim", config=function()
-  --   require("lsp-inlayhints").setup()
-  -- end},
+
+  {
+    "MysticalDevil/inlay-hints.nvim",
+    event = "LspAttach",
+    dependencies = { "neovim/nvim-lspconfig" },
+    config = function()
+      require("inlay-hints").setup()
+    end
+  },
 
   -- status line
   { 'nvim-lualine/lualine.nvim', config = function() require("config.lualine") end },
@@ -145,6 +157,13 @@ require("lazy").setup({
   },
 
 
+  -- menus
+  -- {
+  --   { "nvchad/volt" , lazy = true },
+  --   { "nvchad/menu" , lazy = true },
+  -- },
+
+
 
   -- Sidebar File explorer --
   { 'kyazdani42/nvim-tree.lua',      config = function() require("config.nvim-tree") end },
@@ -162,9 +181,9 @@ require("lazy").setup({
 
   -- Git related stuff
   {
-    { 'lewis6991/gitsigns.nvim', config = function() require("config.gitsign") end },   -- git gigns in signcolumn
-    { 'TimUntersberger/neogit',  config = function() require("config.neogit") end },    -- git manager
-    { "sindrets/diffview.nvim" },                                                       -- diff helper
+    { 'lewis6991/gitsigns.nvim', config = function() require("config.gitsign") end }, -- git gigns in signcolumn
+    { 'TimUntersberger/neogit',  config = function() require("config.neogit") end },  -- git manager
+    { "sindrets/diffview.nvim" },                                                     -- diff helper
     {
       'akinsho/git-conflict.nvim',
       version = "*",
@@ -244,7 +263,24 @@ require("lazy").setup({
   { -- Treesetter --
     { 'nvim-treesitter/nvim-treesitter', config = function() require("config.treesetter") end },
     { 'windwp/nvim-ts-autotag',          ft = { "html", "markdown", "xml" } },
+    -- {
+    -- 'MeanderingProgrammer/markdown.nvim',
+    -- name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    -- config = function()
+    --     require('render-markdown').setup({})
+    -- end,
+    -- },
+    -- {'dhruvasagar/vim-table-mode'}
+    {
+      "OXY2DEV/markview.nvim",
+      config = function()
+        require("markview").setup();
+      end
+    },
   },
+
+  -- For plugin.lua users
 
 
   {
@@ -261,7 +297,7 @@ require("lazy").setup({
     -- Highlight pairs
     { 'andymass/vim-matchup' },
     -- Rainbow paren
-    -- { 'p00f/nvim-ts-rainbow' },
+    { 'p00f/nvim-ts-rainbow' },
     event = 'BufEnter'
   },
 
@@ -283,7 +319,10 @@ require("lazy").setup({
 
 
     -- Colors
-    { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end },
+    {
+      -- { "norcalli/nvim-colorizer.lua",        config = function() require("colorizer").setup() end },
+      { "brenoprata10/nvim-highlight-colors", config = function() require('config.nvim-highlight-colors').setup() end }
+    },
     -- provides pair changing capabilities
     { "tpope/vim-surround" },
     event = 'BufEnter'
@@ -421,20 +460,21 @@ require("lazy").setup({
 
 
   -- Markdown
-  { 'suan/vim-instant-markdown', ft = "markdown" },
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1001, -- this plugin needs to run before anything else
-    opts = {
-        rocks = { "magick" },
-    },
-  },
-  {
-    '3rd/image.nvim',
-    config = function()
-      require("config.image")
-    end
-  },
+  -- TODO : Enable this
+  -- { 'suan/vim-instant-markdown', ft = "markdown" },
+  -- {
+  --   "vhyrro/luarocks.nvim",
+  --   priority = 1001, -- this plugin needs to run before anything else
+  --   opts = {
+  --       rocks = { "magick" },
+  --   },
+  -- },
+  -- {
+  --   '3rd/image.nvim',
+  --   config = function()
+  --     require("config.image")
+  --   end
+  -- },
 
   -- auto wrap
   {
@@ -491,16 +531,16 @@ require("lazy").setup({
   },
 
 
-  {
-    'lukas-reineke/headlines.nvim',
-    config = function()
-      require('headlines').setup()
-    end,
-
-  },
+  -- {
+  --   'lukas-reineke/headlines.nvim',
+  --   config = function()
+  --     require('headlines').setup()
+  --   end,
+  --
+  -- },
 
   -- Code runner
-  { 'michaelb/sniprun',  build = 'bash ./install.sh' },
+  { 'michaelb/sniprun',        build = 'bash ./install.sh' },
   {
     'CRAG666/code_runner.nvim',
     config = function()
@@ -521,59 +561,130 @@ require("lazy").setup({
   },
 
 
+
+
+
+  -- AI plugins
+
+  -- {
+  --   "yetone/avante.nvim",
+  --   event = "VeryLazy",
+  --   lazy = false,
+  --   version = false, -- set this if you want to always pull the latest change
+  --   config = function()
+  --     require("config.avante")
+  --   end,
+  --
+  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  --   build = "make",
+  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  --   dependencies = {
+  --     --- The below dependencies are optional,
+  --     "zbirenbaum/copilot.lua", -- for providers='copilot'
+  --     {
+  --       -- support for image pasting
+  --       "HakonHarnes/img-clip.nvim",
+  --       event = "VeryLazy",
+  --       opts = {
+  --         -- recommended settings
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           -- required for Windows users
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --
+  --     },
+  --     {
+  --       -- Make sure to set this up properly if you have lazy=true
+  --       'MeanderingProgrammer/render-markdown.nvim',
+  --       opts = { file_types = { "markdown", "Avante", "neoai-output", "neoai-input" } },
+  --       ft = { "markdown", "Avante", "neoai-output", "neoai-input" },
+  --     },
+  --
+  --   },
+  -- },
+
+
+  -- {
+  --   "ViperX7/neoai.nvim",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   cmd = {
+  --     "NeoAI",
+  --     "NeoAIOpen",
+  --     "NeoAIClose",
+  --     "NeoAIToggle",
+  --     "NeoAIContext",
+  --     "NeoAIContextOpen",
+  --     "NeoAIContextClose",
+  --     "NeoAIInject",
+  --     "NeoAIInjectCode",
+  --     "NeoAIInjectContext",
+  --     "NeoAIInjectContextCode",
+  --   },
+  --   keys = {
+  --     { "<leader>as", desc = "summarize text" },
+  --     { "<leader>ag", desc = "generate git message" },
+  --   },
+  --   config = function()
+  --     require("config.neoai")
+  --   end,
+  -- },
   {
-    "Bryley/neoai.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-    cmd = {
-      "NeoAI",
-      "NeoAIOpen",
-      "NeoAIClose",
-      "NeoAIToggle",
-      "NeoAIContext",
-      "NeoAIContextOpen",
-      "NeoAIContextClose",
-      "NeoAIInject",
-      "NeoAIInjectCode",
-      "NeoAIInjectContext",
-      "NeoAIInjectContextCode",
-    },
-    keys = {
-      { "<leader>as", desc = "summarize text" },
-      { "<leader>ag", desc = "generate git message" },
-    },
+    'huggingface/llm.nvim',
+    opts = {},
     config = function()
-      require("config.neoai")
+      require("config.llm")
     end,
+
   },
 
   {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim"
-    },
+    "olimorris/codecompanion.nvim",
     config = function()
-      require("codeium").setup({
+      require("codecompanion").setup({
+        -- adapters = {
+        --   ollama = function()
+        --     return require("codecompanion.adapters").extend("openai", {
+        --       env = {
+        --         url = "http://trixbase:5000/v1/",
+        --         api_key = "abc",
+        --       },
+        --       headers = {
+        --         ["Content-Type"] = "application/json",
+        --       },
+        --       parameters = {
+        --         sync = true,
+        --       },
+        --     })
+        --   end,
+        -- },
+
+
+        strategies = {
+          chat = {
+            adapter = "openai",
+          },
+          inline = {
+            adapter = "openai",
+          },
+          agent = {
+            adapter = "openai",
+          },
+        },
+
+
+
+
       })
-    end,
-    keys = "<localleader>cs"
-  },
-
-  {
-    'Exafunction/codeium.vim',
-    config = function()
-      vim.g.codeium_disable_bindings = 1
-      vim.g.codeium_enabled = false
-      vim.keymap.set('i', "<C-x>", function() return vim.fn['codeium#Accept']() end, { expr = true })
-      -- vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-      -- vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-      -- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-    end,
-    keys = "<localleader>cc"
-  },
-
+    end
+  }
 
 
 })
