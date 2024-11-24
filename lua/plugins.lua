@@ -33,15 +33,15 @@ require("lazy").setup({
     'sainnhe/gruvbox-material',
     'EdenEast/nightfox.nvim',
     'folke/tokyonight.nvim',
-    { 'Everblush/nvim',  name = 'everblush' },
+    { 'Everblush/nvim',   name = 'everblush' },
     'nealmckee/penumbra',
     'shaunsingh/moonlight.nvim',
     'marko-cerovac/material.nvim',
     'rmehri01/onenord.nvim',
     'nyoom-engineering/oxocarbon.nvim',
     'NTBBloodbath/doom-one.nvim',
-    { "catppuccin/nvim", name = "catppuccin" },
-    {'Shatur/neovim-ayu'},
+    { "catppuccin/nvim",  name = "catppuccin" },
+    { 'Shatur/neovim-ayu' },
     'scottmckendry/cyberdream.nvim',
   },
 
@@ -321,7 +321,12 @@ require("lazy").setup({
     -- Colors
     {
       -- { "norcalli/nvim-colorizer.lua",        config = function() require("colorizer").setup() end },
-      { "brenoprata10/nvim-highlight-colors", config = function() require('config.nvim-highlight-colors').setup() end }
+      {
+        "brenoprata10/nvim-highlight-colors",
+        config = function()
+          require('config.nvim-highlight-colors')
+        end,
+      }
     },
     -- provides pair changing capabilities
     { "tpope/vim-surround" },
