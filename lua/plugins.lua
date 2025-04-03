@@ -113,12 +113,15 @@ require("lazy").setup({
     end
   },
 
+-- provides the winbar at the top
   {
-    "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
-    dependencies = { "SmiteshP/nvim-navic" },
-    opts = require("config.barbecue"),
+    'Bekaboo/dropbar.nvim',
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make'
+    },
+    config = function() require('config.dropbar') end
   },
 
 
