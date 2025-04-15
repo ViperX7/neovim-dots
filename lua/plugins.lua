@@ -521,8 +521,8 @@ require("lazy").setup({
     { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end },
     -- Highlight pairs
     { 'andymass/vim-matchup' },
-    -- Rainbow paren
-    { 'p00f/nvim-ts-rainbow' },
+    -- -- Rainbow paren  -- depricated
+    -- { 'p00f/nvim-ts-rainbow' },
     event = 'BufEnter'
   },
 
