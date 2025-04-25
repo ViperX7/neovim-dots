@@ -22,7 +22,8 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {
    'ccls', "cssls", "html", "denols", "hls", "lua_ls", "rust_analyzer", "yamlls", "ansiblels",
-  "pyright",
+  "basedpyright",
+  -- "harper_ls",
   -- "ruff_lsp",
   -- "pylyzer",
   -- "pylsp"

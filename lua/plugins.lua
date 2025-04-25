@@ -113,7 +113,7 @@ require("lazy").setup({
     end
   },
 
--- provides the winbar at the top
+  -- provides the winbar at the top
   {
     'Bekaboo/dropbar.nvim',
     -- optional, but required for fuzzy finder support
@@ -451,7 +451,8 @@ require("lazy").setup({
     { "neovim/nvim-lspconfig",            config = function() local lspconfig = require("lspconfig") end },
 
     -- Formatting
-    { 'jose-elias-alvarez/null-ls.nvim',  config = function() require("config.nullls") end },
+    { 'nvimtools/none-ls.nvim',           config = function() require("config.nullls") end },
+
     {
       "ThePrimeagen/refactoring.nvim",
       config = function()
@@ -466,7 +467,43 @@ require("lazy").setup({
     { 'folke/lsp-colors.nvim' },
 
     -- Project diagnostics with LSP
-    { "folke/trouble.nvim", },
+    {
+      "folke/trouble.nvim",
+      opts = {}, -- for default options, refer to the configuration section for custom setup.
+      cmd = "Trouble",
+      keys = {
+        {
+          "<leader>xx",
+          "<cmd>Trouble diagnostics toggle<cr>",
+          desc = "Diagnostics (Trouble)",
+        },
+      {
+          "<leader>xX",
+          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+          desc = "Buffer Diagnostics (Trouble)",
+        },
+        {
+          "<leader>cs",
+          "<cmd>Trouble symbols toggle focus=false<cr>",
+          desc = "Symbols (Trouble)",
+        },
+        {
+          "<leader>cl",
+          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+          desc = "LSP Definitions / references / ... (Trouble)",
+        },
+        {
+          "<leader>xL",
+          "<cmd>Trouble loclist toggle<cr>",
+          desc = "Location List (Trouble)",
+        },
+        {
+          "<leader>xQ",
+          "<cmd>Trouble qflist toggle<cr>",
+          desc = "Quickfix List (Trouble)",
+        },
+      },
+    },
 
     -- Lsp utilities
     { 'tami5/lspsaga.nvim',    config = function() require("config.lspsaga") end },
@@ -474,9 +511,6 @@ require("lazy").setup({
     -- goto preview live
     { 'rmagatti/goto-preview', config = function() require("config.goto_preview") end },
   },
-
-
-
 
 
   -- { 'tzachar/cmp-tabnine', build = './install.sh' }
@@ -875,27 +909,27 @@ require("lazy").setup({
 
   },
 
+  { "echasnovski/mini.diff" },
+
   {
     "olimorris/codecompanion.nvim",
     config = function()
       require("codecompanion").setup({
-        -- adapters = {
-        --   ollama = function()
-        --     return require("codecompanion.adapters").extend("openai", {
-        --       env = {
-        --         url = "http://trixbase:5000/v1/",
-        --         api_key = "abc",
-        --       },
-        --       headers = {
-        --         ["Content-Type"] = "application/json",
-        --       },
-        --       parameters = {
-        --         sync = true,
-        --       },
-        --     })
-        --   end,
+        -- display = {
+        --   diff = {
+        --     provider = "mini_diff",
+        --   },
         -- },
-
+        --
+        display = {
+          diff = {
+            enabled = true,
+            close_chat_at = 240,  -- Close an open chat buffer if the total columns of your display are less than...
+            layout = "vertical",  -- vertical|horizontal split for default provider
+            opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
+            provider = "default", -- default|mini_diff
+          },
+        },
 
         strategies = {
           chat = {

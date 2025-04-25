@@ -286,8 +286,8 @@ map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt
 map('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 
 map('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
--- map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
--- map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 -- map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 map('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -339,15 +339,15 @@ map("n", "gpd", ':lua require("goto-preview").close_all_win()<CR>', opt)
 
 ------------------------ LSP Saga --------------------------------
 
-map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
+-- map("n", "gh", [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
 -- jump diagnostic
-map("n", "]c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
-map("n", "[c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
+-- map("n", "]c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
+-- map("n", "[c", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
 -- map("n", "<c-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
 
-map("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
-map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+-- map("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+-- map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+-- map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
 
 --  packer
 
@@ -404,5 +404,6 @@ map("i", "<c-i>", ':LLMSuggestion<cr> ', opt)
 
 
 
-map("n", "<localleader>l", ':LspStart<CR>', opt)
+map("n", "<localleader>ll", ':LspStart basedpyright<CR>', opt)
+map("n", "<localleader>ls", ':LspStop basedpyright<CR>', opt)
 
