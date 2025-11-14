@@ -9,11 +9,11 @@ local sources = {
   -- null_ls.builtins.diagnostics.mdl,
 
   -- diagnostics
-  null_ls.builtins.diagnostics.eslint_d,
+  -- null_ls.builtins.diagnostics.eslint_d,
   -- null_ls.builtins.diagnostics.alex,
   -- null_ls.builtins.diagnostics.proselint,
   null_ls.builtins.diagnostics.checkmake,
-  null_ls.builtins.diagnostics.chktex,
+  -- null_ls.builtins.diagnostics.chktex,
   -- null_ls.builtins.diagnostics.codespell,
   null_ls.builtins.diagnostics.ansiblelint,
 
@@ -25,25 +25,25 @@ local sources = {
   --   -- filetypes = { "norg", "markdown" },
   -- }),
 
-  null_ls.builtins.diagnostics.cppcheck,
-  null_ls.builtins.diagnostics.deadnix,
-  -- null_ls.builtins.diagnostics.shellcheck,
-  null_ls.builtins.diagnostics.flake8,
+  -- null_ls.builtins.diagnostics.cppcheck,
+  -- null_ls.builtins.diagnostics.deadnix,
+  -- -- null_ls.builtins.diagnostics.shellcheck,
+  -- -- null_ls.builtins.diagnostics.flake8,
   null_ls.builtins.formatting.yapf,
-  null_ls.builtins.formatting.reorder_python_imports,
-  null_ls.builtins.formatting.black,
+  -- null_ls.builtins.formatting.reorder_python_imports,
+  -- -- null_ls.builtins.formatting.black,
   null_ls.builtins.formatting.isort,
-  null_ls.builtins.formatting.codespell,
-  null_ls.builtins.formatting.shfmt,
-  null_ls.builtins.formatting.csharpier,
+  -- -- null_ls.builtins.formatting.codespell,
+  -- null_ls.builtins.formatting.shfmt,
+  -- null_ls.builtins.formatting.csharpier,
   -- null_ls.builtins.formatting.stylua,
   -- null_ls.builtins.diagnostics.gccdiag,
   -- null_ls.builtins.diagnostics.gdblint,
-  null_ls.builtins.diagnostics.gitlint,
-  -- null_ls.builtins.diagnostics.hadolint,
-  -- null_ls.builtins.diagnostics.jsonlint,
-  -- null_ls.builtins.diagnostics.luacheck,
-  -- null_ls.builtins.diagnostics.selene,
+  -- null_ls.builtins.diagnostics.gitlint,
+  -- -- null_ls.builtins.diagnostics.hadolint,
+  -- -- null_ls.builtins.diagnostics.jsonlint,
+  -- -- null_ls.builtins.diagnostics.luacheck,
+  -- -- null_ls.builtins.diagnostics.selene,
   -- null_ls.builtins.diagnostics.misspell,
   -- null_ls.builtins.diagnostics.misspell,
   -- null_ls.builtins.diagnostics.mypy,
@@ -56,11 +56,11 @@ local sources = {
 
   -- codeaction
   -- null_ls.builtins.code_actions.cspell,
-  null_ls.builtins.code_actions.eslint_d,
-  null_ls.builtins.code_actions.proselint,
-  null_ls.builtins.code_actions.refactoring,
-  -- null_ls.builtins.code_actions.gitsigns,
-  -- completion
+  -- null_ls.builtins.code_actions.eslint_d,
+  -- null_ls.builtins.code_actions.proselint,
+  -- null_ls.builtins.code_actions.refactoring,
+  -- -- null_ls.builtins.code_actions.gitsigns,
+  -- -- completion
   -- null_ls.builtins.completion.spell, # annoying when writing code
 
 }

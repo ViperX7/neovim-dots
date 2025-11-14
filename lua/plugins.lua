@@ -434,7 +434,6 @@ require("lazy").setup({
   -- fstring conversion auto
   {
     "chrisgrieser/nvim-puppeteer",
-    dependencies = "nvim-treesitter/nvim-treesitter",
     lazy = false, -- plugin lazy-loads itself
   },
 
@@ -463,8 +462,6 @@ require("lazy").setup({
 
 
   { -- LSP Utils --
-    -- Diagnostic colors for lsp
-    { 'folke/lsp-colors.nvim' },
 
     -- Project diagnostics with LSP
     {
@@ -477,7 +474,7 @@ require("lazy").setup({
           "<cmd>Trouble diagnostics toggle<cr>",
           desc = "Diagnostics (Trouble)",
         },
-      {
+        {
           "<leader>xX",
           "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
           desc = "Buffer Diagnostics (Trouble)",
@@ -506,7 +503,7 @@ require("lazy").setup({
     },
 
     -- Lsp utilities
-    { 'tami5/lspsaga.nvim',    config = function() require("config.lspsaga") end },
+    -- { 'tami5/lspsaga.nvim',    config = function() require("config.lspsaga") end },
 
     -- goto preview live
     { 'rmagatti/goto-preview', config = function() require("config.goto_preview") end },
@@ -650,7 +647,7 @@ require("lazy").setup({
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-calc' },
     { 'f3fora/cmp-spell' },
-    { 'hrsh7th/cmp-emoji' },
+    -- { 'hrsh7th/cmp-emoji' },
     { 'andersevenrud/cmp-tmux' },
 
     { 'romgrk/fzy-lua-native',               build = 'make' },

@@ -36,7 +36,7 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    flags = { debounce_text_changes = 150 }
+    -- flags = { debounce_text_changes = 150 }
   }
 end
 
@@ -47,14 +47,14 @@ require 'lspconfig'.omnisharp.setup {
   capabilities = capabilities,
 }
 
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---     vim.lsp.diagnostic.on_publish_diagnostics, {
---         virtual_text = false
---     }
--- )
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = true
+    }
+)
 -- Disable virtual_text since it's redundant due to lsp_lines.
--- vim.diagnostic.config({
--- virtual_text = false,
--- })
---
+vim.diagnostic.config({
+virtual_text = true,
+})
+
 -- vim.diagnostic.config({ virtual_text = false })
