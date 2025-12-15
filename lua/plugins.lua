@@ -517,23 +517,9 @@ require("lazy").setup({
   { "danymat/neogen",        config = function() require('config.neogen') end },
 
   { -- Treesetter --
-    { 'nvim-treesitter/nvim-treesitter', config = function() require("config.treesetter") end },
+    { 'nvim-treesitter/nvim-treesitter', build=":TSUpdate", config = function() require("config.treesetter") end },
     { 'windwp/nvim-ts-autotag',          ft = { "html", "markdown", "xml" } },
     -- {
-    -- 'MeanderingProgrammer/markdown.nvim',
-    -- name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    -- config = function()
-    --     require('render-markdown').setup({})
-    -- end,
-    -- },
-    -- {'dhruvasagar/vim-table-mode'}
-    {
-      "OXY2DEV/markview.nvim",
-      config = function()
-        require("markview").setup();
-      end
-    },
   },
 
   -- For plugin.lua users
@@ -810,7 +796,7 @@ require("lazy").setup({
   },
 
   -- smali reversing
-  { "mzlogin/vim-smali", ft = "smali" },
+  { "mzlogin/vim-smali",    ft = "smali" },
   -- python
 
   {
