@@ -18,13 +18,13 @@
 --     -- cmd 'match OverLength /\\%81v.\\+/'
 --
 -- require("config.onedark")
--- require("config.catppuccin")
+require("config.catppuccin")
 -- require("config.onedarkpro")
 -- require("config.nightfox")
 -- require("config.tokyonight")
 -- require('config.material')
 -- require('config.onenord')
-require('config.cyberdream')
+-- require('config.cyberdream')
 require("config.custom_highlights")
 
 

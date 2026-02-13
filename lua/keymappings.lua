@@ -265,7 +265,7 @@ map('n', '<leader>ct', ':Neogen type<CR>')
 -- map('n', 'S', ":HopWord<cr>", {})
 
 -- Symbol outline
-map('n', '<leader>o', ':SymbolsOutline<CR>', {})
+map('n', '<leader>ao', ':SymbolsOutline<CR>', {})
 
 ----------------------- nvim-compe --------------------------
 -- map('i', '<silent><expr> <C-Space>', 'compe#complete()')
@@ -298,7 +298,41 @@ map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 -- map("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
 ------------------------- Trouble ----------------------------------
-map('n', '<leader>d', ':TroubleToggle<CR>', opts)
+map('n', '<leader>d', ':Trouble diagnostics toggle<CR>', opts)
+map('n', '<leader>o', '<cmd>Trouble symbols toggle focus=false<cr>', opts)
+
+-- keys = {
+--   {
+--     "<leader>t",
+--     "<cmd>Trouble diagnostics toggle<cr>",
+--     desc = "Diagnostics (Trouble)",
+--   },
+--   {
+--     "<leader>xX",
+--     "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+--     desc = "Buffer Diagnostics (Trouble)",
+--   },
+--   {
+--     "<leader>cs",
+--     "<cmd>Trouble symbols toggle focus=false<cr>",
+--     desc = "Symbols (Trouble)",
+--   },
+--   {
+--     "<leader>cl",
+--     "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+--     desc = "LSP Definitions / references / ... (Trouble)",
+--   },
+--   {
+--     "<leader>xL",
+--     "<cmd>Trouble loclist toggle<cr>",
+--     desc = "Location List (Trouble)",
+--   },
+--   {
+--     "<leader>xQ",
+--     "<cmd>Trouble qflist toggle<cr>",
+--     desc = "Quickfix List (Trouble)",
+--   },
+-- }
 
 ------------------------- Bufferline --------------------------------
 
@@ -318,7 +352,7 @@ map("n", "<M-b>", ':BufferLinePick<CR>', opt)
 
 ----------------------- Ranger ----------------------------------
 
-map("n", "<localleader>o", ':RnvimrToggle<CR>', opt)
+-- map("n", "<localleader>o", ':RnvimrToggle<CR>', opt)
 
 
 ----------------------- Mdeval ----------------------------------
@@ -348,6 +382,26 @@ map("n", "gpd", ':lua require("goto-preview").close_all_win()<CR>', opt)
 -- map("n", "<leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
 -- map("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
 -- map("v", "<leader>ca", ":<c-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+--
+--
+
+----------------------- Mdeval ----------------------------------
+
+map("x", "<leader>cre", ":Refactor extract <CR>", opt)
+map("x", "<leader>crf", ":Refactor extract_to_file <CR>", opt)
+
+map("x", "<leader>crv", ":Refactor extract_var <CR>", opt)
+
+-- map({ "n", "x" }, "<leader>ri", ":Refactor inline_var", opt)
+
+map("n", "<leader>crI", ":Refactor inline_func<CR>", opt)
+
+map("n", "<leader>crb", ":Refactor extract_block<CR>", opt)
+map("n", "<leader>crbf", ":Refactor extract_block_to_file<CR>", opt)
+
+
+
+
 
 --  packer
 
@@ -372,7 +426,7 @@ map("n", "<leader>ll", ':StartupTime --tries 100<CR>', opt)
 -- -- scroll up hover doc
 -- map("n", "<C-b>", [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
 
------ ccodeium 
+----- ccodeium
 -- map("n", "<localleader>cc", ':Codeium Enable<CR>:lua vim.notify("Codeium Enabled")<CR>', opt)
 -- map("n", "<localleader>cc",
 --   ':lua vim.g.codeium_enabled = (vi m.g.codeium_enabled==false)<CR>:lua vim.notify("Codeium Toggled")<CR>', opt)
@@ -404,6 +458,5 @@ map("i", "<c-i>", ':LLMSuggestion<cr> ', opt)
 
 
 
-map("n", "<localleader>ll", ':LspStart basedpyright<CR>', opt)
-map("n", "<localleader>ls", ':LspStop basedpyright<CR>', opt)
-
+map("n", "<localleader>ll", ':LspStart ty<CR>', opt)
+map("n", "<localleader>ls", ':LspStop ty<CR>', opt)

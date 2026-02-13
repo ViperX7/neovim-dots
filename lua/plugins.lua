@@ -50,12 +50,7 @@ require("lazy").setup({
     -- UI stuff
     { 'nvim-lua/plenary.nvim' },
     { "MunifTanjim/nui.nvim" },
-    {
-      'stevearc/dressing.nvim',
-      init = function()
-        require("config.dressing")
-      end
-    },
+    { 'stevearc/dressing.nvim',     init = function() require("config.dressing") end },
     -- Icons
     { 'nvim-tree/nvim-web-devicons' },
   },
@@ -84,18 +79,13 @@ require("lazy").setup({
   -- {
   --   "rachartier/tiny-inline-diagnostic.nvim",
   --   event = "VeryLazy",
-  --   config = function()
-  --     require('tiny-inline-diagnostic').setup()
-  --   end
+  --   config = function() require('tiny-inline-diagnostic').setup() end
   -- },
 
   {
     "MysticalDevil/inlay-hints.nvim",
     event = "LspAttach",
-    dependencies = { "neovim/nvim-lspconfig" },
-    config = function()
-      require("inlay-hints").setup()
-    end
+    config = function() require("inlay-hints").setup() end
   },
 
   -- status line
@@ -169,9 +159,17 @@ require("lazy").setup({
 
 
   -- Sidebar File explorer --
-  { 'kyazdani42/nvim-tree.lua',      config = function() require("config.nvim-tree") end },
+  { 'nvim-tree/nvim-tree.lua',       config = function() require("config.nvim-tree") end },
   -- File Manager
-  { 'kevinhwang91/rnvimr' },
+  -- { 'kevinhwang91/rnvimr' }, -- ranger
+
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = require("config.yazi").keys,
+    opts = require("config.yazi").opts,
+    init = function() vim.g.loaded_netrwPlugin = 1 end,
+  },
 
   -- Shortcut helper popup --
   { 'folke/which-key.nvim',          config = function() require("config.which-key") end },
@@ -184,14 +182,10 @@ require("lazy").setup({
 
   -- Git related stuff
   {
-    { 'lewis6991/gitsigns.nvim', config = function() require("config.gitsign") end }, -- git gigns in signcolumn
-    { 'TimUntersberger/neogit',  config = function() require("config.neogit") end },  -- git manager
-    { "sindrets/diffview.nvim" },                                                     -- diff helper
-    {
-      'akinsho/git-conflict.nvim',
-      version = "*",
-      config = true
-    } -- helps with git conflicts
+    { 'lewis6991/gitsigns.nvim',   config = function() require("config.gitsign") end }, -- git gigns in signcolumn
+    { 'TimUntersberger/neogit',    config = function() require("config.neogit") end },  -- git manager
+    { "sindrets/diffview.nvim" },                                                       -- diff helper
+    { 'akinsho/git-conflict.nvim', config = true }                                      -- helps with git conflicts
 
   },
 
@@ -464,43 +458,7 @@ require("lazy").setup({
   { -- LSP Utils --
 
     -- Project diagnostics with LSP
-    {
-      "folke/trouble.nvim",
-      opts = {}, -- for default options, refer to the configuration section for custom setup.
-      cmd = "Trouble",
-      keys = {
-        {
-          "<leader>xx",
-          "<cmd>Trouble diagnostics toggle<cr>",
-          desc = "Diagnostics (Trouble)",
-        },
-        {
-          "<leader>xX",
-          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-          desc = "Buffer Diagnostics (Trouble)",
-        },
-        {
-          "<leader>cs",
-          "<cmd>Trouble symbols toggle focus=false<cr>",
-          desc = "Symbols (Trouble)",
-        },
-        {
-          "<leader>cl",
-          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-          desc = "LSP Definitions / references / ... (Trouble)",
-        },
-        {
-          "<leader>xL",
-          "<cmd>Trouble loclist toggle<cr>",
-          desc = "Location List (Trouble)",
-        },
-        {
-          "<leader>xQ",
-          "<cmd>Trouble qflist toggle<cr>",
-          desc = "Quickfix List (Trouble)",
-        },
-      },
-    },
+    { "folke/trouble.nvim",    cmd = "Trouble" },
 
     -- Lsp utilities
     -- { 'tami5/lspsaga.nvim',    config = function() require("config.lspsaga") end },
@@ -512,14 +470,25 @@ require("lazy").setup({
 
   -- { 'tzachar/cmp-tabnine', build = './install.sh' }
 
+  {
+    "meznaric/key-analyzer.nvim",
+    config = function() require("config.key-analyzer") end
+  },
 
   -- Annotations and documentation
   { "danymat/neogen",        config = function() require('config.neogen') end },
 
   { -- Treesetter --
-    { 'nvim-treesitter/nvim-treesitter', build=":TSUpdate", config = function() require("config.treesetter") end },
-    { 'windwp/nvim-ts-autotag',          ft = { "html", "markdown", "xml" } },
-    -- {
+    {
+      'nvim-treesitter/nvim-treesitter',
+      build = ":TSUpdate",
+      config = function() require("config.treesetter") end
+    },
+    {
+      'windwp/nvim-ts-autotag',
+      ft = { "html", "markdown", "xml" },
+      config = function() require("config.auto-ts-autotag") end
+    },
   },
 
   -- For plugin.lua users
@@ -528,14 +497,22 @@ require("lazy").setup({
   {
     -- Comment --
     { 'JoosepAlviste/nvim-ts-context-commentstring', ft = { "html" } },
-    { 'numToStr/Comment.nvim',                       config = function() require('Comment').setup() end },
+    {
+      'numToStr/Comment.nvim',
+      config = function() require('Comment').setup() end
+    },
     event = 'BufEnter'
   },
 
   {
     -- Parenthesis --
     -- Auto pairying helpers
-    { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end },
+    {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      config = true,
+      opts = require("config.autopairs")
+    },
     -- Highlight pairs
     { 'andymass/vim-matchup' },
     -- -- Rainbow paren  -- depricated
@@ -699,11 +676,11 @@ require("lazy").setup({
   },
 
   -- Flutter
-  {
-    -- { 'dart-lang/dart-vim-plugin', ft = "dart" },
-    { 'akinsho/flutter-tools.nvim',       ft = "dart", config = function() require("config.fluttertools") end },
-    { 'Neevash/awesome-flutter-snippets', ft = "dart" },
-  },
+  -- {
+  --   -- { 'dart-lang/dart-vim-plugin', ft = "dart" },
+  --   { 'akinsho/flutter-tools.nvim',       ft = "dart", config = function() require("config.fluttertools") end },
+  --   { 'Neevash/awesome-flutter-snippets', ft = "dart" },
+  -- },
 
 
   -- Markdown
@@ -722,6 +699,24 @@ require("lazy").setup({
   --     require("config.image")
   --   end
   -- },
+  --
+  -- 'MeanderingProgrammer/markdown.nvim',
+  -- name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+  -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  -- config = function()
+  --     require('render-markdown').setup({})
+  -- end,
+  -- },
+  -- {'dhruvasagar/vim-table-mode'}
+
+
+  {
+    "OXY2DEV/markview.nvim",
+    config = function()
+      require("config.markview");
+    end
+  },
+
 
   -- auto wrap
   {
@@ -826,6 +821,46 @@ require("lazy").setup({
   --   build = "make",
   --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     --- The below dependencies are optional,
+  --     "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+  --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+  --     "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+  --     "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+  --     "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+  --     "zbirenbaum/copilot.lua",        -- for providers='copilot'
+  --     {
+  --       -- support for image pasting
+  --       "HakonHarnes/img-clip.nvim",
+  --       event = "VeryLazy",
+  --       opts = {
+  --         -- recommended settings
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           -- required for Windows users
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --     },
+  --     {
+  --       -- Make sure to set this up properly if you have lazy=true
+  --       'MeanderingProgrammer/render-markdown.nvim',
+  --       opts = {
+  --         file_types = { "markdown", "Avante" },
+  --       },
+  --       ft = { "markdown", "Avante" },
+  --     },
+  --   },
+  -- },
+
+  --   dependencies = {
   --     --- The below dependencies are optional,
   --     "zbirenbaum/copilot.lua", -- for providers='copilot'
   --     {
@@ -846,43 +881,36 @@ require("lazy").setup({
   --       },
   --
   --     },
-  --     {
-  --       -- Make sure to set this up properly if you have lazy=true
-  --       'MeanderingProgrammer/render-markdown.nvim',
-  --       opts = { file_types = { "markdown", "Avante", "neoai-output", "neoai-input" } },
-  --       ft = { "markdown", "Avante", "neoai-output", "neoai-input" },
-  --     },
-  --
   --   },
   -- },
 
 
-  -- {
-  --   "ViperX7/neoai.nvim",
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --   },
-  --   cmd = {
-  --     "NeoAI",
-  --     "NeoAIOpen",
-  --     "NeoAIClose",
-  --     "NeoAIToggle",
-  --     "NeoAIContext",
-  --     "NeoAIContextOpen",
-  --     "NeoAIContextClose",
-  --     "NeoAIInject",
-  --     "NeoAIInjectCode",
-  --     "NeoAIInjectContext",
-  --     "NeoAIInjectContextCode",
-  --   },
-  --   keys = {
-  --     { "<leader>as", desc = "summarize text" },
-  --     { "<leader>ag", desc = "generate git message" },
-  --   },
-  --   config = function()
-  --     require("config.neoai")
-  --   end,
-  -- },
+  {
+    "ViperX7/neoai.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    cmd = {
+      "NeoAI",
+      "NeoAIOpen",
+      "NeoAIClose",
+      "NeoAIToggle",
+      "NeoAIContext",
+      "NeoAIContextOpen",
+      "NeoAIContextClose",
+      "NeoAIInject",
+      "NeoAIInjectCode",
+      "NeoAIInjectContext",
+      "NeoAIInjectContextCode",
+    },
+    keys = {
+      { "<leader>as", desc = "summarize text" },
+      { "<leader>ag", desc = "generate git message" },
+    },
+    config = function()
+      require("config.neoai")
+    end,
+  },
   {
     'huggingface/llm.nvim',
     opts = {},
@@ -893,6 +921,47 @@ require("lazy").setup({
   },
 
   { "echasnovski/mini.diff" },
+
+  {
+    "nickjvandyke/opencode.nvim",
+    dependencies = {
+      -- Recommended for `ask()` and `select()`.
+      -- Required for `snacks` provider.
+      ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
+      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+    },
+    config = function()
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {
+        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
+      }
+
+      -- Required for `opts.events.reload`.
+      vim.o.autoread = true
+
+      -- Recommended/example keymaps.
+      vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end,
+        { desc = "Ask opencode…" })
+      vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,
+        { desc = "Execute opencode action…" })
+      vim.keymap.set({ "n", "t" }, "<C-t>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
+
+      vim.keymap.set({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end,
+        { desc = "Add range to opencode", expr = true })
+      vim.keymap.set("n", "goo", function() return require("opencode").operator("@this ") .. "_" end,
+        { desc = "Add line to opencode", expr = true })
+
+      vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,
+        { desc = "Scroll opencode up" })
+      vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end,
+        { desc = "Scroll opencode down" })
+
+      -- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above — otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap).
+      vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
+      vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
+    end,
+  },
+
 
   {
     "olimorris/codecompanion.nvim",
@@ -931,6 +1000,28 @@ require("lazy").setup({
 
       })
     end
+  }
+  ,
+
+
+
+  {
+    "lowitea/aw-watcher.nvim",
+    opts = { -- required, but can be empty table: {}
+      -- add any options here
+      -- for example:
+      aw_server = {
+        host = "127.0.0.1",
+        port = 5600,
+      },
+    },
+  },
+
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
   }
 
 

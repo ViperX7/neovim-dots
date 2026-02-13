@@ -12,4 +12,6 @@ require('lsp_lua')
 
 require("config.colorscheme")
 
-require('md')
+vim.cmd('filetype detect')
+
+
